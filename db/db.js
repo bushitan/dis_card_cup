@@ -1,7 +1,7 @@
 
 
-var dbFather = require('db_1_base.js')
-class dbSon extends dbFather {
+var dbFather = require('db_3_map.js')
+class db extends dbFather {
 
 
 

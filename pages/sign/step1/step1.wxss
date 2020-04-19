@@ -1,5 +1,8 @@
 /* pages/sign/step1/step1.wxss */
 
+page{
+    background-color: var(--green);
+}
 
 .phone{
     width:100%;

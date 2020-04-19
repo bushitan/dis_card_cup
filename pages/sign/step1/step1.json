@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+    "navigationBarBackgroundColor": "#07c160",
+    "navigationBarTitleText": "小杯子先享卡",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {}
 }

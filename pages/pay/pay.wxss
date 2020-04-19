@@ -1,0 +1,16 @@
+/* pages/pay/pay.wxss */
+
+.btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 99px 50px;
+}
+.back{
+  width:  150px;
+  /* flex-basis:  150px;  */
+}
+.des{
+  margin: 9px;
+}

@@ -40,29 +40,42 @@ Page({
         var formData = e.detail.value
         for (var i in formData) {
             if (formData[i] == '') {
-                uni.showToast({
+                wx.showToast({
                     title: "请填写完整信息",
                     icon: "loading"
                 })
                 return
             }
         }
-        if (this.data.coverMax.length == 0) {
+        if (this.data.coverList.length == 0) {
             wx.showToast({
-                title: "无正面图片",
+                title: "请上传图片",
                 icon: "loading"
             })
             return
         }
 
-        if (this.data.logoList.length == 0) {
-            wx.showToast({
-                title: "无反面图片",
-                icon: "loading"
-            })
-            return
-        }
-        this.saveAdd(formData)
+        wx.showModal({
+            title: '提交成功',
+            content: '工作人员审核通过将与您联系',
+            showCancel:false,
+            success:res=>{
+                wx.navigateBack({
+                    
+                })
+            }
+        })
+
+        // if (this.data.logoList.length == 0) {
+        //     wx.showToast({
+        //         title: "无反面图片",
+        //         icon: "loading"
+        //     })
+        //     return
+        // }
+
+
+        // this.saveAdd(formData)
 
     },
 

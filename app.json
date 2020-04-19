@@ -1,5 +1,7 @@
  {
     "pages": [
+        "pages/poi/poi",
+        "pages/pay/pay",
         "pages/index/index",
         "pages/route/route",
         "pages/logs/logs",
@@ -8,9 +10,9 @@
     "window": {
         "backgroundTextStyle": "light",
         "backgroundColor": "#ffffff",
-        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarBackgroundColor": "#da432e",
         "navigationBarTitleText": "小杯子先享卡",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "white"
     },
     "permission": {
         "scope.userLocation": {
