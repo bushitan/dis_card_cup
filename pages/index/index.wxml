@@ -1,0 +1,95 @@
+
+
+<image src="/images/bg.png" class="bg" mode="widthFix"></image>
+
+<view class="pg-space-xxl"></view>
+
+<view class="flex flex-direction justify-center align-center">
+    <image src="/images/icon/oct.png" style="width:72px" mode="widthFix"></image>
+    <text class="text-bold text-lg">O.CT COFFEE</text>
+</view>
+
+
+    
+<view class="cu-card padding">
+    <view class=" pg-radius  shadow shadow-warp bg-yellow">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>                
+                <text class="text-white">先享规则</text>                        
+            </view>
+            <view class="action">
+                <button class="cu-btn bg-white text-yellow round" catchtap="toRule" >查看</button>
+            </view>
+        </view>
+        <view class="cu-list menu text-white">
+            <view class="flex justify-between padding ">
+                <view class="action">
+                    <text class="">奖励</text>
+                </view>
+                <view class="action">
+                    <text class="">每次消费减5元</text>
+                </view>
+            </view>
+            <view class="flex justify-between padding ">
+                <view class="action">
+                    <text class="f">任务</text>
+                </view>
+                <view class="action">
+                    <text class="">90天内到店消费3次</text>
+                </view>
+            </view>
+        </view>     
+    </view>
+</view>
+
+<view class="flex justify-center padding ">
+    <!-- <view class="" style=""> -->
+        <input placeholder="请输入消费金额"  placeholder-class="text-gray"
+        class="text-center text-bold text-xl text-red " type="digit"></input>
+    <!-- </view> -->
+</view>
+<view style="padding: 0 120rpx;">
+    <view style=" border-top: 1rpx solid #efaf30;">
+        <view class="cu-list menu ">
+            <view class="flex justify-between padding-top ">
+                <view class="action">
+                    <text class="text-gray">先享优惠：</text>
+                </view>
+                <view class="action text-red">                    
+                    <text class="text-price "></text>5元
+                </view>
+            </view>
+            <view class="flex justify-between padding-top ">
+                <view class="action">
+                    <text class="text-gray">实际支付：</text>
+                </view>
+                <view class="action text-red">                    
+                    <text class="text-price "></text>75.5元
+                </view>
+            </view>
+        </view>     
+        <!-- <view class="flex justify-between  " >
+            <view class="action">
+                <text class="">先享优惠奖励</text>
+            </view>
+            <view class="action">
+                <text class="">5元</text>
+            </view>
+        </view>
+        <view class="flex justify-between  " >
+            <view class="action">
+                <text class="">先享优惠奖励</text>
+            </view>
+            <view class="action">
+                <text class="">5元</text>
+            </view>
+        </view> -->
+    </view>
+</view>
+
+<view class='flex align-center justify-around padding bg-white'>        
+    <button class="cu-btn round bg-yellow text-white block lg" catchtap='scanScore' >
+    微信支付</button>
+
+</view>

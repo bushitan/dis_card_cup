@@ -1,0 +1,7 @@
+/* pages/sign/step1/step1.wxss */
+
+
+.phone{
+    width:100%;
+    height:200px
+}

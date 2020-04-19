@@ -1,0 +1,200 @@
+<!--pages/sign/step1/step1.wxml-->
+
+<view class="padding">
+    <view class="text-white flex justify-center text-xxl text-bold margin-bottom">先享卡开通报名表</view>
+    <!-- <view class="bg-white padding">
+        <view class="cu-steps">
+            <view class="cu-item {{index>num?'':'text-green'}}" wx:for="{{numList}}" wx:key>
+            <text class="num {{index==2?'err':''}}" data-index="{{index + 1}}"></text> 
+            </view>
+        </view>
+    </view> -->
+    <form  bindsubmit="save"   >
+        <view class="cu-bar bg-white  cu-form-group ">
+            <view class="action flex dire" style="margin-left: 0rpx;">
+                    <text class="cuIcon-title text-yellow "></text>请填写商户信息                    
+            </view>
+        </view>
+
+        <view class="text-sm">
+            <view class="cu-form-group  text-left">
+                <view class=" ">微信支付商户简称：</view>
+                <input placeholder="例如：XXX Coffee" name="roomID" :value="room.roomID"  class="text-right"></input>
+            </view>
+            <view class="cu-form-group  text-left">
+                <view class="">微信支付商户地址：</view>
+                <input placeholder="请填写门店地址" name="roomID" :value="room.roomID"  class="text-right"></input>
+            </view>
+            <view class="cu-form-group  text-left">
+                <view class="">法人手机号：</view>
+                <input placeholder="请输入手机号" name="roomID" :value="room.phone"  class="text-right"></input>
+            </view>
+            <view class="cu-form-group  text-left">
+                <view class="">法人电子邮箱：</view>
+                <input placeholder="请输入电子邮箱" name="roomID" :value="room.roomID"  class="text-right"></input>
+            </view>
+
+            <view class="cu-form-group  text-left">
+                <view class="">银行开户行名称：</view>
+                <input placeholder="请输入开户行名称" name="roomID" :value="room.roomID"  class="text-right"></input>
+            </view>
+
+            <view class="cu-form-group  text-left">
+                <view class="">银行网点名称：</view>
+                <input placeholder="请输入网点名称" name="roomID" :value="room.roomID"  class="text-right"></input>
+            </view>
+
+            <view class="cu-form-group  text-left">
+                <view class="">银行账号：</view>
+                <input placeholder="请输入银行账号" name="roomID" :value="room.roomID"  class="text-right"></input>
+            </view>
+        </view>
+
+
+        <view class="bg-white margin-top">
+            <view class="cu-bar bg-white  cu-form-group ">
+                <view class="action flex dire" style="margin-left: 0rpx;">
+                     <text class="cuIcon-title text-yellow "></text>请上传附件                    
+                </view>
+                <!-- <view class="action">
+                    {{coverList.length}}/{{coverMax}}
+                </view> -->
+            </view>
+            <view class="padding-lr text-gray text-sm">
+                <view>1、营业执照正反面扫描件 （共2张）</view>
+                <view>2、法人身份证照正反面扫描件 （共2张）</view>
+                <view>3、门头照、店内环境照、收银台照（共3张）</view>
+                <view>4、食品经营许可证（仅餐饮行业需要）</view>
+            </view>
+            <view class="cu-form-group margin-top">
+                <view class="grid col-4 grid-square flex-sub"  >
+                    <view class="bg-img" wx:for="{{coverList}}" wx:key="index" bindtap="ViewCover" data-url="{{coverList[index]}}">
+                        <image src='{{coverList[index]}}' mode='aspectFit' ></image>
+                        <view class="cu-tag bg-red" catchtap="DelCover" data-index="{{index}}">
+                            <text class="cuIcon-close"></text>
+                        </view>
+                    </view>
+                    <view class="solids" bindtap="ChooseCover" wx:if="{{coverList.length<coverMax}}">
+                        <text class="cuIcon-cameraadd"></text>
+                    </view>
+                </view>
+            </view>
+
+
+
+            <view class="flex justify-around padding margin-top">
+                <button class="cu-btn round  bg-yellow text-white " form-type="submit" >提交材料</button>
+            </view>
+        </view>
+    </form>
+</view>
+
+            <!-- <view class="cu-bar bg-white  cu-form-group ">
+                <view class="action" style="margin-left: 0rpx;">
+                法人身份证反面照（国徽面）
+                </view>
+                <view class="action">
+                    {{logoList.length}}/{{logoMax}}
+                </view>
+            </view>
+            <view></view>
+            <view class="cu-form-group">
+                <view class="grid col-3 grid-square flex-sub">
+                    <view></view>
+                    <view class="bg-img" wx:for="{{logoList}}" wx:key="index" bindtap="ViewLogo" data-url="{{logoList[index]}}">
+                        <image src='{{logoList[index]}}' mode='aspectFit'></image>
+                        <view class="cu-tag bg-red" catchtap="DelLogo" data-index="{{index}}">
+                            <text class="cuIcon-close"></text>
+                        </view>
+                    </view>
+                    <view class="solids" bindtap="ChooseLogo" wx:if="{{logoList.length<logoMax}}">
+                        <text class="cuIcon-cameraadd"></text>
+                    </view>
+                </view>
+            </view> -->
+
+<!-- 
+
+<form  bindsubmit="save">
+    <view class="cu-form-group  text-left">
+        <view class="title">直播间ID：</view>
+        <input placeholder="请输入直播间ID" name="roomID" :value="room.roomID"  class="text-right"></input>
+    </view>
+    <view class="cu-form-group  text-left">
+        <view class="title">标题：</view>
+        <input placeholder="请输入直播间标题" name="title" :value="room.title" class="text-right" ></input>
+    </view>
+    <view class="cu-form-group  text-left" catchtap="changeStatus">
+        <view class="title">状态：</view>					
+        <view class="">
+            <text class="text-bold text-yellow" v-if="status == STATUS_LIVE" >直播</text>
+            <text class="text-bold text-red" v-else-if="status == STATUS_PLAYBACK" >回放</text>
+            <text class="text-bold text-black" v-else>已完成</text>	
+            （切换状态）
+        </view>
+    </view>
+    
+    <view class="cu-bar bg-white  cu-form-group ">
+        <view class="action" style="margin-left: 0rpx;">
+            封面图片
+        </view>
+    </view>
+    <view></view>
+    <view class="cu-form-group">
+        <view class="grid col-5 grid-square flex-sub ">
+            <view class="bg-img" v-for="(item,index) in coverList " v-bind:key="index" catchtap="ViewCover(coverList[index])" >
+                <image :src='coverList[index]' mode='aspectFit'></image>
+                <view class="cu-tag bg-red" catchtap="DelCover(index)" >
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" catchtap="ChooseCover" v-if="coverList.length<coverMax ">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+    
+    <view class="cu-form-group  text-left">
+        <view class="title">主播名字：</view>
+        <input placeholder="请输入姓名" name="hostName" :value="room.hostName" class="text-right"></input>
+    </view>
+    
+    <view class="cu-bar bg-white  cu-form-group ">
+        <view class="action" style="margin-left: 0rpx;">
+            主播头像
+        </view>
+    </view>
+    <view></view>
+    <view class="cu-form-group">
+        <view class="grid col-5 grid-square flex-sub">
+            <view class="bg-img" v-for="(item,index) in logoList " v-bind:key="index" catchtap="ViewLogo(logoList[index])" >
+                <image :src='logoList[index]' mode='aspectFit'></image>
+                <view class="cu-tag bg-red" catchtap="DelLogo(index)" >
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" catchtap="ChooseLogo" v-if="logoList.length<logoMax ">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+    <view class="cu-form-group  text-left">
+        <view class="title">主播描述：</view>
+        <input placeholder="请输入主播描述" name="desc" :value="room.desc" class="text-right" ></input>
+    </view>
+    <view class="cu-form-group  text-left">
+        <view class="title">开始时间：</view>
+        <input placeholder="请输入开始时间" name="startTime" :value="room.startTime" class="text-right" ></input>
+    </view>
+    <view class="cu-form-group  text-left">
+        <view class="title">序号（降序排列）：</view>
+        <input placeholder="请输入序号" name="sn" :value="room.sn" class="text-right" ></input>
+    </view>
+    
+    <view class="cu-bar bg-white justify-end">
+        <view class="action">
+            <button class="cu-btn round line-yellow" catchtap="close()">取消</button>
+            <button class="cu-btn round bg-yellow text-white margin-left"  form-type="submit" >确定</button>
+        </view>
+    </view>
+</form>		 -->

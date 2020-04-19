@@ -1,0 +1,25 @@
+ {
+    "pages": [
+        "pages/index/index",
+        "pages/route/route",
+        "pages/logs/logs",
+        "pages/sign/step1/step1"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "backgroundColor": "#ffffff",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "小杯子先享卡",
+        "navigationBarTextStyle": "black"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wxcc2e4fbc5887661e",
+        "wxd8f3793ea3b935b8"
+    ],
+    "sitemapLocation": "sitemap.json"
+}

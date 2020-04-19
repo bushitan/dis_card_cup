@@ -1,0 +1,14 @@
+/**app.wxss**/
+
+@import 'static/css/main.wxss';
+@import 'static/css/icon.wxss';
+
+.pg-space { height: 10px; }
+.pg-space-lg { height: 20px; }
+.pg-space-xl { height: 30px; }
+.pg-space-xxl { height: 60px; }
+
+.pg-radius{
+    overflow: hidden;
+    border-radius: 10rpx;
+}
