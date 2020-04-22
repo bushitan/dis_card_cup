@@ -4,12 +4,12 @@ App({
     db: db,
     onLaunch: function () {
 
-        // if (wx.cloud) {
-        //     wx.cloud.init({
-        //         env: "dic-card-cup",
-        //         traceUser: true
-        //     })
-        // }
+        if (wx.cloud) {
+            wx.cloud.init({
+                env: "dic-card-cup",
+                traceUser: true
+            })
+        }
 
         // // 展示本地存储能力
         // var logs = wx.getStorageSync('logs') || []
