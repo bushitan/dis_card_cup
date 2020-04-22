@@ -48,8 +48,10 @@ Page({
                     package: payData.package,
                     signType: payData.signType,
                     paySign: payData.subpaySign,
-                    success(res) {
+                    success : res=> {
                         console.log("支付成功", res)
+                        this.toAlert()
+
                     },
                     fail(res) {
                         console.log("支付失败", res)
@@ -62,7 +64,15 @@ Page({
         })
     },
 
+    toStore(){
+        wx.navigateBack({
+            
+        })
+    },
 
+    toAlert(){
+
+    },
     /**
      * 用户点击右上角分享
      */

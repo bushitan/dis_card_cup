@@ -1,17 +1,17 @@
  {
     "pages": [
-        "pages/store/store",
+        "pages/route/route",
         "pages/list/list",
+        "pages/store/store",
         "pages/alert/alert",
         "pages/poi/poi",
         "pages/pay/pay",
-        "pages/route/route",
         "pages/sign/sign"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "backgroundColor": "#ffffff",
-        "navigationBarBackgroundColor": "#da432e",
+        "navigationBarBackgroundColor": "#07c160",
         "navigationBarTitleText": "小杯子先享卡",
         "navigationBarTextStyle": "white"
     },

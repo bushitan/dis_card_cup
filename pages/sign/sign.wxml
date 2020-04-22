@@ -19,34 +19,34 @@
         <view class="text-sm">
             <view class="cu-form-group  text-left">
                 <view class=" ">微信支付商户简称：</view>
-                <input placeholder="例如：XXX Coffee" name="roomID" :value="room.roomID"  class="text-right"></input>
+                <input placeholder="例如：XXX Coffee" name="name"   class="text-right"></input>
             </view>
             <view class="cu-form-group  text-left">
                 <view class="">微信支付商户地址：</view>
-                <input placeholder="请填写门店地址" name="roomID" :value="room.roomID"  class="text-right"></input>
+                <input placeholder="请填写门店地址" name="address"   class="text-right"></input>
             </view>
             <view class="cu-form-group  text-left">
                 <view class="">法人手机号：</view>
-                <input placeholder="请输入手机号" name="roomID" :value="room.phone"  class="text-right"></input>
+                <input placeholder="请输入手机号" name="phone"   class="text-right"></input>
             </view>
             <view class="cu-form-group  text-left">
                 <view class="">法人电子邮箱：</view>
-                <input placeholder="请输入电子邮箱" name="roomID" :value="room.roomID"  class="text-right"></input>
+                <input placeholder="请输入电子邮箱" name="email"  class="text-right"></input>
             </view>
 
             <view class="cu-form-group  text-left">
                 <view class="">银行开户行名称：</view>
-                <input placeholder="请输入开户行名称" name="roomID" :value="room.roomID"  class="text-right"></input>
+                <input placeholder="请输入开户行名称" name="bankName"   class="text-right"></input>
             </view>
 
             <view class="cu-form-group  text-left">
                 <view class="">银行网点名称：</view>
-                <input placeholder="请输入网点名称" name="roomID" :value="room.roomID"  class="text-right"></input>
+                <input placeholder="请输入网点名称" name="bankBranchName" class="text-right"></input>
             </view>
 
             <view class="cu-form-group  text-left">
                 <view class="">银行账号：</view>
-                <input placeholder="请输入银行账号" name="roomID" :value="room.roomID"  class="text-right"></input>
+                <input placeholder="请输入银行账号" name="bankAccount" class="text-right"></input>
             </view>
         </view>
 

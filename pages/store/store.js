@@ -79,4 +79,14 @@ Page({
             },
         })
     },
+
+    toSign(){
+        wx.navigateTo({
+            url: '/pages/sign/sign',
+        })
+    },
+
+
+
+    onShareAppMessage(){}
 })

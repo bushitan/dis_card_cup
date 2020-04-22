@@ -6,6 +6,28 @@ Page({
      */
     data: {
 
+        storeList: [
+            {
+                myScore: 0,
+                storeDes: "先享88折",
+                storeLogo: "/images/icon/oct.png",
+                // storeLogo: "http://img.12xiong.top/WechatIMG71.png",
+               
+                storeMaxScore: 6,
+                storeMinScore: 6,
+                storeName: "O.CT COFFEE",
+                storeUUID: "3876178a-7232-11e9-b3cf-e95aa2c51b5d",
+            },
+            // {
+            //     myScore: 0,
+            //     storeDes: "先享2元",
+            //     storeLogo: "http://img.12xiong.top/coffee_image/upload/IGyXK6fZ.jpg",
+            //     storeMaxScore: 6,
+            //     storeMinScore: 6,
+            //     storeName: "StrongCoffee 唯微文文咖啡商店",
+            //     storeUUID: "b29c4dee-b35e-11e9-869d-e95aa2c51b5d",
+            // }
+        ],
     },
 
     /**
@@ -15,47 +37,19 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
 
     /**
-     * 生命周期函数--监听页面显示
+     * @method 去商铺
      */
-    onShow: function () {
-
+    toStore(e) {
+        var storeUUID = e.currentTarget.dataset.store_uuid
+        console.log(storeUUID)
+        wx.navigateTo({
+            url: '/pages/store/store?storeUUID=' + storeUUID,
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
 
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
 
     /**
      * 用户点击右上角分享

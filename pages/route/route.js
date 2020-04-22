@@ -20,6 +20,9 @@ Page({
      */
     onReady: function () {
 
+        wx.redirectTo({
+            url: '/pages/list/list',
+        })
     },
 
     /**

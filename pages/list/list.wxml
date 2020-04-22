@@ -1,2 +1,31 @@
 <!--pages/list/list.wxml-->
-<text>pages/list/list.wxml</text>
+
+
+<!-- 商家列表 -->
+<view class="cu-card padding">
+    <view class=" pg-radius">
+        <view class="cu-bar bg-white solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>我的先享足迹
+            </view>
+        </view>
+        <view class="">
+            <view class="cu-list menu ">
+                <view url="" class="cu-item bg-white arrow "  style=" min-height: 140rpx;" wx:for="{{storeList}}" catchtap="toStore" data-store_uuid="{{item.storeUUID}}">
+                    <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.storeLogo}});"></view>
+                    <view class="content">
+                        <view class="text-gray text-sm">{{item.storeName}}</view>
+                        <view class="flex">
+                            <text class="text-cut">
+                            <text class="cuIcon-infofill text-yellow  margin-right-xs"></text>{{item.storeDes || ""}}</text>
+                        </view>
+                    </view>
+                    <!-- <view class="action">
+                        <view class="text-grey text-xs">已集点</view>
+                        <view class="cu-tag round bg-blue page-font-white sm">{{item.myScore}}</view>
+                    </view> -->
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -2,6 +2,6 @@
 
 <view class="btn">
   <view class="des">等待支付结果...</view>
-  <button catchtap="toShopCard" class="back"> 返回 </button>
+  <button catchtap="toStore" class="back"> 返回 </button>
 </view>
 
