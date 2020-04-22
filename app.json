@@ -1,11 +1,12 @@
  {
     "pages": [
+        "pages/store/store",
+        "pages/list/list",
+        "pages/alert/alert",
         "pages/poi/poi",
         "pages/pay/pay",
-        "pages/index/index",
         "pages/route/route",
-        "pages/logs/logs",
-        "pages/sign/step1/step1"
+        "pages/sign/sign"
     ],
     "window": {
         "backgroundTextStyle": "light",

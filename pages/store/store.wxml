@@ -43,14 +43,15 @@
     </view>
 </view>
 
-<view class="flex justify-center padding ">
+<view class="flex justify-center padding margin-top">
     <!-- <view class="" style=""> -->
-        <input placeholder="请输入消费金额"  placeholder-class="text-gray"
+        <input placeholder="请输入消费金额"  placeholder-class="text-green"
         class="text-center text-bold text-xl text-red " type="digit" bindblur="inputConfirm"></input>
     <!-- </view> -->
 </view>
-<view style="padding: 0 120rpx;" wx:if="{{inputPrice > 0}}">
-    <view style=" border-top: 1rpx solid #efaf30;">
+<view style="padding: 0 120rpx;" >
+    <view style=" border-top: 1rpx solid #07c160;" ></view>
+    <view wx:if="{{inputPrice > 0}}">
         <view class="cu-list menu ">
             <view class="flex justify-between padding-top ">
                 <view class="action">
@@ -72,7 +73,7 @@
                 <view class="action">
                     <text class="text-gray">实际支付：</text>
                 </view>
-                <view class="action text-red">                    
+                <view class="action text-red text-xxl text-bold">  
                     <text class="text-price "></text>{{payPrice}}元
                 </view>
             </view>
@@ -81,7 +82,7 @@
 </view>
 
 <view class='flex align-center justify-around padding bg-white'>        
-    <button class="cu-btn round bg-yellow text-white block lg" catchtap='toPay' >
+    <button class="cu-btn round bg-green text-white block lg" catchtap='toPay' disabled='{{inputPrice<=0}}'>
     微信支付</button>
 
 </view>
