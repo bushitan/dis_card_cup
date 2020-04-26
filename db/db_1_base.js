@@ -1,8 +1,9 @@
 
 
 class dbSon {
+    KEY_SESSION = "session"
     KEY_OPEN_ID = "open_id"
-
+    HOST_URL = "https://wm.51zfgx.com/" // 主机地址
     constructor() {
 
     }
@@ -12,10 +13,10 @@ class dbSon {
     base(options) {
         return new Promise((resolve, reject) => {
             var data = options.data || {}
-            data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
+            // data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
 
-
-            data['session'] = wx.getStorageSync(this.KEY_SESSION)
+            data['Session'] = wx.getStorageSync(this.KEY_SESSION) || ""
+            data['AppId'] = "55714689209244b584e43573e90a6734"
             wx.request({
                 url: options.url,
                 method: options.method || "POST",
@@ -51,32 +52,36 @@ class dbSon {
      *      sn 序列号
      */
     sysLogin() {
+        
         return new Promise((resolve, reject) => {
             var that = this
-            wx.showLoading({ title: '登陆中...', })
             wx.login({
                 success(e) {
+
                     that.base({
-                        url: that.HOST_URL + "ajdm/syslogin/",
+                        url: that.HOST_URL + "api/gettoken/",
                         data: {
-                            jscode: e.code,
-                            appid: that.APP_ID,
+                            Code: e.code,
+                            AppId: that.APP_ID,
                         },
                         method: "POST",
                     }).then(res => {
-                        wx.hideLoading()
-                        if (res.code == 0) {
-                            wx.setStorageSync(that.KEY_SESSION, res.data.session) //session
-                            wx.setStorageSync(that.KEY_SN, "10" + res.data.sn)  //序列号
-                        }
+                        // debugger
+                        wx.setStorageSync(that.KEY_SESSION, res.data.session) //session
+                        // wx.setStorageSync(that.KEY_SN, "10" + res.data.data.sn)  //序列号
+                        console.log("get customerGetToken success")
                         resolve(true)
-                    }).catch(res => {
-                        wx.hideLoading()
-                        resolve(false)
                     })
+                        .catch(res => {
+                            console.log("get customerGetToken catch")
+                            reject(false)
+                        })
+                },
+                fail(res) {
+                    console.log("login fail")
+                    reject(false)
                 },
             })
-
         })
     }
 

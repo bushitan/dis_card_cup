@@ -67,9 +67,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
+					"id": 1,
+					"name": "pages/route/route",
+					"pathName": "pages/route/route",
 					"query": "",
 					"scene": null
 				},

@@ -5,6 +5,135 @@ class dbMap extends dbFather {
         super()
     }
 
+
+
+    /**************查询门店*************/
+    // all store
+    storeGetList(data){
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/stores/visited/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+    // get this store
+    storeGetDetail(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/store/getbyid/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+
+
+    //  获取先享卡点文本内容
+    storeGetDiscountCard(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/store/getWxDiscountCard/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+    //  检测用户是否领取了先享卡啊，没有领取，则领取；已经领取可以查看
+    // 展示查看按钮，跳转小程序
+    storeCheckDiscountCard(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/payscore/checkuserdiscountcard/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+
+    // 用户调用小程序，领取先享卡
+    storePullDiscountCard(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/payscore/pullwxdiscountcard/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+    /**************支付*************/
+
+   
+    // 预取单
+    payPre(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/order/precaculFee/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+    // 确认下单
+    payConfirm(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/order/testpay/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // /api/current_store
+
     mapLogin(data) {
         return new Promise((reslove, reject) => {
             wx.showLoading()

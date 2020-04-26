@@ -1,4 +1,6 @@
 // pages/list/list.js
+
+var app = getApp()
 Page({
 
     /**
@@ -7,17 +9,17 @@ Page({
     data: {
 
         storeList: [
-            {
-                myScore: 0,
-                storeDes: "先享88折",
-                storeLogo: "/images/icon/oct.png",
-                // storeLogo: "http://img.12xiong.top/WechatIMG71.png",
+            // {
+            //     myScore: 0,
+            //     storeDes: "先享88折",
+            //     storeLogo: "/images/icon/oct.png",
+            //     // storeLogo: "http://img.12xiong.top/WechatIMG71.png",
                
-                storeMaxScore: 6,
-                storeMinScore: 6,
-                storeName: "O.CT COFFEE",
-                storeUUID: "3876178a-7232-11e9-b3cf-e95aa2c51b5d",
-            },
+            //     storeMaxScore: 6,
+            //     storeMinScore: 6,
+            //     storeName: "O.CT COFFEE",
+            //     storeUUID: "3876178a-7232-11e9-b3cf-e95aa2c51b5d",
+            // },
             // {
             //     myScore: 0,
             //     storeDes: "先享2元",
@@ -34,18 +36,27 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.onInit()
     },
+
+    async onInit(e) {
+
+        var res = await app.db.storeGetList()
+        this.setData({
+            storeList: res.data
+        })
+    },
+
 
 
     /**
      * @method 去商铺
      */
     toStore(e) {
-        var storeUUID = e.currentTarget.dataset.store_uuid
+        var shop_id = e.currentTarget.dataset.shop_id
         console.log(storeUUID)
         wx.navigateTo({
-            url: '/pages/store/store?storeUUID=' + storeUUID,
+            url: '/pages/store/store?shop_id=' + shop_id,
         })
     },
 

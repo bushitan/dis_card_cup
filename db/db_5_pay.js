@@ -6,5 +6,6 @@ class dbMap extends dbFather {
     }
     
 
+    
 }
 module.exports = dbMap
