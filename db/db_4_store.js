@@ -16,7 +16,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -30,7 +30,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -46,7 +46,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -61,7 +61,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -76,7 +76,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -93,7 +93,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -107,7 +107,7 @@ class dbMap extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             }).catch(res => reject(res))
         })

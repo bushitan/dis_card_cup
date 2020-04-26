@@ -54,7 +54,7 @@ Page({
      */
     toStore(e) {
         var shop_id = e.currentTarget.dataset.shop_id
-        console.log(storeUUID)
+        // console.log(storeUUID)
         wx.navigateTo({
             url: '/pages/store/store?shop_id=' + shop_id,
         })

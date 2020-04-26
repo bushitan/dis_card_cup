@@ -81,10 +81,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "",
+					"query": "shop_id=9",
 					"scene": null
 				},
 				{

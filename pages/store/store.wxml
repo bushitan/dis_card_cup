@@ -6,12 +6,12 @@
 
 <view class="flex flex-direction justify-center align-center">
     <image src="/images/icon/oct.png" style="width:72px" mode="widthFix"></image>
-    <text class="text-bold text-lg">O.CT COFFEE</text>
+    <text class="text-bold text-lg">{{store.Name}}</text>
 </view>
 
 
     
-<view class="cu-card padding">
+<view class="cu-card padding" wx:for="{{cardList}}">
     <view class=" pg-radius  shadow shadow-warp bg-yellow">
         <view class="cu-bar  solid-bottom ">
             <view class="action">
@@ -19,7 +19,8 @@
                 <text class="text-white">先享规则</text>                        
             </view>
             <view class="action">
-                <button class="cu-btn bg-white text-yellow round" catchtap="toDiscountCard" >查看</button>
+                <button class="cu-btn bg-white text-yellow round" catchtap="getNewCard" wx:if="{{isDiscountCard}}">查看</button>
+                <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>领取</button>
             </view>
         </view>
         <view class="cu-list menu text-white">
