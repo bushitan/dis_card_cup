@@ -103,7 +103,7 @@ class dbMap extends dbFather {
     payConfirm(data) {
         return new Promise((resolve, reject) => {
             this.base({
-                url: this.HOST_URL + "api/order/testpay/",
+                url: this.HOST_URL + "api/order/barcodetpay",
                 data: data,
                 method: "POST",
             }).then(res => {

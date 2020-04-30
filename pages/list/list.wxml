@@ -11,18 +11,20 @@
         </view>
         <view class="">
             <view class="cu-list menu ">
-                <view wx:if="{{item.isDiscountCard == false}}" 
+                <view wx:if="{{item.isDiscountCard}}" 
                     class="cu-item bg-white arrow " 
                     style=" min-height: 140rpx;" 
                     wx:for="{{storeList}}" catchtap="toStore" 
                     data-shop_id="{{item.Id}}">
 
-                    <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.storeLogo}});"></view>
+                    <!-- <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.storeLogo}});"></view> -->
                     <view class="content">
                         <view class="text-gray text-sm">{{item.Name}}</view>
                         <view class="flex">
                             <text class="text-cut">
-                            <text class="cuIcon-infofill text-yellow  margin-right-xs"></text>{{item.storeDes || ""}}</text>
+                            <!-- <text class="cuIcon-infofill text-yellow  margin-right-xs"></text>{{item.storeDes || ""}} -->
+
+                            </text>
                         </view>
                     </view>
                     <!-- <view class="action">

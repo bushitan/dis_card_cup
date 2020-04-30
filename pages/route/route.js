@@ -14,6 +14,9 @@ Page({
      */
     onLoad: function (options) {
 
+        wx.showLoading({
+            title: '登录中',
+        })
         // this.test()
         this.onInit()
     },
@@ -21,9 +24,11 @@ Page({
     async onInit(){
 
         await app.db.sysLogin()
+        wx.hideLoading()
         wx.redirectTo({
             url: '/pages/list/list',
         })
+
     },
 
     async test() {

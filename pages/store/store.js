@@ -10,10 +10,12 @@ Page({
 
         shop_id:"",
         store:{},
-        cardList:[1],
+        cardList:[],
 
-        isDiscountCard: false,
+        isHasDiscountCard: !false,
         userDiscountCard:{},
+
+        shoDialog:!true , // 对话框
         // price:0
     },
     onLoad(options) {
@@ -34,13 +36,13 @@ Page({
             store:res.data,
         })
 
-        // 获取先享卡
-        // var res = await app.db.storeGetDiscountCard({
-        //     ShopId:this.data.shop_id
-        // })
-        // this.setData({
-        //     cardList:res.data,
-        // })
+        获取先享卡
+        var res = await app.db.storeGetDiscountCard({
+            ShopId:this.data.shop_id
+        })
+        this.setData({
+            cardList:res.data,
+        })
 
 
         // 检测用户是否有先享卡        
@@ -48,7 +50,7 @@ Page({
             ShopId:this.data.shop_id
         })
         this.setData({
-            isDiscountCard:res.isDiscountCard,
+            isHasDiscountCard: res.isHasDiscountCard,
             userDiscountCard:res.data
         })
 
@@ -140,6 +142,9 @@ Page({
         //     payPrice: payPrice > 0 ? payPrice : 0,
         // })
     },
+
+
+    // 实际支付
     async toPay(){
         if(this.data.inputPrice == "" ){
             wx.showToast({
@@ -168,15 +173,12 @@ Page({
             fail(res) {
                 console.log("支付失败", res)
             }
-        })
-        // wx.navigateTo({
-        //     url: '/pages/pay/pay?price=' + this.data.payPrice,
-        // })         
-
-        
+        })        
     },
     
-
+    toAlert(){
+        this.setData({ shoDialog: true })
+    },
 
     toSign(){
         wx.navigateTo({
@@ -185,6 +187,9 @@ Page({
     },
 
 
+    closeDialog(){
+        this.setData({ shoDialog :false})
+    },
 
     onShareAppMessage(){}
 })

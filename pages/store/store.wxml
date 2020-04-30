@@ -3,9 +3,11 @@
 <image src="/images/bg.png" class="bg" mode="widthFix"></image>
 
 <view class="pg-space-xl"></view>
+<view class="pg-space-xl"></view>
+<view class="pg-space-xl"></view>
 
 <view class="flex flex-direction justify-center align-center">
-    <image src="/images/icon/oct.png" style="width:72px" mode="widthFix"></image>
+    <!-- <image src="/images/icon/oct.png" style="width:72px" mode="widthFix"></image> -->
     <text class="text-bold text-lg">{{store.Name}}</text>
 </view>
 
@@ -19,7 +21,7 @@
                 <text class="text-white">先享规则</text>                        
             </view>
             <view class="action">
-                <button class="cu-btn bg-white text-yellow round" catchtap="getNewCard" wx:if="{{isDiscountCard}}">查看</button>
+                <button class="cu-btn bg-white text-yellow round" catchtap="getNewCard" wx:if="{{isHasDiscountCard}}">查看</button>
                 <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>领取</button>
             </view>
         </view>
@@ -89,3 +91,26 @@
      <button class="cu-btn round bg-gray text-gray  " catchtap='toSign'  >先享报名入口</button>
 </view>
 
+	<view class="cu-modal padding-tb-xl {{shoDialog?'show':''}}" >
+			<view class="cu-dialog" style=" position: relative;">
+				<view class="cu-bar bg-white justify-end">
+				  <view class="content text-bold">支付成功</view>
+				  <view class="action" catchtap="closeDialog">
+						<text class="cuIcon-close text-red"></text>
+				  </view>
+				</view>
+				
+				
+						
+				<view class="cu-bar bg-white justify-end">
+					<view class="action">
+						<button class="cu-btn line-green round " catchtap="closeDialog">确认</button>
+						<button 
+                            wx:if="{{isHasDiscountCard}}"
+                            class="cu-btn bg-green text-white round margin-left" 
+                            catchtap="getCardDetail"
+                        >查看先享卡进度</button>
+					</view>
+				</view>
+			</view>
+		</view>
