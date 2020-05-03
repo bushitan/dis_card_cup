@@ -1,5 +1,6 @@
 // pages/list/list.js
 
+var baseBehavior = require('../../utils/base-behavior.js')
 var app = getApp()
 Page({
 
@@ -31,6 +32,7 @@ Page({
             // }
         ],
     },
+    behaviors: [baseBehavior],
 
     /**
      * 生命周期函数--监听页面加载

@@ -12,3 +12,10 @@
     overflow: hidden;
     border-radius: 10rpx;
 }
+
+.pg-min-height{
+    min-height: calc( 100vh - 84px)
+}
+.pg-min-height-xl{
+    min-height: calc( 100vh - 84px - 10px)
+}

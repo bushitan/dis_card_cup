@@ -13,21 +13,30 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+    },
 
+    onReady(){
+
+        console.log("page onLoad")
         wx.showLoading({
             title: '登录中',
         })
         // this.test()
         this.onInit()
     },
-
     async onInit(){
 
         await app.db.sysLogin()
         wx.hideLoading()
+        // wx.redirectTo({
+        //     url: '/pages/list/list',
+        // })
+
         wx.redirectTo({
-            url: '/pages/list/list',
+            // url: '/pages/store/store?shop_id=15',
+            url: '/pages/store/store?shop_id=10',
         })
+        
 
     },
 
@@ -69,14 +78,6 @@ Page({
        
 
         
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-       
     },
 
     /**

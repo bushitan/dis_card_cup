@@ -1,2 +1,53 @@
 <!--pages/alert/alert.wxml-->
-<text>pages/alert/alert.wxml</text>
+
+<view class="pg-min-height-xl">
+    <view class="flex justify-center  padding padding-top-xl">
+        <icon type="success" color="#07c160" size="96"></icon>
+    </view>
+
+    <view>
+        <view class="flex justify-center   text-xl">支付成功</view>
+        <view class="text-center text-gray margin-top-xl text-xl">Seeking Coffee</view>
+        <view class="flex justify-center text-bold text-xxl " style="font-size:50px">
+            <text class="text-price"></text>58
+        </view>
+
+        <!-- <view class="flex justify-center text-gray   margin-top-xl">实际支付：3元</view>
+        <view class="flex justify-center text-red   ">先享优惠：2元</view> -->
+    </view>
+
+    <view class="padding-xl">
+        
+        <view class="flex justify-between padding-top text-gray ">
+            <view class="action">
+                <text class="">先享优惠：</text>
+            </view>
+            <view class="action  text-red text-bold">                    
+            - <text class="text-price "></text>{{discountPrice}}
+            </view>
+        </view>
+        <view class="flex justify-between padding-top ">
+            <view class="action"> 
+                <text class="text-gray">实际支付：</text>
+            </view>
+            <view class="action text-black  ">  
+                <text class="text-price "></text>{{payPrice}}
+            </view>
+        </view>
+    </view>
+
+
+    <view class="flex justify-center">
+        <button class="cu-btn round line-green margin-right">查看先享进度</button>
+        <button class="cu-btn round text-white bg-yellow">分享好友福利</button>
+    </view>
+</view>
+
+<view class="">
+    <ad list="{{adList}}"></ad>
+</view>
+
+<view class='flex align-center justify-center padding text-gray  margin-bottom'>            
+    <navigator class="cu-btn round bg-gray text-gray margin-right "url="/pages/sign/sign"  >先享报名</navigator>
+    <button class="cu-btn round line-gray text-gray  " open-type="contact"  >小杯子客服</button>
+</view>

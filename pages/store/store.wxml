@@ -1,116 +1,153 @@
 
+<view class="pg-min-height-xl box" >
+    <image src="/images/bg.png" class="bg" mode="widthFix"></image>
 
-<image src="/images/bg.png" class="bg" mode="widthFix"></image>
+    <view class="pg-space-xl"></view>
+    <view class="pg-space-xl"></view>
+     <!-- <view class="pg-space-xl"></view> -->
 
-<view class="pg-space-xl"></view>
-<view class="pg-space-xl"></view>
-<view class="pg-space-xl"></view>
-
-<view class="flex flex-direction justify-center align-center">
-    <!-- <image src="/images/icon/oct.png" style="width:72px" mode="widthFix"></image> -->
-    <text class="text-bold text-lg">{{store.Name}}</text>
-</view>
+    <view class="flex flex-direction justify-center align-center">
+        <image src="{{store.Logo}}" style="width:100px" mode="widthFix"></image>
+        <text class="text-bold text-lg margin-top">{{store.Name}}</text>
+    </view>
 
 
-    
-<view class="cu-card padding" wx:for="{{cardList}}">
-    <view class=" pg-radius  shadow shadow-warp bg-yellow">
-        <view class="cu-bar  solid-bottom ">
-            <view class="action">
-                <text class="cuIcon-title text-white "></text>                
-                <text class="text-white">先享规则</text>                        
+    <view class="pg-space"></view>
+        
+
+        <!-- 
+discount_card_id	:	20200429185046uCBfTx36D7Q0117937		
+appid	:	wxcd49aa99fd3d1f6a		
+usePercentage	:		true		
+discountPercentage	:	0.88		
+maxcount	:	1000		
+amount	:	0
+discountAmount	:	0		
+name	:	7天内消费3次，每次享8.8折优惠		
+desc	:	7天内消费3次，每次享8.8折优惠		
+isUsed	:		true		
+starttime	:	2020-04-26 17:23		
+endtime	:	2020-08-26 17:23 -->
+
+    <view class="cu-card padding" wx:for="{{cardList}}">
+        <view class=" pg-radius  shadow shadow-warp bg-yellow">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <text class="cuIcon-title text-white "></text>                
+                    <text class="text-white">先享规则</text>                        
+                </view>
+                <view class="action">
+                    <button class="cu-btn bg-white text-yellow round"  wx:if="{{!isHasDiscountCard}}"
+                        catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
+                    >领取</button>
+                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>查看</button>
+                </view>
             </view>
-            <view class="action">
-                <button class="cu-btn bg-white text-yellow round" catchtap="getNewCard" wx:if="{{isHasDiscountCard}}">查看</button>
-                <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>领取</button>
-            </view>
+            <view class="cu-list menu text-white">
+                <view class="flex justify-between padding ">
+                    <view class="action">
+                        <text class="">奖励</text>
+                    </view>
+                    <view class="action">
+                        <text class="">每次享8.8折优惠</text>
+                    </view>
+                </view>
+                <view class="flex justify-between padding ">
+                    <view class="action">
+                        <text class="f">任务</text>
+                    </view>
+                    <view class="action">
+                        <text class="">7天内消费3次</text>
+                    </view>
+                </view>
+            </view>     
         </view>
-        <view class="cu-list menu text-white">
-            <view class="flex justify-between padding ">
-                <view class="action">
-                    <text class="">奖励</text>
-                </view>
-                <view class="action">
-                    <text class="">每次消费减5元</text>
-                </view>
-            </view>
-            <view class="flex justify-between padding ">
-                <view class="action">
-                    <text class="f">任务</text>
-                </view>
-                <view class="action">
-                    <text class="">90天内到店消费3次</text>
-                </view>
-            </view>
-        </view>     
     </view>
-</view>
 
-<view class="flex justify-center padding margin-top">
-    <!-- <view class="" style=""> -->
-        <input placeholder="请输入消费金额"  placeholder-class="text-green"
-        class="text-center text-bold text-xl text-red " type="digit" bindblur="inputConfirm"></input>
-    <!-- </view> -->
-</view>
-<view style="padding: 0 120rpx;" >
-    <view style=" border-top: 1rpx solid #07c160;" ></view>
-    <view wx:if="{{inputPrice > 0}}">
-        <view class="cu-list menu ">
-            <view class="flex justify-between padding-top ">
-                <view class="action">
-                    <text class="text-gray">支付价格：</text>
-                </view>
-                <view class="action text-red">                    
-                    <text class="text-price "></text>{{inputPrice}}元
-                </view>
-            </view>
-            <view class="flex justify-between padding-top text-green ">
-                <view class="action">
-                    <text class="">先享优惠：</text>
-                </view>
-                <view class="action ">                    
-                    <text class="text-price "></text>{{discountPrice}}元
-                </view>
-            </view>
-            <view class="flex justify-between padding-top ">
-                <view class="action">
-                    <text class="text-gray">实际支付：</text>
-                </view>
-                <view class="action text-red text-xl text-bold">  
-                    <text class="text-price "></text>{{payPrice}}元
-                </view>
-            </view>
-        </view>     
+    <view class="flex justify-center padding ">
+        <!-- <view class="" style=""> -->
+            <input placeholder="请输入消费金额"  placeholder-class="text-green"
+            class="text-center text-bold text-xl text-red " type="digit" 
+            bindfocus="inputFocus"
+            bindblur="inputConfirm"
+            maxlength="4"
+            ></input>
+        <!-- </view> -->
     </view>
+    <view style="padding: 0 120rpx;" >
+        <view style=" border-top: 1rpx solid #07c160;" ></view>
+        <view wx:if="{{inputPrice > 0}}">
+            <view class="cu-list menu ">
+                <view class="flex justify-between padding-top ">
+                    <view class="action">
+                        <text class="text-gray">支付价格：</text>
+                    </view>
+                    <view class="action ">                    
+                        <text class="text-price "></text>{{inputPrice}}元
+                    </view>
+                </view>
+                <view class="flex justify-between padding-top text-green ">
+                    <view class="action">
+                        <text class="">先享优惠：</text>
+                    </view>
+                    <view class="action ">                    
+                        <text class="text-price "></text>{{discountPrice}}元
+                    </view>
+                </view>
+                <view class="flex justify-between padding-top ">
+                    <view class="action">
+                        <text class="text-gray">实际支付：</text>
+                    </view>
+                    <view class="action text-red text-xl text-bold">  
+                        <text class="text-price "></text>{{payPrice}}元
+                    </view>
+                </view>
+            </view>     
+        </view> 
+        <view class="flex justify-center margin-top" wx:else>
+            <button class="cu-btn round line-green">确认输入</button>
+        </view>
+    </view>
+
+    <view class='flex align-center justify-around padding bg-white' wx:if='{{inputPrice>0}}'>        
+        <button class="cu-btn round bg-green text-white block lg" catchtap='toPay' >微信支付</button>
+    </view>
+
+        <view class="cu-modal padding-tb-xl {{showDialog?'show':''}}" >
+                <view class="cu-dialog" style=" position: relative;">
+                    <view class="cu-bar bg-white justify-end">
+                    <view class="content text-bold">支付成功</view>
+                    <view class="action" catchtap="closeDialog">
+                            <text class="cuIcon-close text-red"></text>
+                    </view>
+                    </view>
+                    
+                    
+                            
+                    <view class="cu-bar bg-white justify-end">
+                        <view class="action">
+                            <button class="cu-btn line-green round " catchtap="closeDialog">确认</button>
+                            <button 
+                                wx:if="{{isHasDiscountCard}}"
+                                class="cu-btn bg-green text-white round margin-left" 
+                                catchtap="getCardDetail"
+                            >查看先享卡进度</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+    
+    <view class="pg-space-xl"></view>
+    <view class="pg-space-xl"></view>
 </view>
 
-<view class='flex align-center justify-around padding bg-white' wx:if='{{inputPrice>0}}'>        
-    <button class="cu-btn round bg-green text-white block lg" catchtap='toPay' >微信支付</button>
-</view>
-<view class='flex align-center justify-center padding text-gray sign' wx:else>            
-     <button class="cu-btn round bg-gray text-gray  " catchtap='toSign'  >先享报名入口</button>
+
+
+<view class="ad">
+    <ad list="{{adList}}"></ad>
 </view>
 
-	<view class="cu-modal padding-tb-xl {{shoDialog?'show':''}}" >
-			<view class="cu-dialog" style=" position: relative;">
-				<view class="cu-bar bg-white justify-end">
-				  <view class="content text-bold">支付成功</view>
-				  <view class="action" catchtap="closeDialog">
-						<text class="cuIcon-close text-red"></text>
-				  </view>
-				</view>
-				
-				
-						
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<button class="cu-btn line-green round " catchtap="closeDialog">确认</button>
-						<button 
-                            wx:if="{{isHasDiscountCard}}"
-                            class="cu-btn bg-green text-white round margin-left" 
-                            catchtap="getCardDetail"
-                        >查看先享卡进度</button>
-					</view>
-				</view>
-			</view>
-		</view>
+<view class='flex align-center justify-center padding text-gray  margin-bottom'>            
+    <navigator class="cu-btn round bg-gray text-gray margin-right "url="/pages/sign/sign"  >商户先享报名</navigator>
+    <button class="cu-btn round line-gray text-gray  " open-type="contact"  >小杯子客服</button>
+</view>

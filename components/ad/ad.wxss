@@ -1,0 +1,20 @@
+/* components2/ad/ad.wxss */
+
+
+.pg-swiper{  
+    width: 750rpx;
+    height: 600rpx;
+}
+.swiper{
+    
+    width: 750rpx;
+    height: 600rpx;
+}
+.ad{    
+    /* padding: 15px; */
+    width: 100%;
+}
+.ad_image{
+    width: 100%;
+    height: auto;
+}

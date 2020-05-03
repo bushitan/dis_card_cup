@@ -11,13 +11,13 @@
         </view>
         <view class="">
             <view class="cu-list menu ">
-                <view wx:if="{{item.isDiscountCard}}" 
+                <view wx:if="{{item.showDiscountCard}}" 
                     class="cu-item bg-white arrow " 
                     style=" min-height: 140rpx;" 
                     wx:for="{{storeList}}" catchtap="toStore" 
                     data-shop_id="{{item.Id}}">
 
-                    <!-- <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.storeLogo}});"></view> -->
+                    <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.Logo}});"></view>
                     <view class="content">
                         <view class="text-gray text-sm">{{item.Name}}</view>
                         <view class="flex">
@@ -35,4 +35,9 @@
             </view>
         </view>
     </view>
+</view>
+
+
+<view class='flex align-center justify-center padding text-gray  margin-bottom'>            
+    <navigator class="cu-btn round line-white margin-right "url="/pages/sign/sign"  >商户先享报名</navigator>
 </view>

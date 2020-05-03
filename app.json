@@ -1,9 +1,9 @@
- {
+{
     "pages": [
         "pages/route/route",
+        "pages/alert/alert",
         "pages/list/list",
         "pages/store/store",
-        "pages/alert/alert",
         "pages/poi/poi",
         "pages/pay/pay",
         "pages/sign/sign"
@@ -19,6 +19,9 @@
         "scope.userLocation": {
             "desc": "你的位置信息将用于小程序位置接口的效果展示"
         }
+    },
+    "usingComponents": {
+        "ad": "components/ad/ad"
     },
     "navigateToMiniProgramAppIdList": [
         "wxcc2e4fbc5887661e",

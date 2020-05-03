@@ -102,10 +102,24 @@
 					"scene": null
 				},
 				{
+					"id": 6,
+					"name": "pages/store/store",
+					"pathName": "pages/store/store",
+					"query": "shop_id=15",
+					"scene": 1011
+				},
+				{
+					"id": 7,
+					"name": "pages/alert/alert",
+					"pathName": "pages/alert/alert",
+					"query": "shop_id=10",
+					"scene": 1011
+				},
+				{
 					"id": -1,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "shop_id=9",
+					"query": "shop_id=10",
 					"scene": null
 				}
 			]

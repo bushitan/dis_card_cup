@@ -1,24 +1,26 @@
 // pages/alert/alert.js
+var app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        payPrice:4,
+        discountPrice:5,
 
     },
+    behaviors: [app.baseBehavior],
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(this.data.sharedText)
 
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
+        this.sharedMethod()
+        // this.onLoad()
+        console.log(this.data.sharedText)
 
     },
 
