@@ -3,6 +3,11 @@ var app = getApp()
 module.exports = Behavior({
     data: {
 
+        inputPriceNum: '',
+        inputPrice: '',
+        discountPrice: 0.5,
+        payPrice: '',
+
         showPayDetail:false,
     },
     methods: {
@@ -10,15 +15,16 @@ module.exports = Behavior({
 
         async inputFocus() {
             this.setData({
-                inputPrice: 0,
+                inputPriceNum: "",
                 showPayDetail:false,
             })
         },
 
         async inputConfirm(e) {
             console.log(e)
-            var inputPrice = parseFloat(e.detail.value)
-            var inputPrice = inputPrice.toFixed(2)
+            var inputPrice = e.detail.value
+            // var inputPrice = parseFloat(e.detail.value)
+            // var inputPrice = inputPrice.toFixed(2)
 
             var showPayDetail = false
             if(inputPrice > 0)
@@ -79,6 +85,11 @@ module.exports = Behavior({
             })
             var data = res.data
             console.log(data)
+
+            wx.showLoading({
+                title: '支付中',
+                mask:true
+            })
             wx.requestPayment({
                 timeStamp: data.timeStamp,
                 nonceStr: data.nonceStr,
@@ -92,7 +103,15 @@ module.exports = Behavior({
                 },
                 fail: res => {
                     console.log("支付失败", res)
-                    this.toAlert()
+                    // this.toAlert()
+                    wx.showModal({
+                        title: '支付取消',
+                        content: '请重新尝试',
+                        showCancel:false,
+                    })
+                },
+                complete:res=>{
+                    wx.hideLoading()
                 }
             })
         },

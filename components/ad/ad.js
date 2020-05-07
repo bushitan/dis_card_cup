@@ -69,8 +69,8 @@ Component({
                     urls: [ad.imageUrl] // 需要切换为内容图片
                 })
             } 
-            if (type == AD_TYPE_WEB_VIEW ){
-                wx.navigateTo({ url: `/pages/article/article?url=${content_url}`, }) 
+            if (type == AD_TYPE_WEB_VIEW) {
+                wx.navigateTo({ url: `/pages/article/article?url=${ad.contentUrl}`, }) 
             } 
             if (type == AD_TYPE_LITE) {
                 wx.navigateToMiniProgram({

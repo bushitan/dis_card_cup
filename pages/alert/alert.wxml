@@ -9,7 +9,7 @@
         <view class="flex justify-center   text-xl">支付成功</view>
         <view class="text-center text-gray margin-top-xl text-xl">Seeking Coffee</view>
         <view class="flex justify-center text-bold text-xxl " style="font-size:50px">
-            <text class="text-price"></text>58
+            <text class="text-price"></text>{{inputPrice}}
         </view>
 
         <!-- <view class="flex justify-center text-gray   margin-top-xl">实际支付：3元</view>
@@ -30,7 +30,7 @@
             <view class="action"> 
                 <text class="text-gray">实际支付：</text>
             </view>
-            <view class="action text-black  ">  
+            <view class="action text-green ">  
                 <text class="text-price "></text>{{payPrice}}
             </view>
         </view>
@@ -38,9 +38,15 @@
 
 
     <view class="flex justify-center">
-        <button class="cu-btn round line-green margin-right">查看先享进度</button>
-        <button class="cu-btn round text-white bg-yellow">分享好友福利</button>
+        <button class="cu-btn round line-green margin-right" catchtap="toCardDetail" wx:if="{{isHasDiscountCard}}">查看先享进度</button>
+        <button class="cu-btn round text-white bg-yellow"   
+            open-type="share"
+        >分享好友福利</button>
     </view>
+    
+            <!-- send-message-title="{{sendMessageTitle}}"
+            send-message-path="{{sendMessagePath}}"
+            send-message-img="{{sendMessageImg}}" -->
 </view>
 
 <view class="">

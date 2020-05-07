@@ -18,33 +18,51 @@ App({
         this.getAd()
     },
 
+
+
     // 获取广告数据
+    // var adList = [
+    //     {
+    //         url: "http://img.12xiong.top/coffee_image/upload/34NYt6fZ.jpg",
+    //         type: 2,
+
+    //         imageUrl: "",
+
+    //         contentUrl: "https://mp.weixin.qq.com/s/oq0Wx4at731NnEiH-s0T5w",
+
+    //         liteAppID: "",
+    //         litePath: "",
+    //         liteExtraData: "",
+    //         liteEnvVersion: "",
+
+    //         roomID: "",
+    //     },
+    // ]
     getAd(){
         var that = this
+
+        var res = db.adGetList().then(res=>{
+            var data = res.data
+            var adList = res.data
+            that.adList = adList
+
+            var current = getCurrentPages()[0]
+            if (current) {
+                current.setData({
+                    adList: adList
+                })
+
+            }
+            // console.log(data)
+        })
+       
+       
         setTimeout(function () {
-            var adList = [
-                {
-                    url: "http://img.12xiong.top/coffee_image/upload/psSYv6fZ.jpg",
-                    type: "1",
-
-                    imageUrl: "http://img.12xiong.top/coffee_image/upload/psSYv6fZ.jpg",
-
-                    contentUrl: "",
-
-                    liteAppID: "",
-                    litePath: "",
-                    liteExtraData: "",
-                    liteEnvVersion: "",
-
-                    roomID: "",
-                },
-            ]
 
             var current = getCurrentPages()[0]
             current.setData({
                 adList: adList
             })
-            that.adList = adList
         }, 3000)
     },
 

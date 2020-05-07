@@ -1,7 +1,7 @@
 <!--pages/sign/step1/step1.wxml-->
 
 <view class="padding">
-    <view class="text-white flex justify-center text-xxl text-bold margin-bottom">先享卡开通报名表</view>
+    <view class="text-white flex justify-center text-xxl text-bold margin-bottom">先享卡开通表</view>
     <!-- <view class="bg-white padding">
         <view class="cu-steps">
             <view class="cu-item {{index>num?'':'text-green'}}" wx:for="{{numList}}" wx:key>
@@ -18,18 +18,18 @@
 
         <view class="text-sm">
             <view class="cu-form-group  text-left">
-                <view class=" ">微信支付商户简称：</view>
+                <view class=" ">商户简称：</view>
                 <input placeholder="例如：XXX Coffee" name="name"   class="text-right"></input>
             </view>
             <view class="cu-form-group  text-left">
-                <view class="">微信支付商户地址：</view>
+                <view class="">商户地址：</view>
                 <input placeholder="请填写门店地址" name="address"   class="text-right"></input>
             </view>
             <view class="cu-form-group  text-left">
-                <view class="">法人手机号：</view>
+                <view class="">手机号：</view>
                 <input placeholder="请输入手机号" name="phone"   class="text-right"></input>
             </view>
-            <view class="cu-form-group  text-left">
+            <!-- <view class="cu-form-group  text-left">
                 <view class="">法人电子邮箱：</view>
                 <input placeholder="请输入电子邮箱" name="email"  class="text-right"></input>
             </view>
@@ -47,7 +47,7 @@
             <view class="cu-form-group  text-left">
                 <view class="">银行账号：</view>
                 <input placeholder="请输入银行账号" name="bankAccount" class="text-right"></input>
-            </view>
+            </view> -->
         </view>
 
 
@@ -61,10 +61,10 @@
                 </view> -->
             </view>
             <view class="padding-lr text-gray text-sm">
-                <view>1、营业执照正反面扫描件 （共2张）</view>
-                <view>2、法人身份证照正反面扫描件 （共2张）</view>
+                <view>1、营业执照扫描件 （共1张）</view>
+                <!-- <view>2、法人身份证照正反面扫描件 （共2张）</view>
                 <view>3、门头照、店内环境照、收银台照（共3张）</view>
-                <view>4、食品经营许可证（仅餐饮行业需要）</view>
+                <view>4、食品经营许可证（仅餐饮行业需要）</view> -->
             </view>
             <view class="cu-form-group margin-top">
                 <view class="grid col-4 grid-square flex-sub"  >

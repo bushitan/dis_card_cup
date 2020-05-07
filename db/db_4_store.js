@@ -122,8 +122,27 @@ class dbMap extends dbFather {
 
 
 
+    /**************广告*************/
 
-
+    adGetList(data) {
+        return new Promise((reslove, reject) => {
+            // wx.showLoading({ title: "上传中" })
+            data = data || {}
+            data.action = "ad_get_list"
+            wx.cloud.callFunction({
+                name: 'marker',
+                data: data,
+                success: res => {
+                    // wx.hideLoading()
+                    var data = res.result
+                    reslove(data)
+                },
+                fail: res => {
+                    console.log(res.result)
+                },
+            })
+        })
+    }
 
 
 

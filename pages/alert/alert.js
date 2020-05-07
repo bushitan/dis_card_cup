@@ -6,9 +6,15 @@ Page({
      * 页面的初始数据
      */
     data: {
-        payPrice:4,
-        discountPrice:5,
+        inputPrice:"",
+        payPrice: "",
+        discountPrice: "",
+        isHasDiscountCard:false,
 
+        //分享参数设置
+        sendMessageTitle: "",
+        sendMessagePath: "",
+        sendMessageImg: "",
     },
     behaviors: [app.baseBehavior],
 
@@ -22,47 +28,43 @@ Page({
         // this.onLoad()
         console.log(this.data.sharedText)
 
+        this.onInit()
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
+    onInit(){
+        var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        // debugger
+        this.setData({
+            inputPrice: prePage.data.inputPrice,
+            discountPrice: prePage.data.discountPrice,
+            payPrice: prePage.data.payPrice,
 
+            isHasDiscountCard: prePage.data.isHasDiscountCard, //用户是否有领取先享卡
+
+            sendMessageTitle: prePage.data.store.Name,
+            sendMessagePath: "pages/store/store?shop_id=" + prePage.data.store.Id,
+            sendMessageImg: prePage.data.store.Logo,
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
+    
+    toCardDetail() {
+        var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        prePage.getCardDetail()
     },
 
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
 
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
+        // debugger
 
+        var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        return {
+            title: prePage.data.store.Name,
+            path: "/pages/store/store?shop_id=" + prePage.data.store.Id,
+            imageUrl: prePage.data.store.Logo,
+        }
     }
 })

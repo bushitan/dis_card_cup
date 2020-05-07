@@ -48,14 +48,14 @@ Page({
                 return
             }
         }
-        if (this.data.coverList.length < 7 ) {
-            wx.showModal({
-                title: '请上传相应附件图片',
-                // content: '',
-                showCancel:false,
-            })
-            return
-        }
+        // if (this.data.coverList.length < 7 ) {
+        //     wx.showModal({
+        //         title: '请上传相应附件图片',
+        //         // content: '',
+        //         showCancel:false,
+        //     })
+        //     return
+        // }
 
 
         console.log(formData)

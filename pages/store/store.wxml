@@ -49,7 +49,7 @@ endtime	:	2020-08-26 17:23 -->
                         <text class="">奖励</text>
                     </view>
                     <view class="action">
-                        <text class="">{{item.discountAmount}}</text>
+                        <text class="">{{item.reward_desc}}</text>
                     </view>
                 </view>
                 <view class="flex justify-between padding ">
@@ -60,6 +60,14 @@ endtime	:	2020-08-26 17:23 -->
                         <text class="">{{item.name}}</text>
                     </view>
                 </view>
+               
+                <view class=" padding-lr padding-bottom ">
+                     <view class="" style=" border-top: 1rpx solid #ffffff;"  ></view>
+                    <view class="flex justify-between  text-sm text-center {{ !isHasDiscountCard ? ' text-gray' : ' text-white' }} margin-top-sm" >
+                        <text class="">如未完成约定消费次数，微信支付将自动扣除已享优惠额度</text>
+                    </view>
+                </view>
+                
             </view>     
         </view>
     </view>
@@ -68,6 +76,7 @@ endtime	:	2020-08-26 17:23 -->
         <!-- <view class="" style=""> -->
             <input placeholder="请输入消费金额"  placeholder-class="text-green"
             class="text-center text-bold text-xl text-red " type="digit" 
+            value="{{inputPriceNum}}"
             bindfocus="inputFocus"
             bindblur="inputConfirm"
             maxlength="4"
@@ -86,19 +95,19 @@ endtime	:	2020-08-26 17:23 -->
                         <text class="text-price "></text>{{inputPrice}}元
                     </view>
                 </view>
-                <view class="flex justify-between padding-top text-green ">
+                <view class="flex justify-between padding-top  ">
                     <view class="action">
                         <text class="">先享优惠：</text>
                     </view>
-                    <view class="action ">                    
-                        <text class="text-price "></text>{{discountPrice}}元
+                    <view class="action text-red">                    
+                        - <text class="text-price "></text>{{discountPrice}}元
                     </view>
                 </view>
                 <view class="flex justify-between padding-top ">
                     <view class="action">
                         <text class="text-gray">实际支付：</text>
                     </view>
-                    <view class="action text-red text-xl text-bold">  
+                    <view class="action    text-green">  
                         <text class="text-price "></text>{{payPrice}}元
                     </view>
                 </view>
@@ -112,8 +121,10 @@ endtime	:	2020-08-26 17:23 -->
 
     
     <view class="flex justify-center margin-top"  wx:if='{{showPayDetail==false}}'>
-        <button class="cu-btn round line-green">确认输入</button>
+        <button class="cu-btn round line-green"  >确认输入</button>
     </view>
+
+<!-- <button catchtap="toAlert">测试</button> -->
 
 <!-- 
         <view class="cu-modal padding-tb-xl {{showDialog?'show':''}}" >
@@ -151,6 +162,8 @@ endtime	:	2020-08-26 17:23 -->
 </view>
 
 <view class='flex align-center justify-center padding text-gray  margin-bottom'>            
-    <navigator class="cu-btn round bg-gray text-gray margin-right "url="/pages/sign/sign"  >商户先享报名</navigator>
+    <navigator class="cu-btn round bg-gray text-gray margin-right "url="/pages/sign/sign"  >商户先享开通</navigator>
     <button class="cu-btn round line-gray text-gray  " open-type="contact"  >小杯子客服</button>
 </view>
+
+<view class="pg-space"></view> 

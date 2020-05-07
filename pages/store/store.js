@@ -6,10 +6,6 @@ const app = getApp()
 
 Page({
     data: {
-        
-        inputPrice: '',
-        discountPrice: 0.5,
-        payPrice: '',
 
         shop_id:"",
         store:{},
@@ -30,11 +26,21 @@ Page({
         })
 
 
-        this.onInit()
        
+    },
+    onShow(){
+
+        this.onInit()
     },
 
     async onInit(){
+
+        // 先设置input输入框为fale
+        this.setData({
+            showPayDetail:false,
+            inputPriceNum: '',
+        })
+
         //  获取门店详情
         var res = await app.db.storeGetDetail({
             ShopId:this.data.shop_id
