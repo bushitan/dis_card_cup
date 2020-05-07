@@ -84,7 +84,7 @@
 					"id": 3,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "shop_id=9",
+					"query": "shop_id=15",
 					"scene": null
 				},
 				{

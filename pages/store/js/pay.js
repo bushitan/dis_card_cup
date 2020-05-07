@@ -3,6 +3,7 @@ var app = getApp()
 module.exports = Behavior({
     data: {
 
+        showPayDetail:false,
     },
     methods: {
 
@@ -10,6 +11,7 @@ module.exports = Behavior({
         async inputFocus() {
             this.setData({
                 inputPrice: 0,
+                showPayDetail:false,
             })
         },
 
@@ -18,12 +20,22 @@ module.exports = Behavior({
             var inputPrice = parseFloat(e.detail.value)
             var inputPrice = inputPrice.toFixed(2)
 
+            var showPayDetail = false
+            if(inputPrice > 0)
+                showPayDetail = true
+            else{
+                wx.showToast({
+                    title: '请输入正确金额',
+                })
+                return
+            }
 
-            this.setData({
-                inputPrice: inputPrice,
-                // discountPrice: data.discountamount,
-                // payPrice: data.realfee,
-            })
+
+            // this.setData({
+            //     inputPrice: inputPrice,
+            //     // discountPrice: data.discountamount,
+            //     // payPrice: data.realfee,
+            // })
 
             //　7、支付计算
             var res = await app.db.payPre({
@@ -35,6 +47,8 @@ module.exports = Behavior({
                 inputPrice: inputPrice,
                 discountPrice: data.discountamount,
                 payPrice: data.realfee,
+                showPayDetail:showPayDetail,
+
             })
 
             // var inputPrice = parseInt(e.detail.value)    
@@ -72,12 +86,12 @@ module.exports = Behavior({
                 paySign: data.subpaySign,
                 success: res => {
                     console.log("支付成功", res)
-                    // this.toAlert()
+                    this.toAlert()
 
                 },
                 fail: res => {
                     console.log("支付失败", res)
-                    // this.toAlert()
+                    this.toAlert()
                 }
             })
         },

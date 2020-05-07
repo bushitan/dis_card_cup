@@ -28,14 +28,14 @@ Page({
 
         await app.db.sysLogin()
         wx.hideLoading()
-        // wx.redirectTo({
-        //     url: '/pages/list/list',
-        // })
-
         wx.redirectTo({
-            // url: '/pages/store/store?shop_id=15',
-            url: '/pages/store/store?shop_id=10',
+            url: '/pages/list/list',
         })
+
+        // wx.redirectTo({
+        //     // url: '/pages/store/store?shop_id=15',
+        //     url: '/pages/store/store?shop_id=10',
+        // })
         
 
     },

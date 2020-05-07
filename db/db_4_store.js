@@ -88,14 +88,20 @@ class dbMap extends dbFather {
     // 预取单
     payPre(data) {
         return new Promise((resolve, reject) => {
+            wx.showLoading({
+              title: '优惠查询中',
+            })
             this.base({
                 url: this.HOST_URL + "api/order/precaculFee/",
                 data: data,
                 method: "POST",
             }).then(res => {
-                // console.log(res)
+                wx.hideLoading()
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
         })
     }
 

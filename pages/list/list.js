@@ -10,10 +10,10 @@ Page({
     data: {
 
         storeList: [
-            {
-                Id:15,
-                showDiscountCard:true,
-            },
+            // {
+            //     Id:15,
+            //     showDiscountCard:true,
+            // },
             // {
             //     myScore: 0,
             //     storeDes: "先享88折",
@@ -47,10 +47,10 @@ Page({
 
     async onInit(e) {
 
-        // var res = await app.db.storeGetList()
-        // this.setData({
-        //     storeList: res.data
-        // })
+        var res = await app.db.storeGetList()
+        this.setData({
+            storeList: res.data
+        })
     },
 
 

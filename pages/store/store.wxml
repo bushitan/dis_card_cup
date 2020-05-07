@@ -76,7 +76,7 @@ endtime	:	2020-08-26 17:23 -->
     </view>
     <view style="padding: 0 120rpx;" >
         <view style=" border-top: 1rpx solid #07c160;" ></view>
-        <view wx:if="{{inputPrice > 0}}">
+        <view wx:if="{{showPayDetail}}">
             <view class="cu-list menu ">
                 <view class="flex justify-between padding-top ">
                     <view class="action">
@@ -104,15 +104,18 @@ endtime	:	2020-08-26 17:23 -->
                 </view>
             </view>     
         </view> 
-        <view class="flex justify-center margin-top" wx:else>
-            <button class="cu-btn round line-green">确认输入</button>
-        </view>
-    </view>
-
-    <view class='flex align-center justify-around padding bg-white' wx:if='{{inputPrice>0}}'>        
+        
+    <view class='flex align-center justify-around padding bg-white' wx:if='{{showPayDetail}}'>        
         <button class="cu-btn round bg-green text-white block lg" catchtap='toPay' >微信支付</button>
     </view>
+    </view>
 
+    
+    <view class="flex justify-center margin-top"  wx:if='{{showPayDetail==false}}'>
+        <button class="cu-btn round line-green">确认输入</button>
+    </view>
+
+<!-- 
         <view class="cu-modal padding-tb-xl {{showDialog?'show':''}}" >
                 <view class="cu-dialog" style=" position: relative;">
                     <view class="cu-bar bg-white justify-end">
@@ -135,7 +138,7 @@ endtime	:	2020-08-26 17:23 -->
                         </view>
                     </view>
                 </view>
-            </view>
+            </view> -->
     
     <view class="pg-space-xl"></view>
     <view class="pg-space-xl"></view>
