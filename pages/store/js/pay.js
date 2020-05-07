@@ -18,6 +18,7 @@ module.exports = Behavior({
             var inputPrice = parseFloat(e.detail.value)
             var inputPrice = inputPrice.toFixed(2)
 
+
             this.setData({
                 inputPrice: inputPrice,
                 // discountPrice: data.discountamount,
@@ -58,10 +59,11 @@ module.exports = Behavior({
             }
 
             var res = await app.db.payConfirm({
-                ShopId: this.data.shop_id,
+                shopId: this.data.shop_id,
                 price: this.data.inputPrice,
             })
             var data = res.data
+            console.log(data)
             wx.requestPayment({
                 timeStamp: data.timeStamp,
                 nonceStr: data.nonceStr,
@@ -70,12 +72,12 @@ module.exports = Behavior({
                 paySign: data.subpaySign,
                 success: res => {
                     console.log("支付成功", res)
-                    this.toAlert()
+                    // this.toAlert()
 
                 },
                 fail: res => {
                     console.log("支付失败", res)
-                    this.toAlert()
+                    // this.toAlert()
                 }
             })
         },

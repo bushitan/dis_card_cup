@@ -49,7 +49,7 @@ endtime	:	2020-08-26 17:23 -->
                         <text class="">奖励</text>
                     </view>
                     <view class="action">
-                        <text class="">每次享8.8折优惠</text>
+                        <text class="">{{item.discountAmount}}</text>
                     </view>
                 </view>
                 <view class="flex justify-between padding ">
@@ -57,7 +57,7 @@ endtime	:	2020-08-26 17:23 -->
                         <text class="f">任务</text>
                     </view>
                     <view class="action">
-                        <text class="">7天内消费3次</text>
+                        <text class="">{{item.name}}</text>
                     </view>
                 </view>
             </view>     
