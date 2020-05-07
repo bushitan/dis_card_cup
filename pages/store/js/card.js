@@ -72,20 +72,10 @@ module.exports = Behavior({
         // 查看先享卡内容
         // card的id是通过storeCheckDiscountCard获取
         getCardDetail() {
+            console.log( this.data.userDiscountCard.out_order_no)
             wx.navigateToMiniProgram({
                 appId: "wxcc2e4fbc5887661e",
-                // path: "/pages/get-card/get-card",
-                // extraData: {
-                //     "discount_card_id": data.discount_card_id,
-                //     "mch_id": data.mch_id,
-                //     "appid": data.appid,
-                //     "out_trade_no": data.out_trade_no,
-                //     "timestamp": data.timestamp,
-                //     "nonce_str": data.nonce_str,
-                //     "sign_type": data.sign_type,
-                //     "serial_no": data.serial_no,
-                //     "sign": data.sign,
-                // },
+                path: "/pages/card-detail/card-detail?out_order_no=" + this.data.userDiscountCard.out_order_no,
                 success(res) {
                     console.log("success", res)
                 },

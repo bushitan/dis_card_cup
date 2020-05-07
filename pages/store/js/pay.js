@@ -26,6 +26,7 @@ module.exports = Behavior({
             else{
                 wx.showToast({
                     title: '请输入正确金额',
+                    icon: "loading"
                 })
                 return
             }
