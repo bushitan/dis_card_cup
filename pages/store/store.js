@@ -73,5 +73,11 @@ Page({
         this.setData({ showDialog :false})
     },
 
-    onShareAppMessage(){}
+    onShareAppMessage(){
+        return {
+            title: this.data.store.Name,
+            path: "/pages/route/route?shop_id=" + this.data.store.Id,
+            imageUrl: this.data.store.Logo,
+        }
+    }
 })

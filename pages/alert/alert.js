@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        storeName:"",
         inputPrice:"",
         payPrice: "",
         discountPrice: "",
@@ -31,19 +32,31 @@ Page({
         this.onInit()
     },
 
-    onInit(){
+    async onInit(){
         var prePage = getCurrentPages()[getCurrentPages().length - 2]
         // debugger
         this.setData({
+            storeName: prePage.data.store.Name,
+
             inputPrice: prePage.data.inputPrice,
             discountPrice: prePage.data.discountPrice,
             payPrice: prePage.data.payPrice,
 
-            isHasDiscountCard: prePage.data.isHasDiscountCard, //用户是否有领取先享卡
+            // isHasDiscountCard: prePage.data.isHasDiscountCard, //用户是否有领取先享卡
 
-            sendMessageTitle: prePage.data.store.Name,
-            sendMessagePath: "pages/store/store?shop_id=" + prePage.data.store.Id,
-            sendMessageImg: prePage.data.store.Logo,
+            // sendMessageTitle: prePage.data.store.Name,
+            // sendMessagePath: "pages/store/store?shop_id=" + prePage.data.store.Id,
+            // sendMessageImg: prePage.data.store.Logo,
+        })
+
+
+        // 检测用户是否有先享卡        
+        var res = await app.db.storeCheckDiscountCard({
+            ShopId: prePage.data.shop_id
+        })
+        this.setData({
+            isHasDiscountCard: res.isHasDiscountCard,
+            userDiscountCard: res.data
         })
     },
 
@@ -63,7 +76,7 @@ Page({
         var prePage = getCurrentPages()[getCurrentPages().length - 2]
         return {
             title: prePage.data.store.Name,
-            path: "/pages/store/store?shop_id=" + prePage.data.store.Id,
+            path: "/pages/route/route?shop_id=" + prePage.data.store.Id,
             imageUrl: prePage.data.store.Logo,
         }
     }

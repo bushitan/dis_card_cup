@@ -6,13 +6,16 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        shop_id:"",
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            shop_id : options.shop_id
+        })
     },
 
     onReady(){
@@ -28,9 +31,20 @@ Page({
 
         await app.db.sysLogin()
         wx.hideLoading()
-        wx.redirectTo({
-            url: '/pages/list/list',
-        })
+
+        var shop_id = this.data.shop_id
+        if (shop_id){
+            wx.redirectTo({
+                url: '/pages/store/store?shop_id=' + shop_id,
+            })
+        } else{
+
+            wx.redirectTo({
+                url: '/pages/list/list',
+            })
+
+        }
+
 
         // wx.redirectTo({
         //     // url: '/pages/store/store?shop_id=15',

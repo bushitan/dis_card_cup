@@ -7,7 +7,7 @@
 
     <view>
         <view class="flex justify-center   text-xl">支付成功</view>
-        <view class="text-center text-gray margin-top-xl text-xl">Seeking Coffee</view>
+        <view class="text-center text-gray margin-top-xl text-xl">{{storeName}}</view>
         <view class="flex justify-center text-bold text-xxl " style="font-size:50px">
             <text class="text-price"></text>{{inputPrice}}
         </view>

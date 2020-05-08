@@ -57,13 +57,13 @@ App({
         })
        
        
-        setTimeout(function () {
+        // setTimeout(function () {
 
-            var current = getCurrentPages()[0]
-            current.setData({
-                adList: adList
-            })
-        }, 3000)
+        //     var current = getCurrentPages()[0]
+        //     current.setData({
+        //         adList: adList
+        //     })
+        // }, 3000)
     },
 
     adList: [

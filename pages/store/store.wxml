@@ -3,7 +3,7 @@
     <image src="/images/bg.png" class="bg" mode="widthFix"></image>
 
     <view class="pg-space-xl"></view>
-    <view class="pg-space-xl"></view>
+    <!-- <view class="pg-space-xl"></view> -->
      <!-- <view class="pg-space-xl"></view> -->
 
     <view class="flex flex-direction justify-center align-center">
@@ -37,18 +37,19 @@ endtime	:	2020-08-26 17:23 -->
                     <text class="">先享规则</text>                        
                 </view>
                 <view class="action">
-                    <button class="cu-btn bg-yellow text-white round"  wx:if="{{!isHasDiscountCard}}"
+                    <!-- <button class="cu-btn bg-yellow text-white round"  wx:if="{{!isHasDiscountCard}}"
                         catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
                     >领取优惠</button>
-                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>查看进度</button>
+                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>查看进度</button> -->
+                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:if="{{isHasDiscountCard}}">查看进度</button>
                 </view>
             </view>
             <view class="cu-list menu ">
-                <view class="flex justify-between padding ">
+                <view class="flex justify-between align-center padding ">
                     <view class="action">
                         <text class="">奖励</text>
                     </view>
-                    <view class="action">
+                    <view class="action text-bold {{ isHasDiscountCard ? '' : 'text-red' }} text-xl">
                         <text class="">{{item.reward_desc}}</text>
                     </view>
                 </view>
@@ -57,20 +58,29 @@ endtime	:	2020-08-26 17:23 -->
                         <text class="f">任务</text>
                     </view>
                     <view class="action">
-                        <text class="">{{item.name}}</text>
+                        <text class="">{{item.objective_desc}}</text>
                     </view>
                 </view>
                
                 <view class=" padding-lr padding-bottom ">
-                     <view class="" style=" border-top: 1rpx solid #ffffff;"  ></view>
-                    <view class="flex justify-between  text-sm text-center {{ !isHasDiscountCard ? ' text-gray' : ' text-white' }} margin-top-sm" >
-                        <text class="">如未完成约定消费次数，微信支付将自动扣除已享优惠额度</text>
+                     <view class="" style=" border-top: 1rpx solid rgba(0, 0, 0, 0.1) ;"  ></view>
+                     <!-- {{ !isHasDiscountCard ? 'rgba(0, 0, 0, 0.1)' : '#ffffff' }}  -->
+                    <view class="  text-sm  {{ !isHasDiscountCard ? ' text-gray' : ' text-white' }} margin-top-sm" >
+                       <text class="cuIcon-info margin-right-xs"></text> <text class="">如未完成约定消费次数，微信支付将自动扣除已享优惠额度</text>
                     </view>
                 </view>
                 
             </view>     
         </view>
+        
+        
+        <view class="flex justify-center margin-top"  wx:if="{{!isHasDiscountCard}}" >
+            <button class="cu-btn bg-yellow text-white round " 
+                catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
+            >领取奖励，再付款</button>
+        </view>
     </view>
+
 
     <view class="flex justify-center padding ">
         <!-- <view class="" style=""> -->
@@ -119,9 +129,10 @@ endtime	:	2020-08-26 17:23 -->
     </view>
     </view>
 
+
     
     <view class="flex justify-center margin-top"  wx:if='{{showPayDetail==false}}'>
-        <button class="cu-btn round line-green"  >确认输入</button>
+        <button class="cu-btn round line-green"  >确认金额</button>
     </view>
 
 <!-- <button catchtap="toAlert">测试</button> -->
