@@ -35,6 +35,12 @@ Page({
             //     storeUUID: "b29c4dee-b35e-11e9-869d-e95aa2c51b5d",
             // }
         ],
+
+
+        TabCur: 0,
+        scrollLeft: 0,
+        tabList: ["咖啡", "酒店", "美业"],
+
     },
     behaviors: [baseBehavior],
 
@@ -66,12 +72,21 @@ Page({
         })
     },
 
-
+    // 选择
+    tabSelect(e) {
+        this.setData({
+            TabCur: e.currentTarget.dataset.id,
+            scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+        })
+    },
 
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
-    }
+        return {
+            title: "优惠派发中",
+            path: "/pages/route/route",
+        }
+    },
 })

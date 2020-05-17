@@ -1,14 +1,21 @@
 <!--pages/list/list.wxml-->
 
 
+<image src="/images/swiper.png" style="width:750rpx;height:363rpx; display:block"></image>
+
+<scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{tabList}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        {{item}}
+    </view>
+</scroll-view>
 <!-- 商家列表 -->
 <view class="cu-card padding">
     <view class=" pg-radius">
-        <view class="cu-bar bg-white solid-bottom ">
+        <!-- <view class="cu-bar bg-white solid-bottom ">
             <view class="action">
                 <text class="cuIcon-title text-yellow "></text>我的先享足迹
             </view>
-        </view>
+        </view> -->
         <view class="">
             <view class="cu-list menu ">
                 <view wx:if="{{item.showDiscountCard}}" 
@@ -20,17 +27,13 @@
                     <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.Logo}});"></view>
                     <view class="content">
                         <view class="text-gray text-sm">{{item.Name}}</view>
-                        <view class="flex">
-                            <text class="text-cut">
-                            <!-- <text class="cuIcon-infofill text-yellow  margin-right-xs"></text>{{item.storeDes || ""}} -->
-
-                            </text>
-                        </view>
+                        <view class="text-cut">
+                            <text class="cuIcon-infofill text-yellow  margin-right-xs"></text>8.8折
+                        </view>                        
                     </view>
-                    <!-- <view class="action">
-                        <view class="text-grey text-xs">已集点</view>
-                        <view class="cu-tag round bg-blue page-font-white sm">{{item.myScore}}</view>
-                    </view> -->
+                    <view class="action">
+                        <button class="cu-btn round">领取</button>
+                    </view>
                 </view>
             </view>
         </view>
