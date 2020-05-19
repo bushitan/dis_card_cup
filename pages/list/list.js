@@ -10,30 +10,34 @@ Page({
     data: {
 
 
-        gridCol: 4,
+        gridCol: 3,
         iconList: [
         {
             icon: 'locationfill',
+            image:'/images/icon_1.png',
             color: 'red',
             badge: 120,
             name: 'Coffee'
         },
         {
             icon: 'shopfill',
+            image: '/images/icon_2.png',
             color: 'red',
             badge: 120,
             name: '美食'
         }, {
             icon: 'goodsfill',
+            image: '/images/icon_3.png',
             color: 'orange',
             badge: 1,
             name: '生活'
-        }, {
-            icon: 'cartfill',
-            color: 'yellow',
-            badge: 0,
-            name: '购物'
-        }, 
+        },
+        //  {
+        //     icon: 'cartfill',
+        //     color: 'yellow',
+        //     badge: 0,
+        //     name: '购物'
+        // }, 
         // {
         //     icon: 'eve',
         //     color: 'olive',
@@ -150,11 +154,7 @@ Page({
     },
 
 
-
-    /**
-     * @method 去商铺
-     */
-    toStore(e) {
+    toDisCard(){
         wx.navigateToMiniProgram({
             appId: "wxcc2e4fbc5887661e",
             extraData: {
@@ -167,8 +167,26 @@ Page({
             },
         })
 
+    },
+    toSearch(){
+        wx.showToast({
+            title: '搜索成功',
+            icon:"success"
+        })
+    },
+    toArea(){
+        wx.showModal({
+            title: '其他地区未开放',
+            showCancel:false,
+        })
+    },
+    /**
+     * @method 去商铺
+     */
+    toStore(e) {
+       
 
-        return 
+        // return 
         var shop_id = e.currentTarget.dataset.shop_id
         // console.log(storeUUID)
         wx.navigateTo({

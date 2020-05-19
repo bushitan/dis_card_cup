@@ -1,8 +1,25 @@
 /* pages/list/list.wxss */
 
 page{
-    background-color: var(--ghostWhite);
+    background-color: var(--white);
 }
 .cu-list.menu>.cu-item::after {
     display: none
+}
+
+
+button{
+    padding: 0;
+    margin: 0;
+    /* position:inherit; */
+    display:inherit;
+    /* display: "" !important; */
+    background-color:#ffffff;
+}
+button::after{
+    border:0px;
+}
+
+.un-select{
+    color: rgba(255, 255, 255, 0.7)
 }
