@@ -75,7 +75,8 @@ Page({
 
         isLoad:!false,
         swiperList:[
-            "/images/swiper1.png"
+            "/images/swiper1.jpg",
+            "/images/swiper2.jpg"
         ],
 
 
