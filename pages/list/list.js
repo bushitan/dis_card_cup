@@ -17,7 +17,7 @@ Page({
             image:'/images/icon_1.png',
             color: 'red',
             badge: 120,
-            name: 'Coffee'
+            name: '咖啡'
         },
         {
             icon: 'shopfill',
@@ -147,7 +147,14 @@ Page({
         // storeList = storeList.concat(res.data)
         // storeList = storeList.concat(res.data)
         // storeList = storeList.concat(res.data)
-        
+
+        for (var i in  storeList){
+            var _temp = storeList[i].CompanyVat.split(",")
+            storeList[i].discount = _temp[0]
+            storeList[i].remain = _temp[1]
+        }
+
+
         this.setData({
             storeList: storeList
         })
@@ -180,6 +187,21 @@ Page({
             showCancel:false,
         })
     },
+
+    clickMenu(){
+        wx.showToast({
+            title: '全部加载成功',
+            icon: "success"
+        })
+    },
+
+    // 去报名
+    toSign() { 
+        wx.navigateTo({
+            url: '/pages/sign/sign',
+        })
+    },
+
     /**
      * @method 去商铺
      */

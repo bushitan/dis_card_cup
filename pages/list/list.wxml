@@ -22,12 +22,15 @@
     </view>
     
     <view class="action" catchtap="toDisCard">
-        <text class="cuIcon-myfill"></text>
+        <text class="cuIcon-my"></text>
     </view>
 </view>
 
 <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}" style="background-color: var(--white);">
-    <view class="cu-item  " style="border-radius:50%" wx:for="{{iconList}}"  wx:key wx:if="{{index<gridCol*2}}">
+    <view class="cu-item  " style="border-radius:50%" 
+    wx:for="{{iconList}}"  wx:key 
+    wx:if="{{index<gridCol*2}}"
+    catchtap="clickMenu" >
 
         <!-- <view class="cuIcon-{{item.icon}} text-{{item.color}}">
             <view class="cu-tag badge " wx:if="{{item.badge!=0}}">
@@ -43,16 +46,16 @@
     </view>
 </view>
 
-<button open-type="contact">
+<!-- <button open-type="contact"> -->
     <view class=" padding-lr  ">
         <swiper class=" " indicator-dots="{{false}}" circular="false" autoplay="true" interval="5000"
             duration="500" style="height:250rpx">
             <swiper-item class=" block " wx:for="{{swiperList}}" wx:key="index">
-                <image class="block radius" style="width: 100%;" src="{{item}}" mode="widthFix" ></image>
+                <image class="block radius" style="width: 100%;" src="{{item}}" mode="widthFix" catchtap="toSign" ></image>
             </swiper-item>
         </swiper>
     </view>
-</button>
+<!-- </button> -->
 
 <view class=" padding-lr " style="background-color:#f1f1f1;">
     <view class=" ">
@@ -61,11 +64,11 @@
                 <text class="cuIcon-title text-yellow "></text>我的先享足迹
             </view>
         </view> -->
-        <!-- wx:if="{{item.showDiscountCard}}"  -->
+        <!--  -->
         <view class="">
-            <view class="cu-list menu " >
+            <view class="cu-list menu padding-bottom-sm" >
                 <view 
-                    
+                    wx:if="{{item.showDiscountCard}}" 
                     class="cu-item margin-top-sm  " 
                     style="padding-left:0; border-radius: 12rpx; overflow:hidden;" 
                     wx:for="{{storeList}}" catchtap="toStore" 
@@ -78,13 +81,13 @@
                         <view class="">{{item.Name}}</view>
                         <view class="text-cut ">
                             <text class="cuIcon-infofill  text-yellow margin-right-xs"></text>
-                            <text class="text-red text-bold text-lg">8.8折</text>
+                            <text class="text-yellow text-bold ">{{item.discount}}</text>
                             
                         </view>                        
                     </view>
                     <view class="action">
                         <button class="cu-btn round bg-yellow text-white text-yellow">去领取</button>
-                        <view class="text-xs text-gray text-center margin-top-xs">剩余60%</view>
+                        <view class="text-xs text-gray text-center margin-top-xs">{{item.remain}}</view>
                     </view>
                 </view>
             </view>

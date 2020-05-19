@@ -1,7 +1,7 @@
 <!--pages/sign/step1/step1.wxml-->
 
 <view class="padding">
-    <view class="text-white flex justify-center text-xxl text-bold margin-bottom">先享卡开通表</view>
+    <view class="text-white flex justify-center text-xxl text-bold margin-bottom">小杯子先享卡开通申请</view>
     <!-- <view class="bg-white padding">
         <view class="cu-steps">
             <view class="cu-item {{index>num?'':'text-green'}}" wx:for="{{numList}}" wx:key>
@@ -87,6 +87,10 @@
             </view>
         </view>
     </form>
+    
+    <view class="flex justify-center margin-top">
+        <button class="cu-btn round line-white  " open-type="contact"  >小杯子先享卡客服</button>
+    </view>
 </view>
 
             <!-- <view class="cu-bar bg-white  cu-form-group ">

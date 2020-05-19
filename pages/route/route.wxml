@@ -1,2 +1,6 @@
 <!--pages/route/route.wxml-->
 <!-- <text>pages/route/route.wxml</text> -->
+<view class="flex align-center justify-center " style="height:50vh">
+    <image src="/images/loading.png"  mode="widthFix"></image>
+</view>
+
