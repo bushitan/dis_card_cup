@@ -9,6 +9,86 @@ Page({
      */
     data: {
 
+
+        gridCol: 4,
+        iconList: [
+        {
+            icon: 'locationfill',
+            color: 'red',
+            badge: 120,
+            name: 'Coffee'
+        },
+        {
+            icon: 'shopfill',
+            color: 'red',
+            badge: 120,
+            name: '美食'
+        }, {
+            icon: 'goodsfill',
+            color: 'orange',
+            badge: 1,
+            name: '生活'
+        }, {
+            icon: 'cartfill',
+            color: 'yellow',
+            badge: 0,
+            name: '购物'
+        }, 
+        // {
+        //     icon: 'eve',
+        //     color: 'olive',
+        //     badge: 22,
+        //     name: '通知'
+        // }, {
+        //     icon: 'upstagefill',
+        //     color: 'cyan',
+        //     badge: 0,
+        //     name: '排行榜'
+        // }, {
+        //     icon: 'clothesfill',
+        //     color: 'blue',
+        //     badge: 0,
+        //     name: '皮肤'
+        // }, {
+        //     icon: 'discoverfill',
+        //     color: 'purple',
+        //     badge: 0,
+        //     name: '发现'
+        // }, {
+        //     icon: 'questionfill',
+        //     color: 'mauve',
+        //     badge: 0,
+        //     name: '帮助'
+        // }, {
+        //     icon: 'commandfill',
+        //     color: 'purple',
+        //     badge: 0,
+        //     name: '问答'
+        // }, {
+        //     icon: 'brandfill',
+        //     color: 'mauve',
+        //     badge: 0,
+        //     name: '版权'
+        // }
+        ],
+
+
+        isLoad:!false,
+        swiperList:[
+            "/images/swiper1.png"
+        ],
+
+
+
+
+
+
+
+
+
+
+
+
         storeList: [
             // {
             //     Id:15,
@@ -54,8 +134,17 @@ Page({
     async onInit(e) {
 
         var res = await app.db.storeGetList()
+
+        var storeList = res.data
+        // var storeList = []
+        // storeList = storeList.concat(res.data)
+        // storeList = storeList.concat(res.data)
+        // storeList = storeList.concat(res.data)
+        // storeList = storeList.concat(res.data)
+        // storeList = storeList.concat(res.data)
+        
         this.setData({
-            storeList: res.data
+            storeList: storeList
         })
     },
 
@@ -65,6 +154,20 @@ Page({
      * @method 去商铺
      */
     toStore(e) {
+        wx.navigateToMiniProgram({
+            appId: "wxcc2e4fbc5887661e",
+            extraData: {
+            },
+            success(res) {
+                console.log("success", res)
+            },
+            fail(res) {
+                console.log("fail", res)
+            },
+        })
+
+
+        return 
         var shop_id = e.currentTarget.dataset.shop_id
         // console.log(storeUUID)
         wx.navigateTo({

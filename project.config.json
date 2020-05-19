@@ -121,6 +121,13 @@
 					"pathName": "pages/store/store",
 					"query": "shop_id=10",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/list/list",
+					"pathName": "pages/list/list",
+					"query": "shop_id=15",
+					"scene": null
 				}
 			]
 		}

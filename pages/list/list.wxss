@@ -1,5 +1,8 @@
 /* pages/list/list.wxss */
 
 page{
-    background-color: var(--green);
+    background-color: var(--ghostWhite);
+}
+.cu-list.menu>.cu-item::after {
+    display: none
 }
