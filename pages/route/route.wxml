@@ -1,6 +1,13 @@
 <!--pages/route/route.wxml-->
 <!-- <text>pages/route/route.wxml</text> -->
-<view class="flex align-center justify-center " style="height:50vh">
-    <image src="/images/loading.png"  mode="widthFix"></image>
+<!-- <view class="flex align-center justify-center " style="height:50vh"> -->
+<!-- <view class="flex align-center justify-center " style="height:100vh">
+    <image src="/images/loading2.jpg"  mode="widthFix"></image>
+</view> -->
+
+
+<view class="flex align-center justify-center ">
+    <image src="/images/loading2.jpg"  mode="aspectFit" style="width:750rpx;height:100vh"></image>
 </view>
+
 

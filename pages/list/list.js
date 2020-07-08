@@ -17,110 +17,34 @@ Page({
             image:'/images/icon_1.png',
             color: 'red',
             badge: 120,
-            name: '咖啡'
+            name: '饮品季'
         },
         {
             icon: 'shopfill',
             image: '/images/icon_2.png',
             color: 'red',
             badge: 120,
-            name: '美食'
+            name: '咖啡奶茶'
         }, {
             icon: 'goodsfill',
             image: '/images/icon_3.png',
             color: 'orange',
             badge: 1,
-            name: '生活'
+            name: '生活服务'
         },
-        //  {
-        //     icon: 'cartfill',
-        //     color: 'yellow',
-        //     badge: 0,
-        //     name: '购物'
-        // }, 
-        // {
-        //     icon: 'eve',
-        //     color: 'olive',
-        //     badge: 22,
-        //     name: '通知'
-        // }, {
-        //     icon: 'upstagefill',
-        //     color: 'cyan',
-        //     badge: 0,
-        //     name: '排行榜'
-        // }, {
-        //     icon: 'clothesfill',
-        //     color: 'blue',
-        //     badge: 0,
-        //     name: '皮肤'
-        // }, {
-        //     icon: 'discoverfill',
-        //     color: 'purple',
-        //     badge: 0,
-        //     name: '发现'
-        // }, {
-        //     icon: 'questionfill',
-        //     color: 'mauve',
-        //     badge: 0,
-        //     name: '帮助'
-        // }, {
-        //     icon: 'commandfill',
-        //     color: 'purple',
-        //     badge: 0,
-        //     name: '问答'
-        // }, {
-        //     icon: 'brandfill',
-        //     color: 'mauve',
-        //     badge: 0,
-        //     name: '版权'
-        // }
         ],
 
 
         isLoad:!false,
         swiperList:[
+            // "https://mmbiz.qpic.cn/sz_mmbiz_png/5IoRWl64Ed266Dy8hLXUQxBeYobJlIMDUMuRReZNUHwDMtKZicfia72KwqUdS74JUq9ia9ib9FgTdY44H0xiaB0QiaMA/0?wx_fmt=png",
+
             "/images/swiper1.jpg",
-            "/images/swiper2.jpg"
+            "/images/swiper2.jpg",
         ],
 
 
-
-
-
-
-
-
-
-
-
-
-        storeList: [
-            // {
-            //     Id:15,
-            //     showDiscountCard:true,
-            // },
-            // {
-            //     myScore: 0,
-            //     storeDes: "先享88折",
-            //     storeLogo: "/images/icon/oct.png",
-            //     // storeLogo: "http://img.12xiong.top/WechatIMG71.png",
-               
-            //     storeMaxScore: 6,
-            //     storeMinScore: 6,
-            //     storeName: "O.CT COFFEE",
-            //     storeUUID: "3876178a-7232-11e9-b3cf-e95aa2c51b5d",
-            // },
-            // {
-            //     myScore: 0,
-            //     storeDes: "先享2元",
-            //     storeLogo: "http://img.12xiong.top/coffee_image/upload/IGyXK6fZ.jpg",
-            //     storeMaxScore: 6,
-            //     storeMinScore: 6,
-            //     storeName: "StrongCoffee 唯微文文咖啡商店",
-            //     storeUUID: "b29c4dee-b35e-11e9-869d-e95aa2c51b5d",
-            // }
-        ],
-
+        storeList: [],
 
         TabCur: 0,
         scrollLeft: 0,
@@ -134,6 +58,19 @@ Page({
      */
     onLoad: function (options) {
         this.onInit()
+        console.log(wx.getSystemInfoSync())
+
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline'],
+            success(res) {
+                console.log('success', res)
+            },
+            fail(res) {
+                console.log('fail', res)
+            }
+        })
+
     },
 
     async onInit(e) {
@@ -156,7 +93,8 @@ Page({
 
 
         this.setData({
-            storeList: storeList
+            storeList: storeList,
+            currentStoreList: storeList,
         })
     },
 
@@ -188,18 +126,92 @@ Page({
         })
     },
 
-    clickMenu(){
-        wx.showToast({
-            title: '全部加载成功',
-            icon: "success"
+    clickMenu(e){
+        // wx.showToast({
+        //     title: '全部加载成功',
+        //     icon: "success"
+        // })
+        var index = e.currentTarget.dataset.index
+
+        var liveIDList = [22,31,38,39,40,41,42,46,47]
+        if(index == 0 ){
+            this.setData({ currentStoreList: this.data.storeList})
+        }
+        if (index == 1) {
+            this.filterCoffeStoreList(liveIDList)
+        }
+        if (index == 2) {
+            this.filterStoreList(liveIDList)
+        }
+    },
+
+    filterCoffeStoreList(id_list) {
+        var storeList = this.data.storeList
+        var currentStoreList = []
+        for (var i = 0; i < storeList.length; i++){
+            var temp = false
+            for (var j = 0; j < id_list.length; j++) {
+                if (storeList[i].Id == id_list[j])
+                    temp = true
+            }
+            if(temp == false)
+                currentStoreList.push(storeList[i])
+        }
+        console.log(currentStoreList)
+
+        this.setData({
+            currentStoreList: currentStoreList
         })
     },
 
-    // 去报名
-    toSign() { 
-        wx.navigateTo({
-            url: '/pages/sign/sign',
+    filterStoreList(id_list ){
+        var storeList = this.data.storeList
+        var currentStoreList = []
+        for (var i = 0; i < storeList.length; i++)
+            for (var j = 0; j < id_list.length; j++)
+            {
+                if (storeList[i].Id == id_list[j] )
+                    currentStoreList.push(storeList[i])
+            }
+        
+        this.setData({
+            currentStoreList: currentStoreList
         })
+    },
+
+
+
+    // 去报名
+    toSign(e) { 
+        var index = e.currentTarget.dataset.index
+        if(index == 0 ){
+            var url = "https://mp.weixin.qq.com/s/qZkIhxrkPUkVNjgzzGmaQA"
+            wx.navigateTo({ url: `/pages/article/article?url=${url}`, })
+        } else
+            wx.navigateTo({
+                url: '/pages/sign/sign',
+            })
+    },
+
+    clickSwiper(e){
+
+        var index = e.currentTarget.dataset.index
+        if (index == 0) {
+            var url = "https://mp.weixin.qq.com/s/qZkIhxrkPUkVNjgzzGmaQA"
+            wx.navigateTo({ url: `/pages/article/article?url=${url}`, })
+        }
+        if (index == 1) {
+            wx.navigateToMiniProgram({
+                appId: 'wx952a5c480745c869',
+                path:"pages/menu/menu"
+            })
+            // var url = "https://mp.weixin.qq.com/s/qZkIhxrkPUkVNjgzzGmaQA"
+            // wx.navigateTo({ url: `/pages/article/article?url=${url}`, })
+        } 
+        // else
+        //     wx.navigateTo({
+        //         url: '/pages/sign/sign',
+        //     })
     },
 
     /**
@@ -224,6 +236,7 @@ Page({
         })
     },
 
+    onShareTimeline(){},
     /**
      * 用户点击右上角分享
      */

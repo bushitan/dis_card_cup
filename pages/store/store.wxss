@@ -34,7 +34,10 @@
     right: 0;
     z-index: -999;
 }
-
+.logo{
+    width:100px;
+    border-radius: 50%;
+}
 
 
 .sign{

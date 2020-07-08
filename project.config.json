@@ -4,29 +4,29 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
-		"checkInvalidKey": true,
-		"enhance": true,
-		"coverView": true,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"uglifyFileName": true
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.4",
+	"libVersion": "2.11.3",
 	"appid": "wxcd49aa99fd3d1f6a",
 	"projectname": "%E5%B0%8F%E6%9D%AF%E5%AD%90%E5%85%88%E4%BA%AB%E5%8D%A1",
 	"debugOptions": {
@@ -105,7 +105,7 @@
 					"id": 6,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "shop_id=15",
+					"query": "shop_id=17",
 					"scene": 1011
 				},
 				{
@@ -127,6 +127,13 @@
 					"name": "pages/list/list",
 					"pathName": "pages/list/list",
 					"query": "shop_id=15",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "都市会生活",
+					"pathName": "pages/store/store",
+					"query": "shop_id=46",
 					"scene": null
 				}
 			]

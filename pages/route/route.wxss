@@ -2,7 +2,8 @@
 
 page{
     /* background-color: var(--green) */
-    background-color: var(--green);
+    /* background-color: var(--green); */
+    background-color: #1da738;
 }
 
 .loading{

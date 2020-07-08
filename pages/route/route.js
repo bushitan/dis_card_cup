@@ -25,7 +25,12 @@ Page({
             title: '登录中',
         })
         // this.test()
-        this.onInit()
+
+        var that = this
+        setTimeout(function(){
+            that.onInit()
+        },2000)
+        
     },
     async onInit(){
 
