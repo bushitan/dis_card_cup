@@ -15,15 +15,51 @@
     <view class="pg-space"></view>
         
 
-    <view class="cu-card padding" wx:for="{{cardList}}">
-        <view class=" pg-radius  shadow shadow-warp bg-green text-white">
-            <view class="cu-bar  solid-bottom ">
-                <view class="action">
+    <view class="cu-card padding-lr margin-top" >
+        <view class=" pg-radius  shadow shadow-warp bg-white ">
+            <view class="cu-bar  solid-bottom bg-green">
+                <view class="action text-white ">
                     <text class="text-price text-xxl"></text>                
                     <!-- <text class="">先享规则</text>   -->
-                    <input></input>                      
+                    <!-- <input placeholder="请输入付款金额" placeholder-style="color:rgba(255,255,255,0.7)" ></input> -->
+                    
+                    <input placeholder="请输入消费金额"  placeholder-style="color:rgba(255,255,255,0.7)"
+                        class="text-left text-bold text-xl text-white  margin-left-xs " type="digit" 
+                        value="{{inputPriceNum}}"
+                        bindfocus="inputFocus"
+                        bindblur="inputConfirm"
+                        maxlength="4"
+                        ></input>                     
                 </view>
             </view>
+            <view hidden="{{cardList.length==0}}">
+                <view class="cu-list menu bg-white padding-lr padding-bottom" wx:if="{{showPayDetail}}">
+                    <view class="flex justify-between padding-top text-gray ">
+                        <view class="action ">
+                            <text class="">支付价格：</text>
+                        </view>
+                        <view class="action ">                    
+                            <text class="text-price "></text>{{inputPrice}}元
+                        </view>
+                    </view>
+                    <view class="flex justify-between padding-top  ">
+                        <view class="action text-red">
+                            <text class="">先享优惠：</text>
+                        </view>
+                        <view class="action text-red">                    
+                            - <text class="text-price "></text>{{discountPrice}}元
+                        </view>
+                    </view>
+                    <view class="flex justify-between padding-top ">
+                        <view class="action text-green">
+                            <text class="">实际支付：</text>
+                        </view>
+                        <view class="action    text-green">  
+                            <text class="text-price "></text>{{payPrice}}元
+                        </view>
+                    </view>
+                </view>  
+            </view>  
             <!-- <view class="cu-list menu ">
                 <view class="flex justify-between align-center padding ">
                     <view class="action">
@@ -52,12 +88,21 @@
             </view>      -->
         </view>    
     </view>
-    <view class="padding-lr">
+    <!-- <view class="padding-lr">
         <button class="cu-btn bg-green text-white block padding-tb " 
             catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
         >领取奖励，再付款</button>
+    </view> -->
+
+    
+    <view class="padding-lr margin-top-sm"  wx:if='{{showPayDetail==false}}'>
+        <button class="cu-btn block bg-gray   text-green lg"  >确认金额</button>
     </view>
-       
+    <view class='padding-lr margin-top-sm'  wx:if='{{showPayDetail}}'>        
+        <button class="cu-btn  bg-green text-white block lg" catchtap='toPay' >微信支付</button>
+        <!-- <text class="flex justify-center text-gray">优惠券自动核销</text> -->
+    </view>
+ 
     <!-- <view class="flex justify-center margin-top">
         <image src="/images/swiper2.jpg" mode="widthFix" style="width:90vw"></image>
     </view>
@@ -65,19 +110,22 @@
         <button class="cu-btn bg-yellow text-white round">参与活动</button>
     </view> -->
 
-    <view class="cu-card padding" wx:for="{{cardList}}">
+    <view class="margin-top-xl text-sm text-gray padding-lr" hidden="{{cardList.length==0}}">
+        <text class="cuIcon-title margin-right-xs"></text> 
+        <text class="">领取先享卡后再付款，笔笔都优惠</text>
+    </view>    
+    <view class="cu-card padding-lr " wx:for="{{cardList}}">
         <view class=" pg-radius  shadow shadow-warp {{ !isHasDiscountCard ? 'bg-gray text-black' : 'bg-yellow text-white' }} ">
             <view class="cu-bar  solid-bottom ">
                 <view class="action">
                     <text class="cuIcon-title  "></text>                
-                    <text class="">先享规则</text>                        
+                    <text class="">先享卡优惠</text>                        
                 </view>
                 <view class="action">
-                    <!-- <button class="cu-btn bg-yellow text-white round"  wx:if="{{!isHasDiscountCard}}"
-                        catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
-                    >领取优惠</button>
-                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:else>查看进度</button> -->
-                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:if="{{isHasDiscountCard}}">查看进度</button>
+                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:if="{{isHasDiscountCard}}">查看先享卡</button>
+                    <button class="cu-btn bg-yellow text-white round " wx:else
+                            catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
+                        >领取先享卡</button>
                 </view>
             </view>
             <view class="cu-list menu ">
@@ -110,16 +158,15 @@
         </view>
         
         
-        <view class="flex justify-center margin-top"  wx:if="{{!isHasDiscountCard}}" >
+        <!-- <view class="flex justify-center margin-top"  wx:if="{{!isHasDiscountCard}}" >
             <button class="cu-btn bg-yellow text-white round " 
                 catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
             >领取奖励，再付款</button>
-        </view>
+        </view> -->
     </view>
 
 
-    <view class="flex justify-center padding ">
-        <!-- <view class="" style=""> -->
+    <!-- <view class="flex justify-center padding ">
             <input placeholder="请输入消费金额"  placeholder-class="text-green"
             class="text-center text-bold text-xl text-red " type="digit" 
             value="{{inputPriceNum}}"
@@ -127,7 +174,6 @@
             bindblur="inputConfirm"
             maxlength="4"
             ></input>
-        <!-- </view> -->
     </view>
     <view style="padding: 0 120rpx;" >
         <view style=" border-top: 1rpx solid #07c160;" ></view>
@@ -169,7 +215,7 @@
     
     <view class="flex justify-center margin-top"  wx:if='{{showPayDetail==false}}'>
         <button class="cu-btn round line-green"  >确认金额</button>
-    </view>
+    </view> -->
 
 <!-- <button catchtap="toAlert">测试</button> -->
 

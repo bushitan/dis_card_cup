@@ -28,6 +28,18 @@ Page({
 
        
     },
+    onReady() {
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline'],
+            success(res) {
+                console.log('success', res)
+            },
+            fail(res) {
+                console.log('fail', res)
+            }
+        })
+    },
     onShow(){
 
         this.onInit()
@@ -73,6 +85,13 @@ Page({
         this.setData({ showDialog :false})
     },
 
+    onShareTimeline() {
+        return {
+            title: this.data.store.Name,
+            query: "/pages/route/route?shop_id=" + this.data.store.Id,
+            imageUrl: this.data.store.Logo,
+        }
+    },
     onShareAppMessage(){
         return {
             title: this.data.store.Name,

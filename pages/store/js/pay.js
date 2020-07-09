@@ -5,7 +5,7 @@ module.exports = Behavior({
 
         inputPriceNum: '',
         inputPrice: '',
-        discountPrice: 0.5,
+        discountPrice: '',
         payPrice: '',
 
         showPayDetail:false,

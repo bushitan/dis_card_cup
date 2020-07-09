@@ -3,8 +3,8 @@
 class dbSon {
     KEY_SESSION = "session"
     KEY_OPEN_ID = "open_id"
-    // HOST_URL = "https://wm.51zfgx.com/" // 主机地址
-    HOST_URL = "http://139.159.241.56/" // 主机地址
+    HOST_URL = "https://wm.51zfgx.com/" // 主机地址
+    // HOST_URL = "http://139.159.241.56/" // 主机地址
     
     constructor() {
 

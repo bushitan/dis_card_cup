@@ -35,6 +35,8 @@ Page({
     async onInit(){
 
         await app.db.sysLogin()
+        await app.db.sysLogin()
+        
         wx.hideLoading()
 
         var shop_id = this.data.shop_id

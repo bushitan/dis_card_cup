@@ -59,7 +59,8 @@ Page({
     onLoad: function (options) {
         this.onInit()
         console.log(wx.getSystemInfoSync())
-
+    },
+    onReady(){
         wx.showShareMenu({
             withShareTicket: true,
             menus: ['shareAppMessage', 'shareTimeline'],
@@ -70,7 +71,6 @@ Page({
                 console.log('fail', res)
             }
         })
-
     },
 
     async onInit(e) {
@@ -236,7 +236,12 @@ Page({
         })
     },
 
-    onShareTimeline(){},
+    onShareTimeline(){
+        return {
+            title: "优惠派发中",
+            query: "/pages/route/route",
+        }
+    },
     /**
      * 用户点击右上角分享
      */

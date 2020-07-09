@@ -52,3 +52,7 @@
 .box{
     position: relative;
 }
+
+.price-input{
+    color:white;
+}
