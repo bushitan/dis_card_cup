@@ -24,13 +24,13 @@ Page({
         wx.showLoading({
             title: '登录中',
         })
-        // this.test()
+        this.test()
 
-        var that = this
-        setTimeout(function(){
-            that.onInit()
-        },2000)
-        
+        // var that = this
+        // setTimeout(function(){
+        //     that.onInit()
+        // },2000)
+        // that.onInit()
     },
     async onInit(){
 
@@ -63,41 +63,64 @@ Page({
 
     async test() {
 
-        //  1、系统登陆，获取session
-        await app.db.sysLogin()
-        //  2、获取所有门店
-        await app.db.storeGetList()
-        //　3、获取门店详情
-        await app.db.storeGetDetail({
-            ShopId:9
-        })
+        // //  1、系统登陆，获取session
+        // await app.db.sysLogin()
+        // //  2、获取所有门店
+        // await app.db.storeGetList()
+        // //　3、获取门店详情
+        // await app.db.storeGetDetail({
+        //     ShopId:9
+        // })
 
-        //  4、获取门店先享卡的内容描述
-        await app.db.storeGetDiscountCard({
-            ShopId: 9
-        })　
-        //　5、检测用户是否有先享卡        
-        await app.db.storeCheckDiscountCard({
-            ShopId:9
-        })
+        // //  4、获取门店先享卡的内容描述
+        // await app.db.storeGetDiscountCard({
+        //     ShopId: 9
+        // })　
+        // //　5、检测用户是否有先享卡        
+        // await app.db.storeCheckDiscountCard({
+        //     ShopId:9
+        // })
 
-        //  6、跳转小程序领取先享卡
-        await app.db.storePullDiscountCard({
-            ShopId : 9,
-            discountcardId : "",
-            wxappid:"",
-        })　
+        // //  6、跳转小程序领取先享卡
+        // await app.db.storePullDiscountCard({
+        //     ShopId : 9,
+        //     discountcardId : "",
+        //     wxappid:"",
+        // })　
 
         //　7、支付计算
-        await app.db.payPre({
-            price:5
-        })
+        // await app.db.payPre({
+        //     price:5
+        // })
         //　8、正式支付下单
         // await app.db.payConfirm({
         //     price: 5
         // })
        
 
+        var res = await app.db.couponSend({
+            shopId: '22',
+            stock_id: '10782984',
+            out_request_no : "",
+            Wxappid: "wxcd49aa99fd3d1f6a",
+            stock_creator_mchid : "",
+            coupon_value : "",
+            coupon_minimum : "",
+        })
+        console.log(res)
+
+        await app.db.couponGetListByShop({
+            Page:1,
+            PageSize:10,
+            shopId:22,
+        })
+
+        await app.db.couponGetListByMy({
+            Page: 1,
+            PageSize: 10,
+            shopId: 22,
+            // status:10,
+        })
         
     },
 

@@ -23,7 +23,10 @@ class dbSon {
                 url: options.url,
                 method: options.method || "POST",
                 header: {
-                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                    'Content-Type': 'application/x-www-form-urlencoded', // 默认值
+                    'User-Agent':"",
+                    // 'content-Type': 'multipart/form-data'
+                    // 'content-type':"application/json"
                 },
                 data: data,
                 success(res) {
