@@ -135,6 +135,20 @@
 					"pathName": "pages/store/store",
 					"query": "shop_id=46",
 					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "pages/self/self我的优惠券列表",
+					"pathName": "pages/self/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "pages/route/route",
+					"pathName": "pages/route/route",
+					"query": "scene=5_22_10739083",
+					"scene": null
 				}
 			]
 		}

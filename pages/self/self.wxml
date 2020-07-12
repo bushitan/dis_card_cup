@@ -1,0 +1,107 @@
+<!--pages/list/list.wxml-->
+
+
+
+<view class="padding-top-xl  text-gray padding-lr" style="background-color:#f1f1f1;" >
+    <text class="cuIcon-title margin-right-xs"></text> 
+    <text class="">我的优惠券</text>
+</view>    
+<view class=" padding-lr " style="background-color:#f1f1f1;">
+    <view class=" ">
+        <!-- <view class="cu-bar bg-white solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>我的先享足迹
+            </view>
+        </view> -->
+        <!--  -->
+        <view class="">
+            <view class="cu-list menu padding-bottom-sm " >
+                <view 
+                    class="cu-item margin-top-sm bg-green " 
+                    style="padding-left:0; border-radius: 12rpx; overflow:hidden;" 
+                    wx:for="{{couponList}}" catchtap="toStore" 
+                    data-shop_id="{{item.Id}}">
+
+                    <!-- <view class=" flex align-center padding-lr bg-green" style=" min-height: 150rpx;">
+                        <view class="cu-avatar round lg " style="background-image:url({{item.Logo}});"></view>
+                    </view> -->
+                    <view class="content padding-left text-gray ">
+                        <view class="text-yellow text-bold">{{item.coupon_name}}</view>
+                        <!-- <view class="text-cut ">
+                            <text class="cuIcon-infofill  text-yellow margin-right-xs"></text>
+                            <text class="text-yellow text-bold ">{{item.discount}}</text>                            
+                        </view>                         -->
+                    </view>
+                    <view class="action">
+                        <button class="cu-btn round bg-yellow text-white text-yellow">去使用</button>
+                        <!-- <view class="text-xs text-gray text-center margin-top-xs">{{item.remain}}</view> -->
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="pg-space"></view>
+<view class="cu-load text-gray {{!isLoad?'loading':'over'}}"></view>
+
+
+<view ></view>
+<view class="pg-space-xl"></view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<image src="/images/swiper.png" style="width:750rpx;height:363rpx; display:block"></image>
+
+<scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{tabList}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        {{item}}
+    </view>
+</scroll-view>
+<view class="cu-card padding">
+    <view class=" pg-radius">
+        <view class="cu-bar bg-white solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>我的先享足迹
+            </view>
+        </view>
+        <view class="">
+            <view class="cu-list menu ">
+                <view wx:if="{{item.showDiscountCard}}" 
+                    class="cu-item bg-white arrow " 
+                    style=" min-height: 140rpx;" 
+                    wx:for="{{storeList}}" catchtap="toStore" 
+                    data-shop_id="{{item.Id}}">
+
+                    <view class="cu-avatar round lg margin-right-sm" style="background-image:url({{item.Logo}});"></view>
+                    <view class="content">
+                        <view class="text-gray text-sm">{{item.Name}}</view>
+                        <view class="text-cut">
+                            <text class="cuIcon-infofill text-yellow  margin-right-xs"></text>8.8折
+                        </view>                        
+                    </view>
+                    <view class="action">
+                        <button class="cu-btn round">领取</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<view class='flex align-center justify-center padding text-gray  margin-bottom'>            
+    <navigator class="cu-btn round line-white margin-right "url="/pages/sign/sign"  >商户先享报名</navigator>
+</view> -->

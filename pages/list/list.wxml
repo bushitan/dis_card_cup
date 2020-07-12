@@ -86,7 +86,7 @@
                         </view>                        
                     </view>
                     <view class="action">
-                        <button class="cu-btn round bg-yellow text-white text-yellow">去领取</button>
+                        <button class="cu-btn round bg-yellow text-white text-yellow">门店参与</button>
                         <view class="text-xs text-gray text-center margin-top-xs">{{item.remain}}</view>
                     </view>
                 </view>

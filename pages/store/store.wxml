@@ -100,8 +100,12 @@
     </view>
     <view class='padding-lr margin-top-sm'  wx:if='{{showPayDetail}}'>        
         <button class="cu-btn  bg-green text-white block lg" catchtap='toPay' >微信支付</button>
-        <!-- <text class="flex justify-center text-gray">优惠券自动核销</text> -->
     </view>
+    <view class='padding-lr margin-top-sm text-green flex justify-center align-center'  wx:if="{{couponList.length>0}}">   
+        <text class="cuIcon-rechargefill ">您有{{couponList.length}}张优惠券，支付自动核销</text>
+    </view>
+    
+        
  
     <!-- <view class="flex justify-center margin-top">
         <image src="/images/swiper2.jpg" mode="widthFix" style="width:90vw"></image>
@@ -114,7 +118,7 @@
         <text class="cuIcon-title margin-right-xs"></text> 
         <text class="">领取先享卡后再付款，笔笔都优惠</text>
     </view>    
-    <view class="cu-card padding-lr " wx:for="{{cardList}}">
+    <view class="cu-card padding-lr margin-top-xs" wx:for="{{cardList}}">
         <view class=" pg-radius  shadow shadow-warp {{ !isHasDiscountCard ? 'bg-gray text-black' : 'bg-yellow text-white' }} ">
             <view class="cu-bar  solid-bottom ">
                 <view class="action">
@@ -243,7 +247,65 @@
                     </view>
                 </view>
             </view> -->
-    
+        
+    <view class="cu-modal {{showDialog?'show':''}}" >
+        <view class="cu-dialog" wx:if="{{couponContent.coupon_id}}">
+            <view class="cu-bar bg-white justify-end" >
+                <view class="content">领取优惠券成功</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red" catchtap="closeDialog"></text>
+                </view>
+            </view>
+            <!-- <view class="padding-xl">                
+                {{couponSend.message}}
+            </view> -->
+            <view class="cu-bar bg-white justify-end">
+                <view class="action">
+                        <!-- <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button> -->
+                    <button class="cu-btn bg-green margin-left" catchtap="closeDialog">确定</button>
+
+                </view>
+            </view>
+        </view> 
+        <view class="cu-dialog" wx:else>
+            <view class="cu-bar bg-white justify-end" >
+                <view class="content">领取失败</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red" catchtap="closeDialog"></text>
+                </view>
+            </view>
+            <view class="padding-xl">                
+                {{couponContent.message}}
+            </view>
+            <view class="cu-bar bg-white justify-end">
+                <view class="action">
+                        <!-- <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button> -->
+                    <button class="cu-btn bg-green margin-left" catchtap="closeDialog">确定</button>
+
+                </view>
+            </view>
+        </view> 
+    </view>
+
+
+            <!-- <view class="cu-bar bg-white justify-end" wx:else>
+                <view class="content">领取失败</view>
+                    <view class="action" bindtap="hideModal">
+                        <text class="cuIcon-close text-red" catchtap="closeDialog"></text>
+                    </view>
+                </view>
+                <view class="padding-xl">                
+                    {{couponSend.message}}
+                </view>
+                <view class="cu-bar bg-white justify-end">
+                    <view class="action">
+                     <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button> 
+                        <button class="cu-btn bg-green margin-left" catchtap="closeDialog">确定</button>
+
+                    </view>
+                </view>
+            </view> -->
+
     <view class="pg-space-xl"></view>
     <view class="pg-space-xl"></view>
 </view>

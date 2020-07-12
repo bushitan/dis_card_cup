@@ -24,7 +24,7 @@ class dbSon {
                 method: options.method || "POST",
                 header: {
                     'Content-Type': 'application/x-www-form-urlencoded', // 默认值
-                    'User-Agent':"",
+                    // 'User-Agent':"",
                     // 'content-Type': 'multipart/form-data'
                     // 'content-type':"application/json"
                 },

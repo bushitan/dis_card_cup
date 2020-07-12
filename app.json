@@ -6,6 +6,7 @@
         "pages/list/list",
         "pages/store/store",
         "pages/poi/poi",
+        "pages/self/self",
         "pages/pay/pay",
         "pages/sign/sign"
     ],
@@ -28,5 +29,25 @@
         "wxcc2e4fbc5887661e",
         "wxd8f3793ea3b935b8"
     ],
+    "tabBar": {
+        "color": "#bfbfbf",
+        "selectedColor": "#efaf30",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/list/list",
+                "iconPath": "/images/icon_1.png",
+                "selectedIconPath": "/images/icon_1.png",
+                "text": "饮品季"
+            },
+            {
+                "pagePath": "pages/self/self",
+                "iconPath": "/images/icon_3.png",
+                "selectedIconPath": "/images/icon_3.png",
+                "text": "我的"
+            }
+        ]
+    },
     "sitemapLocation": "sitemap.json"
 }

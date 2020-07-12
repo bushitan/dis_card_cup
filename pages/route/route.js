@@ -14,8 +14,10 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            shop_id : options.shop_id
+            shop_id: options.shop_id,
+            stock_id: options.stock_id,
         })
+        this.checkScene(options)
     },
 
     onReady(){
@@ -30,26 +32,46 @@ Page({
         // setTimeout(function(){
         //     that.onInit()
         // },2000)
-        // that.onInit()
+
+        this.onInit()
+    },
+    checkScene(options){
+        if (options.hasOwnProperty('scene')) {
+            const scene = decodeURIComponent(options.scene) 
+
+            var sceneList = scene.split('_')
+            var mode = sceneList[0]
+            var shop_id = sceneList[1]
+            var stock_id = sceneList[2]
+
+            this.setData({
+                shop_id: shop_id,
+                stock_id: stock_id,
+            })
+        }
     },
     async onInit(){
 
-        await app.db.sysLogin()
         await app.db.sysLogin()
         
         wx.hideLoading()
 
         var shop_id = this.data.shop_id
         if (shop_id){
+            var url = '/pages/store/store?shop_id=' + shop_id 
+            if (this.data.stock_id)
+                url = url + "&stock_id=" + this.data.stock_id
             wx.redirectTo({
-                url: '/pages/store/store?shop_id=' + shop_id,
+                url: url ,
             })
         } else{
 
-            wx.redirectTo({
+            // wx.redirectTo({
+            //     url: '/pages/list/list',
+            // })
+            wx.switchTab({
                 url: '/pages/list/list',
-            })
-
+            }) 
         }
 
 
@@ -62,7 +84,7 @@ Page({
     },
 
     async test() {
-
+        
         // //  1、系统登陆，获取session
         // await app.db.sysLogin()
         // //  2、获取所有门店
@@ -98,29 +120,83 @@ Page({
         // })
        
 
-        var res = await app.db.couponSend({
+        // var res = await app.db.couponSend({
+        //     shopId: '22',
+        //     stock_id: '10833068',
+        //     out_request_no : "",
+        //     Wxappid: "",
+        //     stock_creator_mchid : "",
+        //     coupon_value : "",
+        //     coupon_minimum : "",
+        // })
+
+        // var coupon_id = 12482622825
+        var res = await app.db.couponQueryCondition({
+            limit:10,
+            offset:0,
+            status:"running",
+
             shopId: '22',
-            stock_id: '10782984',
-            out_request_no : "",
+            // stock_id: '10833068',
+            // out_request_no : "",
+            // Wxappid: "wxcd49aa99fd3d1f6a",
+            // stock_creator_mchid : "",
+            // coupon_value : "",
+            // coupon_minimum : "",
+        })
+        // await app.db.couponGetDetail({
+        //     coupon_id: coupon_id,
+        //     stock_id: '10833068',
+        //     stock_creator_mchid: "",
+        // })
+
+        // await app.db.couponMerchants({
+        //     stock_creator_mchid: "1593971131",
+        //     stock_id: '10833068',
+        //     shopId: '22',
+        // })
+        
+
+
+        await app.db.couponByMerchants({
+            openid: wx.getStorageSync(app.db.KEY_OPEN_ID),
             Wxappid: "wxcd49aa99fd3d1f6a",
-            stock_creator_mchid : "",
-            coupon_value : "",
-            coupon_minimum : "",
+            stock_id: "10833068",
+            status:"",
+            creator_mchid: "",
+            sender_mchid: "",
+            available_mchid: "",
+            offset: "",
+            limit: "",
+            shopId: "22",
         })
-        console.log(res)
+        
 
-        await app.db.couponGetListByShop({
-            Page:1,
-            PageSize:10,
-            shopId:22,
-        })
 
-        await app.db.couponGetListByMy({
-            Page: 1,
-            PageSize: 10,
-            shopId: 22,
-            // status:10,
-        })
+
+        // await app.db.couponGetListByShop({
+        //     // openid: wx.getStorageSync(app.db.KEY_OPEN_ID),
+        //     // Wxappid: "wxcd49aa99fd3d1f6a",
+        //     // stock_id:"10782984",
+        //     shopId: '22',
+        // })
+
+
+
+        // await app.db.couponGetListByShop({
+        //     Page: 0,
+        //     PageSize: 10,
+        //     shopId: '22',
+        // })
+
+        // var res = await app.db.couponGetListByMy({
+        //     Page: 1,
+        //     PageSize: 10,
+        //     shopId: '22',
+        //     // status:10,
+        // })
+
+        // console.log(res)
         
     },
 
