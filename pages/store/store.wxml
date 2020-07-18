@@ -17,14 +17,14 @@
 
     <view class="cu-card padding-lr margin-top" >
         <view class=" pg-radius  shadow shadow-warp bg-white ">
-            <view class="cu-bar  solid-bottom bg-green">
+            <view class="cu-bar  solid-bottom bg-gray">
                 <view class="action text-white ">
-                    <text class="text-price text-xxl"></text>                
+                    <text class="text-price text-xxl text-green"></text>                
                     <!-- <text class="">先享规则</text>   -->
                     <!-- <input placeholder="请输入付款金额" placeholder-style="color:rgba(255,255,255,0.7)" ></input> -->
                     
-                    <input placeholder="请输入消费金额"  placeholder-style="color:rgba(255,255,255,0.7)"
-                        class="text-left text-bold text-xl text-white  margin-left-xs " type="digit" 
+                    <input placeholder="请输入消费金额"  placeholder-class="text-green"
+                        class="text-left text-bold text-xl text-green  margin-left-xs " type="digit" 
                         value="{{inputPriceNum}}"
                         bindfocus="inputFocus"
                         bindblur="inputConfirm"
@@ -96,13 +96,13 @@
 
     
     <view class="padding-lr margin-top-sm"  wx:if='{{showPayDetail==false}}'>
-        <button class="cu-btn block bg-gray   text-green lg"  >确认金额</button>
+        <button class="cu-btn block bg-gray text-black block lg"  >确认金额</button>
     </view>
     <view class='padding-lr margin-top-sm'  wx:if='{{showPayDetail}}'>        
         <button class="cu-btn  bg-green text-white block lg" catchtap='toPay' >微信支付</button>
     </view>
-    <view class='padding-lr margin-top-sm text-green flex justify-center align-center'  wx:if="{{couponList.length>0}}">   
-        <text class="cuIcon-rechargefill ">您有{{couponList.length}}张优惠券，支付自动核销</text>
+    <view class='padding-lr margin-top-sm text-gray flex justify-center align-center'>   
+        <text class="cuIcon-rechargefill ">若领取优惠券，支付时自动验证核销</text>
     </view>
     
         
@@ -137,7 +137,7 @@
                     <view class="action">
                         <text class="">奖励</text>
                     </view>
-                    <view class="action text-bold {{ isHasDiscountCard ? '' : 'text-red' }} text-xl basis-xl text-right" >
+                    <view class="action text-bold {{ isHasDiscountCard ? '' : 'text-yellow' }} text-xl basis-xl text-right" >
                         <text class="">{{item.reward_desc}}</text>
                     </view>
                 </view>
@@ -248,7 +248,39 @@
                 </view>
             </view> -->
         
-    <view class="cu-modal {{showDialog?'show':''}}" >
+
+    <!-- 展示代金券 -->
+    <view class="cu-modal {{showCouponListDialog?'show':''}}" >
+        <view class="cu-dialog">
+            <view class="cu-bar bg-white justify-end" >
+                <view class="content">领取代金券</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red" catchtap="closeConponListDialog"></text>
+                </view>
+            </view>
+            <view class="padding-tb padding-lr-xl">   
+                <view class="flex justify-center align-center ">                
+                    <!-- <image src="{{store.Logo}}" style="width:60px;height:60px" mode="widthFix"></image> -->
+                    <!-- <view class="margin-left">{{store.Name}}</view> -->
+                </view>
+                <view wx:for="{{stockList}}" class="flex justify-between align-center margin-top-sm">
+                    {{item.stock_name}} 
+                    <button class="cu-btn  round bg-yellow text-white" 
+                        catchtap="getCouponCard" data-stock_id="{{item.stock_id}}">领取</button>
+                </view>
+            </view>
+            <view class="cu-bar bg-white justify-end">
+                <view class="action">
+                        <!-- <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button> -->
+                    <button class="cu-btn bg-green margin-left" catchtap="closeConponListDialog">确定</button>
+
+                </view>
+            </view>
+        </view> 
+    </view>
+
+    <!-- 领取代金券结果 -->
+    <view class="cu-modal {{showCouponGetDialog?'show':''}}" >
         <view class="cu-dialog" wx:if="{{couponContent.coupon_id}}">
             <view class="cu-bar bg-white justify-end" >
                 <view class="content">领取优惠券成功</view>
@@ -286,6 +318,8 @@
             </view>
         </view> 
     </view>
+
+
 
 
             <!-- <view class="cu-bar bg-white justify-end" wx:else>

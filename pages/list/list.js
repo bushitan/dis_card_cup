@@ -75,6 +75,7 @@ Page({
 
     async onInit(e) {
 
+        wx.showLoading()
         var res = await app.db.storeGetList()
 
         var storeList = res.data
@@ -91,7 +92,7 @@ Page({
             storeList[i].remain = _temp[1]
         }
 
-
+        wx.hideLoading()
         this.setData({
             storeList: storeList,
             currentStoreList: storeList,

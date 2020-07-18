@@ -20,7 +20,7 @@
                     class="cu-item margin-top-sm bg-green " 
                     style="padding-left:0; border-radius: 12rpx; overflow:hidden;" 
                     wx:for="{{couponList}}" catchtap="toStore" 
-                    data-shop_id="{{item.Id}}">
+                    data-shop_ids="{{item.shop_ids}}">
 
                     <!-- <view class=" flex align-center padding-lr bg-green" style=" min-height: 150rpx;">
                         <view class="cu-avatar round lg " style="background-image:url({{item.Logo}});"></view>

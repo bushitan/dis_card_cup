@@ -101,7 +101,7 @@ Page({
 
 
 
-
+        wx.showLoading()
         var res = await app.db.couponByMerchants({
             openid: wx.getStorageSync(app.db.KEY_OPEN_ID),
             Wxappid: "wxcd49aa99fd3d1f6a",
@@ -112,10 +112,12 @@ Page({
             // available_mchid: "",
             // offset: "",
             // limit: "",
-            shopId: "22",
+            // shopId: "22",
         })
+        wx.hideLoading()
+        // debugger
         this.setData({
-            couponList: res.data.data
+            couponList: res.data.data.data
         })
 
     },
@@ -240,11 +242,13 @@ Page({
      * @method 去商铺
      */
     toStore(e) {
-       
 
-        // return 
-        var shop_id = e.currentTarget.dataset.shop_id
-        // console.log(storeUUID)
+        
+        var shop_ids = e.currentTarget.dataset.shop_ids
+        var shop_id = shop_ids[0]
+        // debugger
+       
+        // // console.log(storeUUID)
         wx.navigateTo({
             url: '/pages/store/store?shop_id=' + shop_id,
         })
