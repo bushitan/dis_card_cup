@@ -198,7 +198,8 @@ Page({
 
         var index = e.currentTarget.dataset.index
         if (index == 0) {
-            var url = "https://mp.weixin.qq.com/s/qZkIhxrkPUkVNjgzzGmaQA"
+            // var url = "https://mp.weixin.qq.com/s/qZkIhxrkPUkVNjgzzGmaQA"
+            var url ="https://mp.weixin.qq.com/s/MXy9NfnbWvcoEJO-iY8n2A"
             wx.navigateTo({ url: `/pages/article/article?url=${url}`, })
         }
         if (index == 1) {
