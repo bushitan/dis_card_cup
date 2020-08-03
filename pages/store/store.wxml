@@ -345,7 +345,7 @@
 </view>
 
 
-
+<ad unit-id="adunit-b07e358fcb8a671f"></ad>
 <view class="ad">
     <ad list="{{adList}}"></ad>
 </view>
