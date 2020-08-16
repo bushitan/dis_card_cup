@@ -113,17 +113,100 @@
     <view class="flex justify-center margin-top">
         <button class="cu-btn bg-yellow text-white round">参与活动</button>
     </view> -->
+ 
+ 
+    <view class="text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
+        <text class="cuIcon-title margin-right-xs"></text> 
+        <text class="">邀请好友进团，共同完成任务</text>
+    </view> 
 
-    <view class="margin-top-xl text-sm text-gray padding-lr" hidden="{{cardList.length==0}}">
+
+    <!-- <view class="margin-top-xl text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
         <text class="cuIcon-title margin-right-xs"></text> 
         <text class="">领取先享卡后再付款，笔笔都优惠</text>
-    </view>    
+    </view>   -->
+  
     <view class="cu-card padding-lr margin-top-xs" wx:for="{{cardList}}">
         <view class=" pg-radius  shadow shadow-warp {{ !isHasDiscountCard ? 'bg-gray text-black' : 'bg-yellow text-white' }} ">
+
+            <view class="padding-lr  padding-top flex justify-between align-center"  wx:if="{{isHasDiscountCard}}">
+                <view>
+                    <!-- <image src="/images/pin.png" class="cu-avatar bg-yellow " ></image> -->
+                    <view class="cu-avatar-group">
+                        <!-- <view class="cu-avatar round lg"  style="background-image:url(/images/add.png);background-color:#ffffff"></view> -->
+                        <view class="cu-avatar round " wx:for="{{4}}" wx:key style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big1000{{index+1}}.jpg);"></view>
+                        
+                    </view>
+                    <text class="text-right">2人</text>
+
+                </view>
+                
+                <view class="">
+                    <button class="cu-btn round bg-blue text-white">邀请好友</button>
+                </view>
+            </view>
             <view class="cu-bar  solid-bottom ">
                 <view class="action">
                     <text class="cuIcon-title  "></text>                
-                    <text class="">先享卡优惠</text>                        
+                    <text class="" wx:if="{{isHasDiscountCard}}">剩余次数：1次</text>                 
+                    <text class="" wx:else>先享卡优惠</text>     
+
+                </view>
+                <view class="action">
+                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:if="{{isHasDiscountCard}}">查看先享卡</button>
+                    <button class="cu-btn bg-yellow text-white round " wx:else
+                            catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
+                        >领取先享卡</button>
+                </view>
+            </view>
+            <view class="cu-list menu ">
+                <view class="flex justify-between align-center padding-lr  padding-tb-sm ">
+                    <view class="action">
+                        <text class="">奖励</text>
+                    </view>
+                    <view class="action text-bold {{ isHasDiscountCard ? '' : 'text-yellow' }} text-xl basis-xl text-right" >
+                        <text class="">{{item.reward_desc}}</text>
+                    </view>
+                </view>
+                <view class="flex justify-between padding-lr padding-tb-sm ">
+                    <view class="action">
+                        <text class="f">任务</text>
+                    </view>
+                    <view class="action basis-xl text-right">
+                        <text class="">{{item.objective_desc}}</text>
+                    </view>
+                </view>
+               
+                <view class=" padding-lr padding-bottom ">
+                     <view class="" style=" border-top: 1rpx solid rgba(0, 0, 0, 0.1) ;"  ></view>
+                    <view class="  text-sm  {{ !isHasDiscountCard ? ' text-gray' : ' text-white' }} margin-top-sm" >
+                       <text class="cuIcon-info margin-right-xs"></text> <text class="">如未完成约定消费次数，微信支付将自动扣除已享优惠额度</text>
+                    </view>
+                </view>
+                
+            </view>     
+        </view>
+    </view>
+
+<!-- 
+    <view class="cu-card padding-lr margin-top-xs" wx:for="{{cardList}}">
+        <view class=" pg-radius  shadow shadow-warp {{ !isHasDiscountCard ? 'bg-gray text-black' : 'bg-yellow text-white' }} ">
+
+            <view class="padding-lr  padding-top"  wx:if="{{isHasDiscountCard}}">
+                <image src="/images/pin.png" class="cu-avatar bg-yellow " ></image>
+                <view class="cu-avatar-group">
+                    <view class="cu-avatar round lg"  style="background-image:url(/images/add.png);background-color:#ffffff"></view>
+                    <view class="cu-avatar round lg" wx:for="{{4}}" wx:key style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big1000{{index+1}}.jpg);"></view>
+                    
+                </view>
+                <text class="text-right">2人拼团</text>
+            </view>
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <text class="cuIcon-title  "></text>                
+                    <text class="" wx:if="{{isHasDiscountCard}}">剩余次数：1次</text>                 
+                    <text class="" wx:else>先享卡优惠</text>     
+
                 </view>
                 <view class="action">
                     <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:if="{{isHasDiscountCard}}">查看先享卡</button>
@@ -152,7 +235,6 @@
                
                 <view class=" padding-lr padding-bottom ">
                      <view class="" style=" border-top: 1rpx solid rgba(0, 0, 0, 0.1) ;"  ></view>
-                     <!-- {{ !isHasDiscountCard ? 'rgba(0, 0, 0, 0.1)' : '#ffffff' }}  -->
                     <view class="  text-sm  {{ !isHasDiscountCard ? ' text-gray' : ' text-white' }} margin-top-sm" >
                        <text class="cuIcon-info margin-right-xs"></text> <text class="">如未完成约定消费次数，微信支付将自动扣除已享优惠额度</text>
                     </view>
@@ -160,14 +242,8 @@
                 
             </view>     
         </view>
-        
-        
-        <!-- <view class="flex justify-center margin-top"  wx:if="{{!isHasDiscountCard}}" >
-            <button class="cu-btn bg-yellow text-white round " 
-                catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
-            >领取奖励，再付款</button>
-        </view> -->
-    </view>
+    </view> -->
+
 
 
     <!-- <view class="flex justify-center padding ">
@@ -356,3 +432,8 @@
 </view>
 
 <view class="pg-space"></view> 
+
+
+<view>
+
+</view>
