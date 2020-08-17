@@ -27,8 +27,10 @@ module.exports = Behavior({
             // var inputPrice = inputPrice.toFixed(2)
 
             var showPayDetail = false
-            if(inputPrice > 0)
-                showPayDetail = true
+            if (inputPrice > 0) {
+                // showPayDetail = true
+                this.setData({ showPayDetail: true})
+            }
             else{
                 wx.showToast({
                     title: '请输入正确金额',
@@ -54,7 +56,7 @@ module.exports = Behavior({
                 inputPrice: inputPrice,
                 discountPrice: data.discountamount,
                 payPrice: data.realfee,
-                showPayDetail:showPayDetail,
+                // showPayDetail:showPayDetail,
 
             })
 

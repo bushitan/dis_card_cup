@@ -79,7 +79,7 @@ Page({
         })
         
         this.setData({
-            isHasDiscountCard: res.isHasDiscountCard,
+            isHasDiscountCard: !res.isHasDiscountCard,
             userDiscountCard:res.data
         })
 

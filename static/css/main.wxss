@@ -20,6 +20,7 @@ page {
     --lightYellow:#f4c76f;
 	--olive: #8dc63f;
 	--green: #07c160;
+	--lightGreen: rgba(7,193,96,0.3);
 	--cyan: #1cbbb4;
 	/* --blue: #0081ff; */
 	--blue: #1d2a6d;
@@ -3458,6 +3459,10 @@ scroll-view.cu-steps .cu-item {
 
 .bg-green {
 	background-color: var(--green);
+	color: var(--white);
+}
+.bg-lightGreen {
+	background-color: var(--lightGreen);
 	color: var(--white);
 }
 
