@@ -3,6 +3,7 @@
 var card = require('js/card.js')
 var pay = require('js/pay.js')
 var coupon = require('js/coupon.js')
+var discount = require('js/discount.js')
 const app = getApp()
 
 Page({
@@ -18,7 +19,7 @@ Page({
         // price:0
     },
 
-    behaviors: [app.baseBehavior, card, pay, coupon],
+    behaviors: [app.baseBehavior, card, pay, coupon, discount],
 
     async onLoad(options) {
         this.setData({
@@ -43,6 +44,11 @@ Page({
         })
     },
     onShow(){
+
+
+        //  先享卡服务商模式
+        this.onInitDiscount()
+
 
         this.onInit()
     },
@@ -79,10 +85,10 @@ Page({
         })
         
         this.setData({
-            isHasDiscountCard: !res.isHasDiscountCard,
+            // isHasDiscountCard: !res.isHasDiscountCard,
+            isHasDiscountCard: res.isHasDiscountCard,
             userDiscountCard:res.data
         })
-
 
 
        

@@ -17,7 +17,7 @@
                 <text class="text-bold text-lg ">{{store.Name}}</text>
             </view>
             <view>
-                <button class="cu-btn round  ">大众点评</button>
+                <button class="cu-btn round  " catchtap="onInitDiscount">大众点评</button>
             </view>
         </view>        
     </view>

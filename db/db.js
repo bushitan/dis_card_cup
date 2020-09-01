@@ -1,6 +1,6 @@
 
 
-var dbFather = require('db_6_coupon.js')
+var dbFather = require('db_7_discount.js')
 class db extends dbFather {
 
 

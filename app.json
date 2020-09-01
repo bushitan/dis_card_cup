@@ -1,10 +1,10 @@
 {
     "pages": [
+        "pages/store/store",
         "pages/route/route",
         "pages/alert/alert",
         "pages/article/article",
         "pages/list/list",
-        "pages/store/store",
         "pages/poi/poi",
         "pages/self/self",
         "pages/pay/pay",
