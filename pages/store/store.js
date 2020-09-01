@@ -16,6 +16,8 @@ Page({
         isHasDiscountCard: false,
         userDiscountCard:{},
 
+
+        InputBottom:0,
         // price:0
     },
 

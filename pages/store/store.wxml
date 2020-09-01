@@ -17,13 +17,13 @@
                 <text class="text-bold text-lg ">{{store.Name}}</text>
             </view>
             <view>
-                <button class="cu-btn round  " catchtap="onInitDiscount">大众点评</button>
+                <button class="cu-btn round text-sm  " catchtap="onInitDiscount">导航</button>
             </view>
         </view>        
     </view>
         
 
-    <view class="text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
+    <!-- <view class="text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
         <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
         <text class="">若领取优惠券，确认支付自动核销</text>
     </view> 
@@ -31,10 +31,7 @@
         <view class=" pg-radius   bg-white ">
             <view class="cu-bar   bg-white">
                 <view class="action text-black  text-bold">
-                    <text class="text-price text-xl "></text>                
-                    <!-- <text class="">先享规则</text>   -->
-                    <!-- <input placeholder="请输入付款金额" placeholder-style="color:rgba(255,255,255,0.7)" ></input> -->
-                    
+                    <text class="text-price text-xl "></text>  
                     <input placeholder="请输入消费金额"  placeholder-class="text-gray text-normal"
                         class="text-left text-bold text-xl   margin-left-xs " type="digit" 
                         value="{{inputPriceNum}}"
@@ -74,7 +71,7 @@
                 </view>  
             </view>  
         </view>    
-    </view>
+    </view> 
 
     
     <view class="padding-lr margin-top-sm"  wx:if='{{showPayDetail==false}}'>
@@ -83,7 +80,9 @@
     <view class='padding-lr margin-top-sm'  wx:if='{{showPayDetail}}'>        
         <button class="cu-btn  bg-green text-white block lg" catchtap='toPay' >微信支付</button>
     </view>
-    
+    -->
+
+
     <!-- <view class='padding-lr margin-top-sm text-gray flex justify-center align-center'>   
         <text class="cuIcon-rechargefill ">若领取优惠券，支付时自动验证核销</text>
     </view> -->
@@ -102,7 +101,7 @@
         <text class="">领取先享卡后再付款，笔笔都优惠</text>
     </view>   -->
     <view class="padding-lr margin-top-xs">
-        <view class="bg-yellow pg-radius">
+        <view class="bg-yellow pg-radius ">
             <view class="padding-lr padding-top padding-bottom-sm flex justify-between align-center "  wx:if="{{isHasDiscountCard}}">
                 <view>
                     <!-- <image src="/images/pin1.png" class="cu-avatar bg-yellow sm" ></image> -->
@@ -125,7 +124,7 @@
     </view>
   
     <view class="pg-radius padding-lr margin-top-xs" wx:for="{{cardList}}">
-        <view class=" pg-radius  shadow shadow-warp {{ !isHasDiscountCard ? 'bg-gray text-black' : 'bg-yellow text-white' }} ">
+        <view class=" pg-radius  shadow shadow-warp {{ !isHasDiscountCard ? 'bg-white text-black' : 'bg-yellow text-white' }}  ">
 
           
             <view class="cu-bar   ">
@@ -247,19 +246,75 @@
 </view>
 
 
-<ad unit-id="adunit-b07e358fcb8a671f"></ad>
-<view class="ad">
-    <ad list="{{adList}}"></ad>
-</view>
+    <!-- <ad unit-id="adunit-b07e358fcb8a671f"></ad>
+    <view class="ad">
+        <ad list="{{adList}}"></ad>
+    </view> -->
 
-<view class='flex align-center justify-center padding text-gray  margin-bottom'>            
-    <!-- <navigator class="cu-btn round bg-gray text-gray margin-right "url="/pages/sign/sign"  >商户先享开通</navigator> -->
-    <button class="cu-btn round line-gray text-gray  " open-type="contact"  >小杯子先享卡客服</button>
-</view>
-
-<view class="pg-space"></view> 
-
+    <view class='flex align-center justify-center padding text-gray  margin-bottom'>            
+        <!-- <navigator class="cu-btn round bg-gray text-gray margin-right "url="/pages/sign/sign"  >商户先享开通</navigator> -->
+        <!-- <button class="cu-btn round line-gray text-gray  " open-type="contact"  >小杯子先享卡客服</button> -->
+    </view>
+    <view class="pg-space"></view> 
 
 <view>
 
 </view>
+
+
+<!-- 输入金额 -->
+    <view class="cu-bar foot  input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" >
+            <view class="action">
+                <text class="text-price text-black lg"></text>
+            </view>
+            <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"
+                placeholder="请输入消费金额" 
+            ></input>
+            <view class="action">
+                <!-- <text class="cuIcon-emojifill text-grey"></text> -->
+            </view>
+            <button class="cu-btn bg-green shadow" wx:if='{{showPayDetail==false}}'>确定金额</button>
+        
+        <!-- <button class="cu-btn bg-green shadow" wx:else>确认支付</button> -->
+    </view>
+ 
+    <view class="footer">
+        <view class="cu-list  menu bg-white padding-lr padding-bottom" wx:if="{{showPayDetail}}">
+            <view class="flex justify-between padding-top-sm text-gray solid-top">
+                <view class="action ">
+                    <text class="">输入价格：</text>
+                </view>
+                <view class="action ">                    
+                    <text class="text-price "></text>{{inputPrice}}元
+                </view>
+            </view>
+            <view class="flex justify-between padding-top-sm  text-green text-bold">
+                <view class="action ">
+                    <text class="">先享优惠：</text>
+                </view>
+                <view class="action ">                    
+                    - <text class="text-price "></text>{{discountPrice}}元
+                </view>
+            </view>
+            <view class="flex justify-between padding-top-sm text-bold">
+                <view class="action ">
+                    <text class="">实际支付：</text>
+                </view>
+                <view class="action    ">  
+                    <text class="text-price "></text>{{payPrice}}元
+                </view>
+            </view>
+            <view class="flex justify-center padding-top-sm text-bold">
+                <view class="action margin-right">
+                    <button class="cu-btn round text-gray">重新输入</button>
+                </view>
+                <view class="action    ">  
+                    <button class="cu-btn bg-green round text-white">确认支付</button>
+                </view>
+            </view>
+        </view>  
+    </view>  
+
+    
+    <view class="pg-space-xl"></view>
+    <view class="pg-space-xl"></view>
