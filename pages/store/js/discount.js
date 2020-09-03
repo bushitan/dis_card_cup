@@ -63,7 +63,7 @@ module.exports = Behavior({
         lookDicountCardDetailV2(){
             wx.navigateToMiniProgram({
                 appId: "wxcc2e4fbc5887661e",
-                path: "/pages/card-detail/card-detail?card_id=" + this.data.userDiscountCard.out_order_no,
+                path: "/pages/card-detail/card-detail?card_id=" + this.data.userDiscountCard.card_id,
                 success(res) {
                     console.log("success", res)
                 },

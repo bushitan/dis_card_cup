@@ -16,6 +16,9 @@ Page({
         this.setData({
             shop_id: options.shop_id,
             stock_id: options.stock_id,
+
+            card_id: options.card_id || "",
+            user_id: options.user_id || "",
         })
         this.checkScene(options)
     },
@@ -60,8 +63,16 @@ Page({
         var shop_id = this.data.shop_id
         if (shop_id){
             var url = '/pages/store/store?shop_id=' + shop_id 
-            if (this.data.stock_id)
+
+            // 如果有优惠券id，则去领券
+            if (this.data.stock_id) 
                 url = url + "&stock_id=" + this.data.stock_id
+
+            // 若有组团模式，则组团
+            if (this.data.card_id)
+                url = "/pages/route/route?shop_id=" + shop_id
+                    + "&card_id=" + this.data.card_id
+                    + "&user_id=" + this.data.user_id 
             wx.redirectTo({
                 url: url ,
             })

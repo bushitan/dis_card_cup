@@ -295,6 +295,10 @@ class dbMap extends dbFather {
             this.base({ url: this.HOST_URL + "api/customer/updatewxinfo/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
         })
     }
-
+    customerGetInfo(data) {
+        return new Promise((resolve, reject) => {
+            this.base({ url: this.HOST_URL + "api/customer/selfinfo/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
 }
 module.exports = dbMap

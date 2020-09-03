@@ -124,7 +124,7 @@
             </view>
             <view class="padding">                
                 <view class="">
-                    <button class="cu-btn round bg-green text-white" wx:if="{{userDiscountCard.owner_headimgurl}}">邀请好友</button>
+                    <button class="cu-btn round bg-green text-white" open-type="share" wx:if="{{userInfo.WxNickName}}">邀请好友</button>
                     <button class="cu-btn round bg-green text-white" wx:else
                     open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取头像/邀请好友</button>
                     <!-- <button class="cu-btn round">获取头像</button> -->
@@ -186,7 +186,7 @@
     
     <view class="text-sm text-gray padding-lr margin-top " hidden="{{cardList.length==0}}" >
         <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
-        <text class="">领取先享卡，可邀请好友共同完成任务</text>
+        <text class="">单品推荐！</text>
     </view> 
 
 

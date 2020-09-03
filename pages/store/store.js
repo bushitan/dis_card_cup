@@ -9,6 +9,7 @@ const app = getApp()
 
 Page({
     data: {
+        userInfo:{},//用户头像
 
         shop_id:"",
         store:{},
@@ -56,6 +57,7 @@ Page({
         //     this.onInitDiscount() 
         // else
         this.onInit()
+
     },
 
     /**
@@ -87,6 +89,8 @@ Page({
         })
 
         this.checkUserDiscountCard() //检测用户是否有先享卡 
+
+        this.getUserInfo() //检查用户头像
     },
 
     /**检测用户是否有先享卡 */
@@ -141,9 +145,13 @@ Page({
         var res = await app.db.customerSetInfo(wxUserInfo)
         wx.showModal({
             title: res.msg,
-            content: '',
-        })
-      
+            content: '点击分享好友，共同完成任务',
+        })      
+    },
+
+    async getUserInfo(){
+        var res = await app.db.customerGetInfo()
+        this.setData({ userInfo: res.data })
     },
 
     onShareTimeline() {
