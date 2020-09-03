@@ -3,6 +3,7 @@
 class dbSon {
     KEY_SESSION = "session"
     KEY_OPEN_ID = "open_id"
+    KEY_SN = 'sn'
      HOST_URL = "https://wm.51zfgx.com/" // 主机地址
    // HOST_URL = "http://139.159.241.56/" // 主机地址
     
@@ -74,7 +75,7 @@ class dbSon {
                     }).then(res => {
                         // debugger
                         wx.setStorageSync(that.KEY_SESSION, res.data.session) //session
-                        // wx.setStorageSync(that.KEY_SN, "10" + res.data.data.sn)  //序列号
+                        wx.setStorageSync(that.KEY_SN, res.data.sn)  //序列号
                         console.log("get customerGetToken success")
                         resolve(true)
                     })

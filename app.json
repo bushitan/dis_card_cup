@@ -1,6 +1,5 @@
 {
     "pages": [
-        "pages/store/store",
         "pages/route/route",
         "pages/alert/alert",
         "pages/article/article",
@@ -8,6 +7,7 @@
         "pages/poi/poi",
         "pages/self/self",
         "pages/pay/pay",
+        "pages/store/store",
         "pages/sign/sign"
     ],
     "window": {

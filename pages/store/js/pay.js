@@ -12,7 +12,7 @@ module.exports = Behavior({
     },
     methods: {
 
-
+        // 光标聚焦输入框
         async inputFocus() {
             this.setData({
                 inputPriceNum: "",
@@ -20,6 +20,7 @@ module.exports = Behavior({
             })
         },
 
+     
         async inputConfirm(e) {
             console.log(e)
             var inputPrice = e.detail.value

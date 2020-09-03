@@ -85,7 +85,7 @@
 					"id": 3,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "shop_id=70",
+					"query": "shop_id=22",
 					"scene": null
 				},
 				{
@@ -106,7 +106,7 @@
 					"id": 6,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "shop_id=17",
+					"query": "shop_id=15",
 					"scene": 1011
 				},
 				{

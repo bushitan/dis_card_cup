@@ -2,7 +2,7 @@
 <view class="pg-min-height-xl box" >
     <!-- <image src="/images/bg.png" class="bg" mode="widthFix"></image> -->
 
-    <image src="/images/swiper6.jpg" class="bg" mode="widthFix"></image>
+    <image src="{{bannerBGList[0].Picture}}" class="bg" mode="widthFix"></image>
 
     <view class="pg-space-xl"></view>
     <view class="pg-space-xl"></view>
@@ -10,18 +10,26 @@
     <!-- <view class="pg-space-xl"></view> -->
      <!-- <view class="pg-space-xl"></view> -->
     
-    <view class="padding ">
+    <view class="padding-lr ">
         <view class="flex justify-between align-center  bg-white padding  radius">
             <view class="flex  align-center">
                 <image src="{{store.Logo}}" class="cu-avatar round lg margin-right " mode="widthFix"></image>
                 <text class="text-bold text-lg ">{{store.Name}}</text>
             </view>
-            <view>
-                <button class="cu-btn round text-sm  " catchtap="onInitDiscount">导航</button>
+            <view class="basis-xs  ">
+                <button class="cu-btn round text-sm " catchtap="onInitDiscount">导航</button>
             </view>
         </view>        
     </view>
         
+    <view class=" padding-lr margin-top " wx:if="{{bannerProductList.length>0}}" >
+        <swiper class=" " indicator-dots="{{false}}" circular="false" autoplay="true" interval="5000"
+            duration="500" style="height:200rpx">
+            <swiper-item class=" block radius" wx:for="{{bannerProductList}}" wx:key="index" style="height:200rpx"  >
+                <image class="block radius" style="width: 100%;display:block ;height:200rpx"  src="{{item.Picture}}" mode="aspectFill" catchtap="clickSwiper" data-index="{{index}}" ></image>
+            </swiper-item>
+        </swiper>
+    </view>
 
     <!-- <view class="text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
         <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
@@ -95,14 +103,10 @@
         <text class="">领取先享卡，可邀请好友共同完成任务</text>
     </view> 
 
-
-    <!-- <view class="margin-top-xl text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
-        <text class="cuIcon-title margin-right-xs"></text> 
-        <text class="">领取先享卡后再付款，笔笔都优惠</text>
-    </view>   -->
-    <view class="padding-lr margin-top-xs">
+    <!-- 领卡后显示，组队提示  -->
+    <view class="padding-lr margin-top-xs"  wx:if="{{isHasDiscountCard}}">
         <view class="bg-yellow pg-radius ">
-            <view class="padding-lr padding-top padding-bottom-sm flex justify-between align-center "  wx:if="{{isHasDiscountCard}}">
+            <view class="padding-lr padding-top padding-bottom-sm flex justify-between align-center " >
                 <view>
                     <!-- <image src="/images/pin1.png" class="cu-avatar bg-yellow sm" ></image> -->
                     <text class="cuIcon-title text-white  text-xs"></text>
@@ -134,9 +138,12 @@
 
                 </view>
                 <view class="action">
-                    <button class="cu-btn bg-white text-yellow round" catchtap="getCardDetail" wx:if="{{isHasDiscountCard}}">查看详情</button>
-                    <button class="cu-btn bg-yellow text-white round " wx:else
+                    <button class="cu-btn bg-white text-yellow round" catchtap="lookCard" wx:if="{{isHasDiscountCard}}">查看详情</button>
+                    <!-- <button class="cu-btn bg-yellow text-white round " wx:else
                             catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
+                        >领取先享卡</button> -->
+                    <button class="cu-btn bg-yellow text-white round " wx:else
+                            catchtap="getCard" data-discount_card_id="{{item.discount_card_id}}"
                         >领取先享卡</button>
                 </view>
             </view>
@@ -168,6 +175,12 @@
             </view>     
         </view>
     </view>
+
+    
+    <view class="text-sm text-gray padding-lr margin-top " hidden="{{cardList.length==0}}" >
+        <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
+        <text class="">领取先享卡，可邀请好友共同完成任务</text>
+    </view> 
 
 
     <!-- 展示代金券 -->
@@ -261,25 +274,31 @@
 
 </view>
 
-
 <!-- 输入金额 -->
     <view class="cu-bar foot  input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" >
             <view class="action">
                 <text class="text-price text-black lg"></text>
             </view>
-            <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"
+            <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="7" cursor-spacing="10"
+                value="{{inputPriceNum}}"
+                bindfocus="inputFocus"
+                bindblur="inputConfirm"
+                confirm-type="done"
                 placeholder="请输入消费金额" 
             ></input>
             <view class="action">
                 <!-- <text class="cuIcon-emojifill text-grey"></text> -->
             </view>
-            <button class="cu-btn bg-green shadow" wx:if='{{showPayDetail==false}}'>确定金额</button>
+            <button class="cu-btn bg-green shadow"  >确定金额</button>
         
         <!-- <button class="cu-btn bg-green shadow" wx:else>确认支付</button> -->
     </view>
- 
-    <view class="footer">
-        <view class="cu-list  menu bg-white padding-lr padding-bottom" wx:if="{{showPayDetail}}">
+    
+<view class="cu-modal  {{showPayDetail?'show':''}}">
+    <view class="footer " >
+       
+       
+        <view class="cu-list  menu bg-white padding-lr padding-bottom " >
             <view class="flex justify-between padding-top-sm text-gray solid-top">
                 <view class="action ">
                     <text class="">输入价格：</text>
@@ -306,15 +325,14 @@
             </view>
             <view class="flex justify-center padding-top-sm text-bold">
                 <view class="action margin-right">
-                    <button class="cu-btn round text-gray">重新输入</button>
+                    <button class="cu-btn round text-gray" catchtap="inputFocus">重新输入</button>
                 </view>
                 <view class="action    ">  
-                    <button class="cu-btn bg-green round text-white">确认支付</button>
+                    <button class="cu-btn bg-green round text-white" catchtap="toPay">确认支付</button>
                 </view>
             </view>
         </view>  
     </view>  
-
-    
+ </view>
     <view class="pg-space-xl"></view>
     <view class="pg-space-xl"></view>

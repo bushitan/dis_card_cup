@@ -26,7 +26,7 @@ Page({
         wx.showLoading({
             title: '登录中',
         })
-        this.test()
+        // this.test()
 
         // var that = this
         // setTimeout(function(){
@@ -53,6 +53,7 @@ Page({
     async onInit(){
 
         await app.db.sysLogin()
+
         
         wx.hideLoading()
 
@@ -131,19 +132,19 @@ Page({
         // })
 
         // var coupon_id = 12482622825
-        var res = await app.db.couponQueryCondition({
-            limit:10,
-            offset:0,
-            status:"running",
+        // var res = await app.db.couponQueryCondition({
+        //     limit:10,
+        //     offset:0,
+        //     status:"running",
 
-            shopId: '22',
-            // stock_id: '10833068',
-            // out_request_no : "",
-            // Wxappid: "wxcd49aa99fd3d1f6a",
-            // stock_creator_mchid : "",
-            // coupon_value : "",
-            // coupon_minimum : "",
-        })
+        //     shopId: '22',
+        //     // stock_id: '10833068',
+        //     // out_request_no : "",
+        //     // Wxappid: "wxcd49aa99fd3d1f6a",
+        //     // stock_creator_mchid : "",
+        //     // coupon_value : "",
+        //     // coupon_minimum : "",
+        // })
         // await app.db.couponGetDetail({
         //     coupon_id: coupon_id,
         //     stock_id: '10833068',

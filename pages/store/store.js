@@ -4,6 +4,7 @@ var card = require('js/card.js')
 var pay = require('js/pay.js')
 var coupon = require('js/coupon.js')
 var discount = require('js/discount.js')
+var banner = require('js/banner.js')
 const app = getApp()
 
 Page({
@@ -21,7 +22,7 @@ Page({
         // price:0
     },
 
-    behaviors: [app.baseBehavior, card, pay, coupon, discount],
+    behaviors: [app.baseBehavior, card, pay, coupon, discount, banner],
 
     async onLoad(options) {
         this.setData({
@@ -51,14 +52,15 @@ Page({
     },
     onShow(){
 
-
-        //  先享卡服务商模式
-        this.onInitDiscount()
-
-
+        // if (this.data.shop_id >= 70)//  先享卡服务商模式        
+        //     this.onInitDiscount() 
+        // else
         this.onInit()
     },
 
+    /**
+     * v1 原有传统模式的先享卡
+     */
     async onInit(){
 
         // 先设置input输入框为fale
@@ -84,20 +86,41 @@ Page({
             // cardList: [1],
         })
 
+        this.checkUserDiscountCard() //检测用户是否有先享卡 
+    },
 
+    /**检测用户是否有先享卡 */
+    async checkUserDiscountCard(){
         // 检测用户是否有先享卡        
         var res = await app.db.storeCheckDiscountCard({
-            ShopId:this.data.shop_id
+            ShopId: this.data.shop_id
         })
-        
+
         this.setData({
             // isHasDiscountCard: !res.isHasDiscountCard,
             isHasDiscountCard: res.isHasDiscountCard,
-            userDiscountCard:res.data
+            userDiscountCard: res.data
         })
+    },
 
 
-       
+
+    /**领取先享卡 */
+    getCard(e) {
+
+        if (this.data.shop_id >= 70)//  先享卡服务商模式        
+            this.getDicountCardV2(e)  
+        else
+            this.getNewCard(e)   //普通商户模式
+    },  
+
+    /**查看先享卡 */
+    lookCard(){
+
+        if (this.data.shop_id >= 70)//  先享卡服务商模式        
+            this.lookDicountCardDetailV2()
+        else
+            this.getCardDetail()   //普通商户模式
     },
 
     // closeDialog(){
@@ -112,9 +135,16 @@ Page({
         }
     },
     onShareAppMessage(){
+        var path = "/pages/route/route?shop_id=" + this.data.store.Id
+        if (this.data.isHasDiscountCard)
+            path = "/pages/route/route?shop_id=" + this.data.store.Id 
+                + "&&card_id=" + this.data.cardList[0].discount_card_id
+            + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
+
+        console.log(path)
         return {
             title: this.data.store.Name,
-            path: "/pages/route/route?shop_id=" + this.data.store.Id,
+            path: path ,
             imageUrl: this.data.store.Logo,
         }
     }

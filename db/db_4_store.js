@@ -82,6 +82,23 @@ class dbMap extends dbFather {
         })
     }
 
+
+    /**************轮播图*************/
+    // 用户调用小程序，领取先享卡
+    storeGetBannerList(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "/api/shop/banner/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                // console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+
     /**************支付*************/
 
    
