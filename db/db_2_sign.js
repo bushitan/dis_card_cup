@@ -9,6 +9,7 @@ class dbSon extends dbFather {
         super()
 
     }
+    
 
     //添加报名
     signAdd(data){

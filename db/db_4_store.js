@@ -286,5 +286,15 @@ class dbMap extends dbFather {
         })
     }
 
+
+
+    /*************用户************/
+
+    customerSetInfo(data) {
+        return new Promise((resolve, reject) => {
+            this.base({ url: this.HOST_URL + "api/customer/updatewxinfo/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+
 }
 module.exports = dbMap

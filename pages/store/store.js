@@ -15,8 +15,8 @@ Page({
         cardList:[],
 
         isHasDiscountCard: false,
-        userDiscountCard:{},
-
+        userDiscountCard:{}, //　用户领取先享卡
+        defaultLogo:"/images/icon_1.png",
 
         InputBottom:0,
         // price:0
@@ -123,9 +123,28 @@ Page({
             this.getCardDetail()   //普通商户模式
     },
 
-    // closeDialog(){
-    //     this.setData({ showDialog :false})
-    // },
+    /**上传头像*/
+    async onGotUserInfo(e){
+        var userInfo = e.detail.userInfo
+        var wxUserInfo = {
+            WxAvatarUrl: userInfo.avatarUrl,
+            WxCity: userInfo.city,
+            WxCountry: userInfo.country,
+            WxGender: userInfo.gender,
+            WxLanguage: userInfo.language,
+            WxNickName: userInfo.nickName,
+            WxProvince: userInfo.province,
+        }
+        this.setData({
+            userInfo: wxUserInfo
+        })
+        var res = await app.db.customerSetInfo(wxUserInfo)
+        wx.showModal({
+            title: res.msg,
+            content: '',
+        })
+      
+    },
 
     onShareTimeline() {
         return {
@@ -138,7 +157,7 @@ Page({
         var path = "/pages/route/route?shop_id=" + this.data.store.Id
         if (this.data.isHasDiscountCard)
             path = "/pages/route/route?shop_id=" + this.data.store.Id 
-                + "&&card_id=" + this.data.cardList[0].discount_card_id
+                + "&card_id=" + this.data.userDiscountCard.card_id
             + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
 
         console.log(path)
