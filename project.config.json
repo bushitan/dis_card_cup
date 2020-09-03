@@ -150,6 +150,13 @@
 					"pathName": "pages/route/route",
 					"query": "scene=5_22_10739083",
 					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "pages/store/store",
+					"pathName": "pages/store/store",
+					"query": "shop_id=70&card_id=12&user_id=1",
+					"scene": null
 				}
 			]
 		}

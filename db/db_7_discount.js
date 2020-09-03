@@ -6,28 +6,7 @@ class dbMap extends dbFather {
     }
     
     /** 
-         * @mehtod 获取通知
-         * @param
-            Page
-            PageSize
-            shopId
-            status
-        */
-    wxDiscountCardNotify(data) {
-        return new Promise((resolve, reject) => {
-            this.base({
-                url: this.HOST_URL + "api/wxdiscountcard/notify/",
-                data: data,
-                method: "POST",
-            }).then(res => {
-                // console.log(res)
-                resolve(res)
-            }).catch(res => reject(res))
-        })
-    }
-
-    /** 
-          * @mehtod 获取通知
+          * @mehtod 获取v2 先享卡token
           * @param
              Page
              PageSize
@@ -46,6 +25,32 @@ class dbMap extends dbFather {
             }).catch(res => reject(res))
         })
     }
+
+    /** 
+            * @mehtod 点击分享接口，
+            * @param
+               Page
+               PageSize
+               shopId
+               status
+           */
+    wxDiscountCardGetShare(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/pickup/checkdiscountcard/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                // console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+
+
+
+
 
 
     /** 
@@ -68,7 +73,28 @@ class dbMap extends dbFather {
             }).catch(res => reject(res))
         })
     }
-    
+
+    /** 
+         * @mehtod 获取通知
+         * @param
+            Page
+            PageSize
+            shopId
+            status
+        */
+    wxDiscountCardNotify(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/wxdiscountcard/notify/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                // console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
     
 
 }

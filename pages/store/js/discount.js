@@ -1,3 +1,4 @@
+// v2 版本 先享卡操作
 
 var app = getApp()
 module.exports = Behavior({
@@ -14,6 +15,21 @@ module.exports = Behavior({
     },
 
     methods: {
+        onLoad(options) {
+            debugger
+            console.log("discount onload", options)
+        },
+
+        async getShare(options) { 
+            console.log(options)            
+        
+            var res = await app.db.wxDiscountCardGetShare({
+                storeId: options.shop_id || "",
+                card_id_num: options.card_id || "",
+                shareSN: options.user_id || "",
+            })
+        },
+
         async onInitDiscount() {
             // var res = await app.db.wxDiscountCardNotify({
                
@@ -41,14 +57,13 @@ module.exports = Behavior({
 
         },
 
+
     },
 
 
 
 
-    // onLoad() {
-    //     console.log("behavior onload")
-    // },
+    
     // created() {
     //     console.log("created")
     // },

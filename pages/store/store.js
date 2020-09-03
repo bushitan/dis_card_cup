@@ -27,9 +27,13 @@ Page({
         this.setData({
             shop_id:options.shop_id || ""
         })
+        if(options.hasOwnProperty("card_id")){
+            this.getShare(options)
+        }
+
 
         // scene = 5_22_10739083
-        console.log(options.wue)
+        console.log(options)
 
        
     },
