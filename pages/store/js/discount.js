@@ -31,7 +31,11 @@ module.exports = Behavior({
                 card_id_num: options.card_id || "",
                 shareSN: options.user_id || "",
             })
- 
+            wx.showModal({
+                title: res.msg,
+                // content: '',
+            })
+
             this.checkUserDiscountCard() //检测用户是否有先享卡 
         },
 

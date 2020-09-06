@@ -74,9 +74,15 @@ Page({
         // debugger
 
         var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        var path = "/pages/route/route?shop_id=" + prePage.data.store.Id
+        if (prePage.data.isHasDiscountCard)
+            path = "/pages/route/route?shop_id=" + prePage.data.store.Id
+                + "&card_id=" + prePage.data.userDiscountCard.card_id
+                + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
+
         return {
             title: prePage.data.store.Name,
-            path: "/pages/route/route?shop_id=" + prePage.data.store.Id,
+            path: path ,//"/pages/route/route?shop_id=" + prePage.data.store.Id,
             imageUrl: prePage.data.store.Logo,
         }
     }

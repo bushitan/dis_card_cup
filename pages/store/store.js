@@ -100,10 +100,12 @@ Page({
             ShopId: this.data.shop_id
         })
 
+        var userDiscountCard = res.data
+        userDiscountCard.Participators = userDiscountCard.Participators.reverse()
         this.setData({
             // isHasDiscountCard: !res.isHasDiscountCard,
             isHasDiscountCard: res.isHasDiscountCard,
-            userDiscountCard: res.data
+            userDiscountCard: userDiscountCard
         })
     },
 
@@ -155,9 +157,16 @@ Page({
     },
 
     onShareTimeline() {
+        var path = "/pages/route/route?shop_id=" + this.data.store.Id
+        if (this.data.isHasDiscountCard)
+            path = "/pages/route/route?shop_id=" + this.data.store.Id
+                + "&card_id=" + this.data.userDiscountCard.card_id
+                + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
+
         return {
             title: this.data.store.Name,
-            query: "/pages/route/route?shop_id=" + this.data.store.Id,
+            // query: "/pages/route/route?shop_id=" + this.data.store.Id,
+            query: path,
             imageUrl: this.data.store.Logo,
         }
     },

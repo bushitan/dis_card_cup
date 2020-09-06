@@ -70,7 +70,7 @@ Page({
 
             // 若有组团模式，则组团
             if (this.data.card_id)
-                url = "/pages/route/route?shop_id=" + shop_id
+                url = "/pages/store/store?shop_id=" + shop_id
                     + "&card_id=" + this.data.card_id
                     + "&user_id=" + this.data.user_id 
             wx.redirectTo({

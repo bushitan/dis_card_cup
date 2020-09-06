@@ -7,10 +7,12 @@
     <view class="pg-space-xl"></view>
     <view class="pg-space-xl"></view>
     <view class="pg-space-xl"></view>
+
+    
     <!-- <view class="pg-space-xl"></view> -->
      <!-- <view class="pg-space-xl"></view> -->
     
-    <view class="padding-lr ">
+    <view class="padding-lr margin-top">
         <view class="flex justify-between align-center  bg-white padding  radius">
             <view class="flex  align-center">
                 <image src="{{store.Logo}}" class="cu-avatar round lg margin-right " mode="widthFix"></image>
@@ -22,14 +24,14 @@
         </view>        
     </view>
         
-    <view class=" padding-lr margin-top " wx:if="{{bannerProductList.length>0}}" >
+    <!-- <view class=" padding-lr margin-top " wx:if="{{bannerProductList.length>0}}" >
         <swiper class=" " indicator-dots="{{false}}" circular="false" autoplay="true" interval="5000"
             duration="500" style="height:200rpx">
             <swiper-item class=" block radius" wx:for="{{bannerProductList}}" wx:key="index" style="height:200rpx"  >
                 <image class="block radius" style="width: 100%;display:block ;height:200rpx"  src="{{item.Picture}}" mode="aspectFill" catchtap="clickSwiper" data-index="{{index}}" ></image>
             </swiper-item>
         </swiper>
-    </view>
+    </view> -->
 
     <!-- <view class="text-sm text-gray padding-lr" hidden="{{cardList.length==0}}" >
         <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
@@ -98,37 +100,41 @@
         
     <!-- 先享卡模块 -->
  
-    <view class="text-sm text-gray padding-lr margin-top " hidden="{{cardList.length==0}}" >
-        <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
-        <text class="">领取先享卡，可邀请好友共同完成任务</text>
-    </view> 
 
     <!-- 领卡后显示，组队提示  -->
-    <view class="padding-lr margin-top-xs"  wx:if="{{isHasDiscountCard}}">
-        <view class="bg-yellow pg-radius flex justify-between align-center">
-            <view class="padding-lr padding-top padding-bottom-sm flex justify-between align-center " >
-                <view >
-                    <text class="cuIcon-title text-white  text-xs"></text>
-                    <!-- <view class="cu-avatar-group">
-                        <image class="cu-avatar round block" wx:for="{{1}}" wx:key src="{{defaultLogo}}" mode="widthFix"
-                        style="width:64rpx;height:64rpx"></image>                        
-                    </view> -->
-                    <view class="cu-avatar-group">
-                        <view class="cu-avatar round lg block" 
-                        wx:for="{{userDiscountCard.Participators}}" wx:key 
-                        style="background-image:url({{item.headimgurl || defaultLogo}});"></view>
-  </view>
-                    
+    <view class="padding-lr margin-top"  wx:if="{{isHasDiscountCard}}">
+        
+        <view class="bg-white pg-radius">            
+            <view class="text-sm text-gray padding-lr margin-top-xs " hidden="{{cardList.length==0}}" >
+                <text class="cuIcon-titles text-yellow "></text> 
+                <text class="">邀请好友共同完成任务</text>
+            </view> 
+            <view class=" flex justify-between align-center">
+                
+                <view class="padding-lr padding-top padding-bottom-sm flex justify-between align-center " >
+                    <!-- <view > -->
+                        <!-- <text class="cuIcon-title text-white  text-xs"></text> -->
+                        <!-- <view class="cu-avatar-group">
+                            <image class="cu-avatar round block" wx:for="{{1}}" wx:key src="{{defaultLogo}}" mode="widthFix"
+                            style="width:64rpx;height:64rpx"></image>                        
+                        </view> -->
+                        <view class="cu-avatar-group ">
+                            <view class="cu-avatar round block {{userDiscountCard.Participators.length<5?'lg':''}}" 
+                            wx:for="{{userDiscountCard.Participators}}" wx:key 
+                            style="background-image:url({{item.headimgurl || defaultLogo}});"></view>
+    </view>
+                        <!--  -->
+                    <!-- </view> -->
+                    <text class="text-right text-white ">{{userDiscountCard.ParticipatorsTotal}}人</text>                    
                 </view>
-                <text class="text-right text-white">{{userDiscountCard.ParticipatorsTotal}}人</text>                    
-            </view>
-            <view class="padding">                
-                <view class="">
-                    <button class="cu-btn round bg-green text-white" open-type="share" wx:if="{{userInfo.WxNickName}}">邀请好友</button>
-                    <button class="cu-btn round bg-green text-white" wx:else
-                    open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取头像/邀请好友</button>
-                    <!-- <button class="cu-btn round">获取头像</button> -->
-                    <!-- <button class="cu-btn round bg-green text-white">海报</button> -->
+                <view class="padding ">                
+                    <view class="">
+                        <button class="cu-btn round bg-red text-white" open-type="share" wx:if="{{userInfo.WxNickName}}">邀请好友</button>
+                        <button class="cu-btn round bg-green text-white" wx:else
+                        open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">邀请好友</button>
+                        <!-- <button class="cu-btn round">获取头像</button> -->
+                        <!-- <button class="cu-btn round bg-green text-white">海报</button> -->
+                    </view>
                 </view>
             </view>
         </view>
@@ -145,7 +151,8 @@
 
                 </view>
                 <view class="action">
-                    <button class="cu-btn bg-white text-yellow round" catchtap="lookCard" wx:if="{{isHasDiscountCard}}">查看详情</button>
+                    <button class="cu-btn bg-white text-yellow round" catchtap="lookCard" 
+                    wx:if="{{isHasDiscountCard }}" hidden="{{ !userDiscountCard.is_owner}}">查看详情</button>
                     <!-- <button class="cu-btn bg-yellow text-white round " wx:else
                             catchtap="getNewCard" data-discount_card_id="{{item.discount_card_id}}"
                         >领取先享卡</button> -->
@@ -286,7 +293,7 @@
             <view class="action">
                 <text class="text-price text-black lg"></text>
             </view>
-            <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="7" cursor-spacing="10"
+            <input class="solid-bottom"    maxlength="7" cursor-spacing="10"
                 value="{{inputPriceNum}}"
                 bindfocus="inputFocus"
                 bindblur="inputConfirm"
