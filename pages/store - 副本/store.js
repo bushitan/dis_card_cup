@@ -7,15 +7,9 @@ var discount = require('js/discount.js')
 var banner = require('js/banner.js')
 const app = getApp()
 
-var VERSION_1 = 1,
-VERSION_2 = 2
 Page({
     data: {
         userInfo:{},//用户头像
-
-        VERSION_1 : 1,
-        VERSION_2 : 2,
-        version: VERSION_2,
 
         shop_id:"",
         store:{},
@@ -33,8 +27,7 @@ Page({
 
     async onLoad(options) {
         this.setData({
-            shop_id:options.shop_id || "",
-            version: options.shop_id >= 70 ? VERSION_2 : VERSION_1,
+            shop_id:options.shop_id || ""
         })
         if(options.hasOwnProperty("card_id")){
             this.getShare(options)
@@ -43,8 +36,8 @@ Page({
 
         // scene = 5_22_10739083
         console.log(options)
-        // debugger
 
+       
     },
     onReady() {
         wx.showShareMenu({
@@ -121,7 +114,7 @@ Page({
     /**领取先享卡 */
     getCard(e) {
 
-        if (this.data.version == VERSION_2)//  先享卡服务商模式        
+        if (this.data.shop_id >= 70)//  先享卡服务商模式        
             this.getDicountCardV2(e)  
         else
             this.getNewCard(e)   //普通商户模式
@@ -129,7 +122,8 @@ Page({
 
     /**查看先享卡 */
     lookCard(){
-        if (this.data.version == VERSION_2)//  先享卡服务商模式        
+
+        if (this.data.shop_id >= 70)//  先享卡服务商模式        
             this.lookDicountCardDetailV2()
         else
             this.getCardDetail()   //普通商户模式
@@ -162,45 +156,32 @@ Page({
         this.setData({ userInfo: res.data })
     },
 
-    /**导航功能 */
-    toAddress(){
-        wx.navigateTo({
-            url: '/pages/alert/alert',
-        })
-    },
-
-
-
-
     onShareTimeline() {
-        return app.getShareInfo(this, false)
-        // var path = "/pages/route/route?shop_id=" + this.data.store.Id
-        // if (this.data.isHasDiscountCard)
-        //     path = "/pages/route/route?shop_id=" + this.data.store.Id
-        //         + "&card_id=" + this.data.userDiscountCard.card_id
-        //         + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
+        var path = "/pages/route/route?shop_id=" + this.data.store.Id
+        if (this.data.isHasDiscountCard)
+            path = "/pages/route/route?shop_id=" + this.data.store.Id
+                + "&card_id=" + this.data.userDiscountCard.card_id
+                + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
 
-        // return {
-        //     title: this.data.store.Name,
-        //     // query: "/pages/route/route?shop_id=" + this.data.store.Id,
-        //     query: path,
-        //     imageUrl: this.data.store.Logo,
-        // }
+        return {
+            title: this.data.store.Name,
+            // query: "/pages/route/route?shop_id=" + this.data.store.Id,
+            query: path,
+            imageUrl: this.data.store.Logo,
+        }
     },
     onShareAppMessage(){
-        return app.getShareInfo(this,true)
-        // var path = "/pages/route/route?shop_id=" + this.data.store.Id
-        // if (this.data.isHasDiscountCard)
-        //     path = "/pages/route/route?shop_id=" + this.data.store.Id 
-        //         + "&card_id=" + this.data.userDiscountCard.card_id
-        //     + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
-        
+        var path = "/pages/route/route?shop_id=" + this.data.store.Id
+        if (this.data.isHasDiscountCard)
+            path = "/pages/route/route?shop_id=" + this.data.store.Id 
+                + "&card_id=" + this.data.userDiscountCard.card_id
+            + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
 
-        // console.log(path)
-        // return {
-        //     title: this.data.store.Name,
-        //     path: path ,
-        //     imageUrl: this.data.store.Logo,
-        // }
+        console.log(path)
+        return {
+            title: this.data.store.Name,
+            path: path ,
+            imageUrl: this.data.store.Logo,
+        }
     }
 })

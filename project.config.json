@@ -104,9 +104,9 @@
 				},
 				{
 					"id": 6,
-					"name": "pages/store/store",
+					"name": "pages/store/store70",
 					"pathName": "pages/store/store",
-					"query": "shop_id=15",
+					"query": "shop_id=70",
 					"scene": 1011
 				},
 				{
@@ -155,7 +155,7 @@
 					"id": 13,
 					"name": "pages/store/store",
 					"pathName": "pages/store/store",
-					"query": "shop_id=70&card_id=12&user_id=1",
+					"query": "shop_id=70&card_id=20200903205517rbkiuA8hWm66543858&user_id=9087",
 					"scene": null
 				}
 			]

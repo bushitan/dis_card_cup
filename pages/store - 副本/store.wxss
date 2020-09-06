@@ -86,13 +86,3 @@ page{
 	z-index: 1024;
 	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
-
-/* 已领取印章 */
-.icon_complete{
-    width:100px;
-    height:100px; 
-    position:absolute;
-    top:-12px;
-    right: -12px;
-    /* bottom:0  */
-}

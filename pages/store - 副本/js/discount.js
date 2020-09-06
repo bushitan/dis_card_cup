@@ -1,8 +1,6 @@
 // v2 版本 先享卡操作
 
-var utils = require('../../../utils/util.js')
 var app = getApp()
-var interval
 module.exports = Behavior({
     data: {
         // showCouponListDialog: false, // 对话框
@@ -10,28 +8,16 @@ module.exports = Behavior({
         // couponContent: "", // 领取优惠券点结果
         // couponList: [],//我在当前门店的优惠券列表
         // stockList:[],
-        countdown:"",//倒计时
     },
     ready() {
-        console.log( 'discount interval')
+        // console.log( 'coupon')
         // this.onInitCoupon()
-        var that = this
-        var interval = setInterval(function(){
-            var now = utils.formatTime( new Date() )
-            var countdown = utils.countdownYMDhms(now, "2020-09-07 10:00:01")
-            that.setData({ countdown:countdown})
-        },1000)      
-    },
-    detached() {
-        clearInterval(interval)
-        console.log("detached")
     },
 
     methods: {
         onLoad(options) {
             debugger
             console.log("discount onload", options)
-
         },
 
         /**

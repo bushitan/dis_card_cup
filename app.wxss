@@ -17,5 +17,5 @@
     min-height: calc( 100vh - 84px)
 }
 .pg-min-height-xl{
-    min-height: calc( 100vh - 84px - 10px)
+    min-height: calc( 100vh - 70px)
 }

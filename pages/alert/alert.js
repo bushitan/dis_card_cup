@@ -42,6 +42,7 @@ Page({
             discountPrice: prePage.data.discountPrice,
             payPrice: prePage.data.payPrice,
 
+            userDiscountCard: prePage.userDiscountCard ,// 用户是否领取先享卡
             // isHasDiscountCard: prePage.data.isHasDiscountCard, //用户是否有领取先享卡
 
             // sendMessageTitle: prePage.data.store.Name,
@@ -61,29 +62,38 @@ Page({
     },
 
     
-    toCardDetail() {
+    lookCard() {
         var prePage = getCurrentPages()[getCurrentPages().length - 2]
-        prePage.getCardDetail()
+        prePage.lookCard()
+
+     
+
     },
 
 
+    onShareTimeline() {
+        var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        return app.getShareInfo(prePage, false)
+    },
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
+        var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        return app.getShareInfo(prePage, true)
         // debugger
 
-        var prePage = getCurrentPages()[getCurrentPages().length - 2]
-        var path = "/pages/route/route?shop_id=" + prePage.data.store.Id
-        if (prePage.data.isHasDiscountCard)
-            path = "/pages/route/route?shop_id=" + prePage.data.store.Id
-                + "&card_id=" + prePage.data.userDiscountCard.card_id
-                + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
+        // var prePage = getCurrentPages()[getCurrentPages().length - 2]
+        // var path = "/pages/route/route?shop_id=" + prePage.data.store.Id
+        // if (prePage.data.isHasDiscountCard)
+        //     path = "/pages/route/route?shop_id=" + prePage.data.store.Id
+        //         + "&card_id=" + prePage.data.userDiscountCard.card_id
+        //         + "&user_id=" + wx.getStorageSync(app.db.KEY_SN)
 
-        return {
-            title: prePage.data.store.Name,
-            path: path ,//"/pages/route/route?shop_id=" + prePage.data.store.Id,
-            imageUrl: prePage.data.store.Logo,
-        }
+        // return {
+        //     title: prePage.data.store.Name,
+        //     path: path ,//"/pages/route/route?shop_id=" + prePage.data.store.Id,
+        //     imageUrl: prePage.data.store.Logo,
+        // }
     }
 })

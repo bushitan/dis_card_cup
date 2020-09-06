@@ -71,7 +71,52 @@ App({
 
     globalData: {
         userInfo: null
-    }
+    },
+
+    /**
+     * @method 
+     * @param 
+     *  page
+     *  store_id 
+     *  is_message : true普通分享 | false 朋友圈分享
+     */
+    getShareInfo(page,is_message){
+
+        var path = "/pages/route/route?shop_id=" + page.data.store.Id
+        if (page.data.isHasDiscountCard)
+            path = "/pages/route/route?shop_id=" + page.data.store.Id
+                + "&card_id=" + page.data.userDiscountCard.card_id
+                + "&user_id=" + wx.getStorageSync(this.db.KEY_SN)
+
+        console.log(
+            {
+                title: page.data.store.Name,
+                path: path,
+                imageUrl: page.data.store.Logo,
+            }
+        )
+
+        // 没有领取先享卡，分享门店名字，领取了，分享先享卡的活动名字
+        var title = page.data.store.Name
+        if (page.data.userDiscountCard)
+            title = page.data.userDiscountCard.name 
+
+        var imageUrl = page.data.store.Logo
+
+
+        if (is_message) //普通分享
+            return {
+                title: title,
+                path: path,
+                imageUrl: imageUrl,
+            }
+        else //朋友圈分享
+            return {
+                title: title,
+                query: path,
+                imageUrl: imageUrl,
+            }
+    },
 })
 
 // 07c160
