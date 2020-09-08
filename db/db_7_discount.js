@@ -22,7 +22,9 @@ class dbMap extends dbFather {
             }).then(res => {
                 // console.log(res)
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res =>{
+                reject(res)
+            })
         })
     }
 

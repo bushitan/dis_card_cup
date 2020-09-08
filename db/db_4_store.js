@@ -55,6 +55,10 @@ class dbMap extends dbFather {
     //  检测用户是否领取了先享卡啊，没有领取，则领取；已经领取可以查看
     // 展示查看按钮，跳转小程序
     storeCheckDiscountCard(data) {
+        wx.showLoading({
+            title:"...",
+            icon:"loading",
+        })
         return new Promise((resolve, reject) => {
             this.base({
                 url: this.HOST_URL + "api/payscore/checkuserdiscountcard/",
@@ -62,8 +66,12 @@ class dbMap extends dbFather {
                 method: "POST",
             }).then(res => {
                 // console.log(res)
+                wx.hideLoading()
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res =>{
+                wx.hideLoading()
+                reject(res)
+            } )
         })
     }
 

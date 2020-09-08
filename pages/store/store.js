@@ -108,7 +108,8 @@ Page({
         })
 
         var userDiscountCard = res.data
-        userDiscountCard.Participators = userDiscountCard.Participators.reverse()
+        if (userDiscountCard.hasOwnProperty("Participators"))
+            userDiscountCard.Participators = userDiscountCard.Participators.reverse()
         this.setData({
             // isHasDiscountCard: !res.isHasDiscountCard,
             isHasDiscountCard: res.isHasDiscountCard,

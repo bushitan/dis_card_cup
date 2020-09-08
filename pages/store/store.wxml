@@ -89,20 +89,20 @@
                             </view>
                             <view style="width:100%;">
                                 <view class="text-bold text-lg flex justify-between align-center "  >
-                                    <text> {{userDiscountCard.name || '先享卡名字'}}</text>
+                                    <text> {{userDiscountCard.name || cardList[0].name}}</text>
 
                                     <button class="cu-btn line-gray round"  catchtap="lookCard" 
                     wx:if="{{userDiscountCard.is_owner}}">查看详情</button>
                                 </view>
                                 <view class="margin-top-xs">
                                     <text class="text-red text-bold text-xxl  ">{{userDiscountCard.reward_desc }}</text>   
-                                    <text class="text-gray text-sm margin-left-sm">{{userDiscountCard.desc || '先享卡概要描述'}}</text>   
+                                    <text class="text-gray text-sm margin-left-sm">{{userDiscountCard.desc || cardList[0].desc}}</text>   
                                 </view>
-                                <view class="margin-top-xs">
+                                <!-- <view class="margin-top-xs">
                                     <view class="cu-tag line-gray round">已享优惠：
                                     <text class="text-red text-xxl text-bold margin-lr-xs">8</text>
                                     元</view>
-                                </view>
+                                </view> -->
                                 <view class="margin-top-xs">
                                     <view class="cu-tag line-gray round ">
                                         优惠次数：仅剩                                    
@@ -110,9 +110,9 @@
                                         次
                                     </view>
                                 </view>
-                                <view class="margin-top-xs">
+                                <!-- <view class="margin-top-xs">
                                     <text class="cu-tag line-gray round">优惠倒计时：{{countdown}}</text>
-                                </view>
+                                </view> -->
                             </view>
                         </view>
                     </view>
@@ -179,9 +179,8 @@
 
             
                 <view class="cu-bar   ">
-                    <view class="action ">
-                        <text class="" wx:if="{{isHasDiscountCard}}">任务剩余：{{userDiscountCard.left_objective_count}}次</text>                 
-                        <text class="" wx:else>先享卡优惠</text>     
+                    <view class="action ">                
+                        <text class="" >先享卡优惠</text>     
 
                     </view>
                     <view class="action">
@@ -353,7 +352,7 @@
 <!-- 输入金额 -->
 <view class="cu-bar foot  input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" >
         <view class="action">
-            <text class="text-price text-black lg"></text>
+            <text class="text-price text-xxl "></text>
         </view>
         <input  maxlength="7" cursor-spacing="10"
             type="digit"
@@ -362,10 +361,10 @@
             bindblur="inputConfirm"
             confirm-type="done"
             placeholder="请输入消费金额" 
-            placeholder-class="text-xxl text-gray"
-            class="text-xxl"
+            placeholder-class="text-xxl text-yellow-light"
+            class="text-xxl solid-bottom"
         ></input>
-        <button class="cu-btn bg-green shadow"  >确定金额</button>
+        <button class="cu-btn bg-green text-white shadow "  >确定金额</button>
 </view>
     
 <view class="cu-modal  {{showPayDetail?'show':''}}">
