@@ -18,7 +18,7 @@ module.exports = Behavior({
         var that = this
         var interval = setInterval(function(){
             var now = utils.formatTime( new Date() )
-            var countdown = utils.countdownYMDhms(now, "2020-09-07 10:00:01")
+            var countdown = utils.countdownYMDhms(now, that.data.userDiscountCard.end_time)
             that.setData({ countdown:countdown})
         },1000)      
     },
