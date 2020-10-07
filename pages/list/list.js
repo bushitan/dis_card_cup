@@ -39,8 +39,8 @@ Page({
         swiperList:[
             // "https://mmbiz.qpic.cn/sz_mmbiz_png/5IoRWl64Ed266Dy8hLXUQxBeYobJlIMDUMuRReZNUHwDMtKZicfia72KwqUdS74JUq9ia9ib9FgTdY44H0xiaB0QiaMA/0?wx_fmt=png",
 
-            "/images/swiper1.jpg",
-            "/images/swiper2.jpg",
+            "/images/swiper3.jpg",
+            // "/images/swiper2.jpg",
         ],
 
 

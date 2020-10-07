@@ -7,7 +7,7 @@
 
 
 <view class="flex align-center justify-center ">
-    <image src="/images/loading2.jpg"  mode="aspectFit" style="width:750rpx;height:100vh"></image>
+    <image src="/images/loading.jpg"  mode="aspectFit" style="width:750rpx;height:100vh"></image>
 </view>
 
 

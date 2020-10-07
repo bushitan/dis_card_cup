@@ -3,7 +3,10 @@
 page{
     /* background-color: var(--green) */
     /* background-color: var(--green); */
-    background-color: #1da738;
+    /* background-color: #1da738; */
+    background-color: #f0b034;
+
+    
 }
 
 .loading{

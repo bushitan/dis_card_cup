@@ -49,7 +49,7 @@
 <!-- <button open-type="contact"> -->
     <view class=" padding-lr padding-bottom ">
         <swiper class=" " indicator-dots="{{false}}" circular="false" autoplay="true" interval="5000"
-            duration="500" style="height:290rpx">
+            duration="500" style="height:230rpx">
             <swiper-item class=" block radius" wx:for="{{swiperList}}" wx:key="index">
                 <image class="block radius" style="width: 100%;display:block" src="{{item}}" mode="widthFix" catchtap="clickSwiper" data-index="{{index}}" ></image>
             </swiper-item>
