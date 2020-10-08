@@ -19,3 +19,8 @@
 .pg-min-height-xl{
     min-height: calc( 100vh - 70px)
 }
+
+.pg-icon{
+    width: 50rpx;
+    height: 50rpx;
+}

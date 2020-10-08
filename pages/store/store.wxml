@@ -66,7 +66,7 @@
         </view>
 
         <!-- 服务商模式 已经领卡 -->
-        <view  wx:if="{{isHasDiscountCard}}">
+        <view  wx:if="{{isHasDiscountCard}}"  hidden="{{true}}">
             <!-- 好友组队 -->
             <view class="padding-lr margin-top" >        
                 <view class="bg-white pg-radius shadow shadow-warp   " style="position:relative">            
@@ -156,6 +156,185 @@
         </view>    
     </view>
 
+
+
+
+
+    <!-- 单品先享卡 -->
+    <view>
+        <!-- 服务商模式 已经领卡 -->
+        <view  wx:if="{{isHasDiscountCard}}">
+            <!-- 好友组队 -->
+            <view class="padding-lr margin-top" >        
+                <view class="bg-white pg-radius shadow shadow-warp   " style="position:relative">            
+                  
+                    <view class=" padding-lr ">
+                        <view class="  text-sm  text-gray margin-top-sm solid-bottom padding-bottom-xs " >
+                            <text class="cuIcon-titles text-yellow "></text>
+                            <text class="">小券包</text>
+                        </view>
+                    </view>
+                    <!-- 印章 -->
+                    <image src="/images/icon_get_1.png" class="icon_complete"  mode="widthFix"></image>
+
+                    <!-- 优惠细节 -->
+                    <view class="text-black" >                    
+                        <view class="padding flex " >
+                            <view class="border margin-right-sm">
+                                <!-- <view class="cu-avatar radius xl"  style="background-image:url({{userDiscountCard.Logo}});" ></view> -->
+                                <!-- style="background-image:url({{store.Logo}});" ></view> -->
+                                  <image src='{{userDiscountCard.Logo}}' 
+                                        class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                                        style="width:60px;height:60px"
+                                        mode="aspectFill"
+                                        ></image>
+                            </view>
+                            <view style="width:100%;">
+                                    
+                               
+
+
+                                <view class="text-bold text-lg flex justify-between align-center "  >
+                                    <text> {{userDiscountCard.card_name}}</text>
+
+                                    <button class="cu-btn line-gray round"  catchtap="lookCard" 
+                    wx:if="{{userDiscountCard.is_owner}}">查看详情</button>
+                                </view>
+                                <view class="margin-top-xs">
+                                    <text class="text-red text-bold text-xxl  ">{{userDiscountCard.reward_desc }}</text>   
+                                    <text class="text-gray text-sm margin-left-sm">{{userDiscountCard.desc }}</text>   
+                                </view>
+                                <view class="margin-top-xs">
+                                    <view class="cu-tag line-gray round">已享优惠：
+                                    <text class="text-red text-xxl text-bold margin-lr-xs">{{userDiscountCard.discount_amount }}</text>
+                                    元</view>
+                                </view>
+                                <view class="margin-top-xs">
+                                    <view class="cu-tag line-gray round ">
+                                        优惠次数：仅剩                                    
+                                        <text class="text-red text-xxl text-bold margin-lr-xs"> {{userDiscountCard.left_objective_count}}</text>
+                                        次
+                                    </view>
+                                </view>
+                                <view class="margin-top-xs">
+                                    <text class="cu-tag line-gray round">优惠倒计时：{{countdown}}</text>
+                                </view>
+                            </view>
+                        </view>                      
+                    </view>
+
+
+                    <!-- menuOrder 单品购买 -->
+                    <view wx:if="{{payMode == PAY_MODE_MENU}}">
+                        <view class="cu-list menu bg-white">
+                            <view class="cu-item margin-tb-sm" wx:for="{{menuOrder}}" wx:for-item="item" wx:for-index="key">      
+                                <view class="action">
+                                    <!-- <image src='{{item?item.cover:""}}'  -->
+                                    <image src='{{userDiscountCard.Logo}}' 
+                                        class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                                        style="width:60px;height:60px"
+                                        mode="aspectFill"
+                                        ></image>
+                                </view>
+                                <view class="content ">
+                                    <view class="text-black text-left">{{item.name}}</view>
+                                    <view class="text-gray  text-sm text-left">{{item.attDes}}</view>
+                                    <view class="flex justify-between">
+                                        <view class="text-gray tex ">
+                                            <text class="text-sm">单价</text>
+                                            <text class="text-price text-sm"></text>
+                                            <text class="text-red text-sm">{{item.single}}</text>
+
+                                            
+                                            <text class="text-sm margin-left">总价</text>
+                                            <text class="text-price"></text>
+                                            <text class="text-red">{{item.single * item.Quantity}}</text>
+                                        </view>
+                                        <view class="text-gray  flex justify-between align-center">									
+                                            <!-- <button class="cu-btn  round  bg-gray sm" @click="cutOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)">-</button> -->
+                                            <image src="/images/icon/cut.png"  class="pg-icon" 
+                                                catchtap="cutItem"
+                                                data-categoryindex="{{item.categoryIndex}}"
+                                                data-itemindex="{{item.itemIndex}}"
+                                                data-attindex="{{item.attIndex}}"
+                                                data-valueindex="{{item.valueIndex}}"
+                                            ></image>
+                                            <!-- {{item.Quantity}}	 -->
+                                            <text class="padding-lr-xs ">{{item.Quantity}} </text>								
+                                            <!-- <button class="cu-btn  round bg-yellow text-white sm" @click="addOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)">+</button>								 -->
+                                            <image src="/images/icon/add.png"  class="pg-icon" 
+                                                catchtap="addItem"
+                                                data-categoryindex="{{item.categoryIndex}}"
+                                                data-itemindex="{{item.itemIndex}}"
+                                                data-attindex="{{item.attIndex}}"
+                                                data-valueindex="{{item.valueIndex}}"
+                                            ></image>                                                    
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>					
+                        </view>        
+                        <view class="flex justify-end  padding-lr">
+                            <button class="cu-btn round bg-red text-white" >确认购买</button>
+                        </view>
+                    </view>
+
+                    <!-- 分割线 -->
+                    <view class="padding">
+                        <view class="solid-bottom"></view>
+                    </view>
+
+                    <view class="text-sm text-gray padding-lr margin-top-xs  " hidden="{{cardList.length==0}}" >
+                        <text class="cuIcon-titles text-yellow "></text> 
+                        <text class="">分享好友，优惠同享</text>
+                    </view>                 
+                    <view class=" flex justify-between align-center ">                    
+                        <view class="padding-lr padding-top padding-bottom-sm flex justify-between align-center " >
+                                <view class="cu-avatar-group ">
+                                    <view class="cu-avatar round block {{userDiscountCard.Participators.length<5?'lg':''}}" 
+                                    wx:for="{{userDiscountCard.Participators}}" wx:key="key" 
+                                    style="background-image:url({{item.headimgurl || defaultLogo}});"></view>
+                        </view>
+                            <text class="text-right text-white ">{{userDiscountCard.ParticipatorsTotal}}人</text>                    
+                        </view>
+                        <view class="padding ">                
+                            <view class="">
+                                <button class="cu-btn round bg-yellow text-white" 
+                                    open-type="share" wx:if="{{userInfo.WxNickName}}">分享好友</button>
+                                <button class="cu-btn round bg-yellow text-white" wx:else
+                                    open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">分享好友</button>
+                            </view>
+                        </view>
+                    </view>
+                    
+                    
+                </view>
+            </view>
+            
+            <view class="  text-sm  text-gray  text-center  padding " wx:if="{{userDiscountCard.is_owner}}" >
+                <text class="cuIcon-info margin-right-xs"></text> <text class="">如未完成约定，仅退优惠不吃亏</text>
+            </view>
+        </view>    
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <view class=" box"  wx:if="{{version == VERSION_1}}">
         <!-- 先享卡模块 -->
     
@@ -224,7 +403,24 @@
         </view>
     </view>
 
-    <!-- 单品推荐模块 -->
+    <!-- 单品购买 -->
+    <view wx:if="{{payMode == PAY_MODE_MENU}}">
+        <view class="text-sm text-gray padding-lr margin-top" hidden="{{cardList.length==0}}" >
+            <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
+            <text class="">小杯子推荐</text>
+        </view> 
+        <view class="margin flex" catchtap="toShop">
+            <view class="bg-black flex-sub margin-right radius shadow-lg">
+                <image src="https://wxamusic.wx.qq.com/wxasr/getminipic/14KPI2WYWCpj2OzKse3HC5vEolzwA0LkWAKAqivbCBqvB-oQBORJ3AGDWca_h-PO?media-id=14KPI2WYWCpj2OzKse3HC5vEolzwA0LkWAKAqivbCBqvB-oQBORJ3AGDWca_h-PO&appid=wx678687fa5226e237" mode="aspectFill" class="gif-black response block" style="height:240rpx"></image>
+            </view>
+            <view class="bg-gradual-blue flex-sub margin-right radius shadow-lg">
+                <image src="https://wxamusic.wx.qq.com/wxasr/getminipic/8w7Iv6sKtadjTMA_Hzq3lBIYKuk0oQtgxiolABlUFkLAbVzPCiIZdhFnyeqJJZur?media-id=8w7Iv6sKtadjTMA_Hzq3lBIYKuk0oQtgxiolABlUFkLAbVzPCiIZdhFnyeqJJZur&appid=wx678687fa5226e237" mode="aspectFill" class="gif-black response block" style="height:240rpx"></image>
+            </view>
+        </view>
+    </view>
+
+    
+    <!-- 内容推荐模块 -->
     <view hidden="{{true}}">
         <view class="text-sm text-gray padding-lr margin-top " hidden="{{cardList.length==0}}" >
             <text class="cuIcon-titles text-yellow margin-right-xs"></text> 
@@ -350,7 +546,7 @@
 
 
 <!-- 输入金额 -->
-<view class="cu-bar foot  input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" >
+<view class="cu-bar foot  input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" wx:if="{{payMode==PAY_MODE_INPUT}}" >
         <view class="action">
             <text class="text-price text-xxl "></text>
         </view>

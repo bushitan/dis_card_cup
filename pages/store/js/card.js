@@ -1,4 +1,8 @@
 
+/**
+ * 先享卡的领取功能
+ */
+
 var app = getApp()
 module.exports = Behavior({
     data: {

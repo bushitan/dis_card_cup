@@ -2,15 +2,31 @@
  * 支付环节
  */
 var app = getApp()
+
 module.exports = Behavior({
     data: {
 
-        inputPriceNum: '',
-        inputPrice: '',
-        discountPrice: '',
-        payPrice: '',
+        // inputPriceNum: '',
+        // inputPrice: '',
+        // discountPrice: '',
+        // payPrice: '',
 
-        showPayDetail:false,
+        // showPayDetail:false,
+        menuOrder:[
+            {
+                name:"野生燕麦奶",
+                cover: "https://wm.51zfgx.com/images/thumbs/0001251_-12-oz.jpeg",
+                price: 30,
+                Quantity: 1,
+
+                single: 150,
+
+            },
+        ],
+
+        payMode: 2,// 1 输入金额  2 单品购买
+        PAY_MODE_INPUT: 1,
+        PAY_MODE_MENU: 2,
     },
     methods: {
 
@@ -126,6 +142,29 @@ module.exports = Behavior({
             wx.navigateTo({
                 url: '/pages/alert/alert',
             })
+        },
+
+
+
+
+        // 增加数量
+        addItem() {
+            console.log("+")
+            var menuOrder = this.data.menuOrder
+            menuOrder[0].Quantity++ 
+            this.setData({
+                menuOrder: menuOrder
+            })
+        },
+        // 减少数量
+        cutItem() {
+            var menuOrder = this.data.menuOrder
+            if (menuOrder[0].Quantity > 0) {
+                menuOrder[0].Quantity--
+                this.setData({
+                    menuOrder: menuOrder
+                })
+            }
         },
     },
 

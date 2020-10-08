@@ -1,3 +1,6 @@
+/**
+ * v1 版本先享卡，预支付计算
+ */
 
 var app = getApp()
 module.exports = Behavior({

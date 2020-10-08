@@ -5,6 +5,7 @@ var pay = require('js/pay.js')
 var coupon = require('js/coupon.js')
 var discount = require('js/discount.js')
 var banner = require('js/banner.js')
+var menu = require('js/menu.js')
 const app = getApp()
 
 var VERSION_1 = 1,
@@ -29,7 +30,7 @@ Page({
         // price:0
     },
 
-    behaviors: [app.baseBehavior, card, pay, coupon, discount, banner],
+    behaviors: [app.baseBehavior, card, pay, coupon, discount, banner,menu],
 
     async onLoad(options) {
         this.setData({

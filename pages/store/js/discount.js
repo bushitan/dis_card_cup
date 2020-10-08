@@ -1,5 +1,6 @@
-// v2 版本 先享卡操作
-
+/**
+ * v2 版本先享卡，预支付计算
+ */
 var utils = require('../../../utils/util.js')
 var app = getApp()
 var interval
