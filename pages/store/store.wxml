@@ -403,6 +403,13 @@
         </view>
     </view>
 
+
+    <!-- 便利店 -->
+    <view class="page-bg-white-gray">
+        <mall-list store="{{store}}"></mall-list>
+    </view>
+
+
     <!-- 单品购买 -->
     <view wx:if="{{payMode == PAY_MODE_MENU}}">
         <view class="text-sm text-gray padding-lr margin-top" hidden="{{cardList.length==0}}" >

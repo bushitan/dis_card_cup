@@ -23,7 +23,8 @@
         }
     },
     "usingComponents": {
-        "ad": "components/ad/ad"
+        "ad": "components/ad/ad",
+        "mall-list": "components/mall-list/mall-list"
     },
     "navigateToMiniProgramAppIdList": [
         "wxcc2e4fbc5887661e",

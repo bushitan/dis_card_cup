@@ -24,7 +24,7 @@ module.exports = Behavior({
             },
         ],
 
-        payMode: 2,// 1 输入金额  2 单品购买
+        payMode: 1,// 1 输入金额  2 单品购买
         PAY_MODE_INPUT: 1,
         PAY_MODE_MENU: 2,
     },

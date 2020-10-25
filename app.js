@@ -1,12 +1,14 @@
 //app.js
 var db = require('db/db.js')
+var db5Customer = require('db5_customer/db.js')
 var baseBehavior = require('utils/base-behavior.js')
 App({
 
     
     db: db,
+    db5Customer: db5Customer,
     baseBehavior: baseBehavior,
-    onLaunch: function () {
+    onLaunch() {
 
         if (wx.cloud) {
             wx.cloud.init({
@@ -16,6 +18,8 @@ App({
         }
 
         this.getAd()
+        console.log("db5Customer",db5Customer)
+        // await db5Customer.init()
     },
 
 

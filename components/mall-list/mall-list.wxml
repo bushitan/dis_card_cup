@@ -1,0 +1,66 @@
+<!--components2/mall-list/mall-list.wxml-->
+
+
+<view class="padding-xs " wx:if="{{list.length==0?false:true}}">
+    <!-- <view class="cuIcon-titles text-yellow ">小周边</view> -->
+
+    <!-- <view class=" text-bold text-xl text-yellow text-center ">{{store.title}}【自提点】</view> -->
+    <view class="flex justify-between align-center padding-lr-sm margin-top-xl">
+        <view class="flex align-center" catchtap="refresh">           
+            <text class="cuIcon-title  text-yellow  "  ></text>
+            <text class="text-yellow text-df">小杯子便利店</text>
+            <text class="text-yellow text-df margin-lr">|</text>
+            <text class="text-yellow text-df">{{store.Name}}【到店自取】</text>
+        </view>
+    </view>
+        
+    <view class="margin-top flex" wx:for="{{list}}" wx:key wx:for-index="i">
+
+        <view class="bg-white flex-sub margin-lr-sm radius product" style="overflow: hidden;"
+         wx:for="{{list[i]}}" wx:for-item="product"  catchtap="click" data-nav="{{product.navPath}}" 
+         data-appid="{{product.liteAppID}}" data-path="{{product.litePath}}" 
+         data-store_id="{{store.id}}" data-user_sn="{{sn}}" 
+         data-product_id="{{product._id}}" data-product_name="{{product.name}}" data-product_title="{{product.title}}">
+            <image src="{{product.image}}" mode="aspectFill" class="gif-black response block" style="height:325rpx"></image>            
+            <view class="padding-sm">            
+                <view class="text-df">{{product.title}}</view>
+                <view>
+                    <text class="text-price text-red text-bold text-xl"></text>
+                    <text class="text-red text-bold text-xxl margin-right-xs">{{product.price}}</text>
+                    <text class="cu-tag line-red sm radius" wx:if="{{product.priceDiscount}}">{{product.priceDiscount}}</text>
+                </view>
+                <view>
+                    <text wx:for="{{product.markerList}}" wx:for-item="marker" 
+                    class="cu-tag line-{{marker.color}} sm radius" wx:if="{{marker.text==''?false:true}}">{{marker.text}}</text>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{list[i].length == 1}}"  class=" flex-sub margin-lr-sm radius shadow-lg" ></view>
+     
+    </view>
+
+        <!-- <view class="text-gray text-df text-center margin-top">
+            <text  catchtap="toShoppingCart">购物车</text>
+            <text class="margin-lr">|</text>
+            <text  catchtap="toShoppingOrder">我的订单</text>
+        </view> -->
+</view>
+
+                <!-- <view>{{product.des}}</view> -->
+                    <!-- <text>{{product.priceOrg}}</text> -->
+
+
+
+
+
+
+
+<!--     
+    <view class="margin-top flex" catchtap="toShop">
+        <view class="bg-black flex-sub margin-lr-sm radius shadow-lg">
+            <image src="https://wxamusic.wx.qq.com/wxasr/getminipic/14KPI2WYWCpj2OzKse3HC5vEolzwA0LkWAKAqivbCBqvB-oQBORJ3AGDWca_h-PO?media-id=14KPI2WYWCpj2OzKse3HC5vEolzwA0LkWAKAqivbCBqvB-oQBORJ3AGDWca_h-PO&appid=wx678687fa5226e237" mode="aspectFill" class="gif-black response block" style="height:240rpx"></image>
+        </view>
+        <view class="bg-gradual-blue flex-sub  margin-lr-sm radius shadow-lg">
+            <image src="https://wxamusic.wx.qq.com/wxasr/getminipic/8w7Iv6sKtadjTMA_Hzq3lBIYKuk0oQtgxiolABlUFkLAbVzPCiIZdhFnyeqJJZur?media-id=8w7Iv6sKtadjTMA_Hzq3lBIYKuk0oQtgxiolABlUFkLAbVzPCiIZdhFnyeqJJZur&appid=wx678687fa5226e237" mode="aspectFill" class="gif-black response block" style="height:240rpx"></image>
+        </view>
+    </view> -->
