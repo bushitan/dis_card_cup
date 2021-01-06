@@ -583,7 +583,7 @@
                     <text class="text-price "></text>{{inputPrice}}元
                 </view>
             </view>
-            <view class="flex justify-between padding-top-sm  text-green text-bold">
+            <view class="flex justify-between padding-top-sm  text-green text-bold" wx:if="{{discountPrice}}">
                 <view class="action ">
                     <text class="">先享优惠：</text>
                 </view>
@@ -593,18 +593,19 @@
             </view>
             <view class="flex justify-between padding-top-sm text-red text-bold">
                 <view class="action ">
-                    <text class="">实际支付：</text>
+                    <text class="">支付原价：</text>
                 </view>
                 <view class="action    ">  
                     <text class="text-price "></text>{{payPrice}}元
                 </view>
             </view>
+            <view>点击【继续支付】后，显示【优惠券】</view>
             <view class="flex justify-center padding-top-sm text-bold">
                 <view class="action margin-right">
                     <button class="cu-btn round text-gray" catchtap="inputFocus">重新输入</button>
                 </view>
                 <view class="action    ">  
-                    <button class="cu-btn bg-green round text-white" catchtap="toPay">确认支付</button>
+                    <button class="cu-btn bg-green round text-white" catchtap="toPay">继续支付</button>
                 </view>
             </view>
         </view>  
